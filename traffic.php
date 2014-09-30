@@ -267,15 +267,15 @@ function initialize(){
 
 	//draw_via_rnxml_Request(map.getBounds());
 	//document.getElementById("btn4").className="fBton2";	
-	// incr();
+	 incr();
      scroll();
 	 clievent();   
  };
 //初始化结束
-/*function incr() {
+function incr() {
 	draw_via_rnxml_Request(map.getBounds());
-	setTimeout("incr()",20000);
-	}*/
+	setTimeout("incr()",2000);
+	}
 	
 	var win = document.documentElement;
 	window.onload=function()
