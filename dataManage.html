@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html{height:100%}  
+body{margin:0;padding:0;height:100%;font-family:"微软雅黑", Verdana, sans-serif;overflow:scroll;overflow-y:hidden;overflow-x:hidden;}
+a {text-decoration: none;}
+ul{-webkit-padding-start: 0; -webkit-margin-after: 0;-webkit-margin-before: 0;}
+</style>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.MyDigitclock.js"></script>
+<script type="text/javascript" src="js/menu_min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/menu-css.css">
+<link rel="stylesheet" type="text/css" href="css/choose.css">
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(function(){
+	$("#clock").MyDigitClock({
+		fontSize:16, 
+		fontFamily:"Century gothic", 
+		fontColor: "#000", 
+		fontWeight:"", 
+		bAmPm:true,
+		background:'#fff',
+		bShowHeartBeat:true
+		});
+});
+});
+$(document).ready(function (){ 
+  
+  $(".menu ul li").menu();
+  
+}); 
+
+function stop(){ 
+		return false; 
+		} 
+		document.oncontextmenu=stop; 
+</script>
+
+
+<title>台州市椒江区实时交通信息服务平台</title>
+</head>
+
+<body>
+ <!------------------------------------------------------------------------------标题栏----------------------------------------------------------->
+    <div  id="top_bar" style=" width:100%; height:50px; background-image:url(img/topbg.png);float:left; overflow:hidden; background-size:100% 100%;" >
+    <img src=img/logo.png style="align:left;height:100%"></div>
+     
+    
+    
+  <div id="inforbar" > 
+        	<marquee id="marquee" onMouseOver="this.stop()" onMouseOut="this.start();" style="height:20px;margin-top:2px;"> 
+				<iframe name="sinaWeatherTool" src="http://weather.news.sina.com.cn/chajian/iframe/weatherStyle0.html?city=%E6%9D%AD%E5%B7%9E" 			 					width="200" height="20" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>
+            </marquee>
+         </div> 
+    </div>
+    <!-----------------------------------------------------------------------侧边栏---------------------------------------------------------------------->
+   <div id="sideMenu" style="width:250px;height:700px;border-right:#CCC 1px solid;float:left;background:#f3f3f3;">
+    <div class="menu" style="width:100%;">
+    <div style="height:20px;"></div>
+    <ul>    
+   	   <li><a href="#">基础信息管理</a>
+            <ul>
+                <li><a href="#subb1">区域信息管理</a></li>
+                <li><a href="#subb2">路口信息管理</a></li>
+                <li><a href="#subb3">道路信息管理</a></li>
+                <li><a href="#subb4">路段信息管理</a></li>
+            </ul>				
+        </li>
+        <li><a href="#">设备信息管理</a>
+            <ul>
+                <li><a href="#">视频管理</a></li>
+                <li><a href="#">卡口管理</a></li>
+                <li><a href="#">SCATS管理</a></li>
+                <li><a href="#">微波管理</a></li>
+                <li><a href="#">诱导屏管理</a></li>
+            </ul>				
+        </li>
+        <li><a href="#">关联信息管理</a>
+            <ul>
+                <li><a href="#">SCATS关联车道信息</a></li>
+                <li><a href="#">微波关联车道信息</a></li>
+                <li><a href="#">卡口关联车道信息</a></li>
+                <li><a href="#">视频关联车道信息</a></li>            
+            </ul>				
+        </li>
+        <li><a href="#">数据关联管理</a>
+            <ul>
+            	 <li><a href="#">路段数据源关联管理</a></li>
+            </ul>
+        </li>
+			
+    </ul>
+    </div>
+    
+    
+    </div>
+   <!------------------------------------------------------------------------图表域------------------------------------------------------------------------>
+    <div id="chart" style="width:70%;height:85%;float:left; text-align:center;">
+    页面正在建设！
+    </div>
+     <!----------------------图表域------------------------->
+    
+    
+   	
+<!---------------------------------------------------底部工具栏------------------------------------------------>
+     <div id="bottomBar" style=" width:100%; height:22px;float:left;
+          	text-align:right;font:黑体 9px;position:absolute;
+            outline:solid #CCC thin;bottom:0;" > 
+     <div id="clock" style="padding-right:1em;"></div>
+     
+</div>
+
+</body>
+</html>

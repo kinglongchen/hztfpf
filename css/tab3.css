@@ -1,0 +1,96 @@
+@charset "utf-8";
+/* CSS Document */
+
+.tab1{
+	width:100%;
+	table-layout:fixed; 
+	border-collapse:collapse;
+	text-align:center;
+	border:1px solid #000;
+	line-height:35px;
+	background:#FFF;
+	}
+
+.red{
+	color:red;
+	margin-left:5px;
+	}	
+	
+.green{
+	color:green;
+	margin-left:5px;
+	}	
+
+.orange{
+	color:#ffae00;
+	margin-left:5px;
+	}
+
+.tabs{
+	border:1px solid #0150a2;
+	width:auto;
+	padding-bottom:10px;
+	background:url(../img/tbg1.png);
+	margin-right:10px;
+	}	
+	
+.tb1{
+	font-size:18px;
+	padding-left:10px;
+	font-weight:bold;
+	color:#fff;
+	width:290px;
+	line-height:35px;
+	background:url(../img/tbg2.png);
+	}	
+
+.tb2{
+	font-size:18px;
+	padding-left:10px;
+	font-weight:bold;
+	color:#fff;
+	line-height:35px;
+	background:url(../img/tbg2.png);
+	}
+
+.glfx{
+	border:1px solid #0d60b6;
+	height:280px;
+	background:url(../img/tbg3.png);
+	}	
+
+.tqjz{
+	border-collapse:collapse;
+	width:280px;
+	table-layout:fixed;
+	margin:auto;
+	}	
+	
+.h{
+	font-size:3px;
+	margin:10px 0 10px 0;
+	text-height:20px;
+	float:left;
+	width:270px;
+	color: #444;
+	}	
+	
+.t1{
+	border:1px solid #70c3e9;
+	background:#FFF;
+	height:60px;
+	}	
+
+.t2{
+	height:30px;
+	padding-top:5px;
+	}
+
+.ldfx{
+	border:1px solid #0d60b6;
+	height:280px;
+	background:#ecf7ff;
+	}
+#pie_container{
+	height:280px;
+	}

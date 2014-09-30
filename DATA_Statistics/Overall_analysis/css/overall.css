@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+html{height:100%}
+body{height:100%;margin:0px;padding:0px}
+.choose{
+	margin:0 0 0 40px;}
+#map_container{
+	width:68%;
+	height:430px;
+	border:1px solid #F6F6F6;
+	float:left;
+	margin:20px 0 0 20px;
+	}
+#road_container{
+	width:33%;
+	height:240px;
+	float:left;}
+#zone_container{
+	width:33%;
+	height:240px;
+	float:left;
+	margin:0 0 0 20px;}
+#pie_container{
+	width:30%;
+	height:240px;
+	float:left;
+	margin:0 0 0 20px;}
+/*#map_container{
+	float:left;
+	width:64%};*/
+#day_cons_bar,#month_cons_bar,#year_cons_bar{
+	height:135px;}
+
+

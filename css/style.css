@@ -1,0 +1,12 @@
+﻿	@charset "utf-8";
+	/* CSS Document */
+	
+	body{margin:0 0 0 0;padding:0 0 0 0;height:100%;font-family:微软雅黑, Verdana, sans-serif;overflow-x:hidden;overflow-y:hidden;color:#555555;}
+	
+	.close_btn{margin-top:-7px;margin-left:8px;border:0}
+	div.video_c{width:380px;height:295px;background-image: url(../ico/video_bg.png);background-repeat: no-repeat;background-size:380px 295px;}
+	.video{position:absolute;margin-top:13px;margin-left:14px}
+	.video_clo_btn{position:absolute;margin-left:305px;margin-top:12px}
+	
+
+

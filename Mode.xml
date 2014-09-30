@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--modeNum=1为3级路况   modeNum=2为5级路况-->
+<mode>
+	<runMode>
+		<modeNum>1</modeNum>
+	</runMode>
+</mode>

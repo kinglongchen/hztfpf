@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<script lang="javascript" type="text/javascript">
+url="area_con.php?area_id=1"
+$.get(
+url,
+function(data,status){
+	var objs = eval(data);
+	alert(String(1).substring(0,3));
+	//alert(String(objs.crowded_num).substring(0,3));
+	}
+)
+</script>
+<body>
+</body>
+</html>
