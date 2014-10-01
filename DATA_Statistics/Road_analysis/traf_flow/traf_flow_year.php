@@ -32,8 +32,8 @@ a:hover{
 	width:400px;}*/
 </style>
 </head>
-
-<body style=" font-size:14px; color:#414141;font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;">
+<body style=" font-size:14px; color:#414141;margin:0px;overflow-y:hidden;font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;">
+<div style="float:left;height:100%;width:98%;overflow:hidden;">
 <div class="tabs"> 
     <div id="chart_container" style="width:96%;height:300px;border:1px solid #000;margin:10px 0 0 20px;float:left"></div>
         <div style="clear:both"></div> 
@@ -58,7 +58,7 @@ a:hover{
             </div>
         </div>
 </div>
-<div style="float:left;width:300px;margin:10px 0 0 0;">
+<div style="float:left;width:300px;margin:10px 0 0 10px;">
     <div class="tb1">关联时段分析</div>
     	<div class="glfx">
                <table class="tqjz">
@@ -85,10 +85,11 @@ a:hover{
           </div>
     </div>
 </div> 
-<div style="float:left;width:540px;margin:10px 0 0 10px;">
+<div style="float:left;width:357px;margin:10px 0 0 10px;">
     <div class="tb2">关联路段分析</div>
-        <div class="ldfx">
-            <table id = "rte_roads"  style="border-collapse:collapse;width:550px;margin:auto;table-layout:fixed;text-align:center;">
+        <div class="glfx">
+          <table id = "rte_roads" border="1" bordercolor="#70c3e9"
+                     style=" background:#FFF;margin-top:5px;border-collapse:collapse;width:347px;margin-left:3.5px;table-layout:fixed;text-align:center;">
               <tr class="t2">
                 <th scope="col">路段名</th>
                 <th scope="col">最高值</th>
@@ -151,5 +152,6 @@ a:hover{
 	<!--<p>第0级占X%，第1级占x%，第2级占x%，第3级占x%，第4级占x%，第5级占x%。xxxx占的比重最高，所以在xxx方面要加强治理。</p>-->
 </div>
 <div style="clear:both"></div> 
+</div>
 </body>
 </html>

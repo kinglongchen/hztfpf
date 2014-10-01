@@ -31,7 +31,7 @@
 	width:auto;
 	padding-bottom:10px;
 	background:url(../img/tbg1.png);
-	margin-right:10px;
+	margin:10px 10px 0 10px;
 	}	
 	
 .tb1{
@@ -55,7 +55,7 @@
 
 .glfx{
 	border:1px solid #0d60b6;
-	height:280px;
+	height:282px;
 	background:url(../img/tbg3.png);
 	}	
 

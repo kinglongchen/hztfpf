@@ -3,52 +3,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../../css/scollbar.css">
 <script src="../../../js/jquery.js"></script>
-
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/heatmap.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>
+<script type="text/javascript" src="../../../js2/common.js"></script>
 <script src="js_traf_state/month/road.js"></script>
-<style>
-.choose{
-	margin:0 0 0 20px;
-	padding:5px 0 5px 0;
-	background-color:#eee;
-	color:#000;}
-.item{
-	margin:0 0 0 20px;
-	background-color:#ddd;
-	color:#000;}
-a{
-	color:#000;
-	text-decoration:none;
-	padding:5px 0 5px 0;}
-a:hover{
-	background-color:#fff;}
-#area_choose{
-	display:none;}
-.anaList{
-	margin:10px 10px 10px 5px;}
-/*#pie_container{
-	width:400px;}*/
-</style>
+
 </head>
 
 <body>
-<div> 
-    <div style="height:400px;border:1px solid #000;margin:20px 0 0 20px;">
-    	<div id="chart_day_container" style="width:76%;float:left;"></div>
-        <div style="width:20%;float:left;color:#f00;margin-top:100px;">日分析中，XX小时XXXXXXXX最高，应该在此处加强治理力度</div>
-    </div>
-    <div style="height:400px;border:1px solid #000;margin:20px 0 0 20px;">
-        <div id="chart_month_container" style="width:76%;float:left;"></div>
-        <div style="width:20%;float:left;color:#f00;margin-top:100px;">月分析中，XX小时XXXXXXXX最高，应该在此处加强治理力度</div>
-    </div>
-    <div style="height:400px;border:1px solid #000;margin:20px 0 0 20px;">
-        <div id="chart_year_container" style="width:76%;float:left;"></div>
-        <div style="width:20%;float:left;color:#f00;margin-top:100px;">年分析中，XX小时XXXXXXXX最高，应该在此处加强治理力度</div>
-    </div>
+ <div id="scroll">
+                       <div id="scroLeft">
+                    <div style="height:400px;border:1px solid #000;margin:20px 0 0 20px;">
+                        <div id="chart_day_container" style="width:75%;float:left;"></div>
+                        <div style="width:20%;float:left;color:#f00;margin-top:100px;">日分析中，XX小时XXXXXXXX最高，应该在此处加强治理力度</div>
+                    </div>
+                    <div style="height:400px;border:1px solid #000;margin:20px 0 0 20px;">
+                        <div id="chart_month_container" style="width:75%;float:left;"></div>
+                        <div style="width:20%;float:left;color:#f00;margin-top:100px;">月分析中，XX小时XXXXXXXX最高，应该在此处加强治理力度</div>
+                    </div>
+                    <div style="height:400px;border:1px solid #000;margin:20px 0 0 20px;">
+                        <div id="chart_year_container" style="width:75%;float:left;"></div>
+                        <div style="width:20%;float:left;color:#f00;margin-top:100px;">年分析中，XX小时XXXXXXXX最高，应该在此处加强治理力度</div>              
+                    </div>
 </div>
+                           
+                       <div id="scroRight" >
+                             <div id="scroLine"></div>
+                       </div>
+                </div>    
 <div style="clear:both"></div> 
 <!--<div style="width:96%;margin:20px 0 0 20px;">
     <table border="1" style="width:100%;table-layout:fixed; border-collapse:collapse;text-align:center">

@@ -3,10 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../../css/scollbar.css">
 <script src="../../../js/jquery.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>
 <script src="js_traf_state/month/road.js"></script>
+<script type="text/javascript" src="../../../js2/common.js"></script>
 <style>
 #chart_traf_flow,#chart_crowd_time,#chart_crowd_num,#chart_car_speed{
 	width:96%;
@@ -18,6 +20,8 @@
 </head>
 
 <body>
+ <div id="scroll">
+                       <div id="scroLeft">
     <form style="margin:10px 0 0 20px;">
       区域选择：
       <span style="height:20px;margin:0 30px 0 -13px;">
@@ -58,6 +62,12 @@
     <div id="chart_crowd_num" ></div>
     <div id="chart_car_speed" ></div>
 </div>
+</div>
+                           
+                       <div id="scroRight" >
+                             <div id="scroLine"></div>
+                       </div>
+                </div>  
 <div style="clear:both"></div> 
 
 </body>

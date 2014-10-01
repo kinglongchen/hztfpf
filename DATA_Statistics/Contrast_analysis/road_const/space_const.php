@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../../css/scollbar.css">
 <link rel="stylesheet" type="text/css" href="../../../DATA_Statistics/Contrast_analysis/css/contrast.css" />
 <script src="http://webapi.amap.com/maps?v=1.3&key=a1dbe1455fe51c2c903a6b9cd35af2fc"></script>
 <script src="../../../js/jquery.js"></script>
@@ -10,6 +11,7 @@
 <script src="../../../DATA_Statistics/Contrast_analysis/js/contrast.js"></script>
 <script src="../../../js/AMP_F.js"></script>
 <script src="../../../js/slider.js"></script>
+<script type="text/javascript" src="../../../js2/common.js"></script>
 <style>
 #trf_container,#vhs_container,#coi_container,#cot_container,#rst_container{
 	width:100%;
@@ -231,6 +233,8 @@ window.onload=function() {
 </head>
 
 <body>
+ <div id="scroll">
+                       <div id="scroLeft" style="margin-top:10px">
     <div id="main" style="border:1px solid #000;margin:0 15px 0 15px;">
       <div>
               <form>
@@ -276,5 +280,11 @@ window.onload=function() {
             <div id="rst_container"></div>
         </div>
     </div>
+    </div>
+                           
+                       <div id="scroRight" >
+                             <div id="scroLine"></div>
+                       </div>
+                </div>  
 </body>
 </html>

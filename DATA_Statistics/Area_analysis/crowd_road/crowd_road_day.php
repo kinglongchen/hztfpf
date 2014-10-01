@@ -13,7 +13,7 @@
 
 <body>
 <div> 
-    <div id="map_container" style="border:1px solid #24C3F3;width:98%;height:500px;"></div>
+    <div id="map_container" style="border:1px solid #000;width:98%;height:500px;"></div>
     <div id="chart_container" style="width:98%;margin-top:10px"></div>
     <div style="width:98%;margin-top:10px;">
     	<table style="width:100%;table-layout:fixed" border="1" cellpadding="0" cellspacing="0">
