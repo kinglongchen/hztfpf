@@ -5,7 +5,7 @@
 <title>无标题文档</title>
 <script src="../../../js/jquery.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
-<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>
+<!--<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>-->
 <script src="js_car_speed/year/road.js"></script>
 </head>
 

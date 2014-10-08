@@ -18,15 +18,14 @@
                        <div id="scroLeft">
                     <div style="height:400px;border:1px solid #000;margin:20px 0 0 20px;">
                         <div id="chart_day_container" style="width:75%;float:left;"></div>
-                        <div style="width:20%;float:left;color:#f00;margin-top:100px;">日分析中，XX小时XXXXXXXX最高，应该在此处加强治理力度</div>
+                     
                     </div>
                     <div style="height:400px;border:1px solid #000;margin:20px 0 0 20px;">
                         <div id="chart_month_container" style="width:75%;float:left;"></div>
-                        <div style="width:20%;float:left;color:#f00;margin-top:100px;">月分析中，XX小时XXXXXXXX最高，应该在此处加强治理力度</div>
-                    </div>
+                                            </div>
                     <div style="height:400px;border:1px solid #000;margin:20px 0 0 20px;">
                         <div id="chart_year_container" style="width:75%;float:left;"></div>
-                        <div style="width:20%;float:left;color:#f00;margin-top:100px;">年分析中，XX小时XXXXXXXX最高，应该在此处加强治理力度</div>              
+                                    
                     </div>
 </div>
                            

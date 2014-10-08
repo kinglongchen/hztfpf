@@ -183,6 +183,9 @@ $(function () {
         title: {
             text: '交通状态日趋势分析'
         },
+		credits:{
+			enabled:false
+			},
         xAxis: {
 			startOnTick: false,
             endOnTick: false,

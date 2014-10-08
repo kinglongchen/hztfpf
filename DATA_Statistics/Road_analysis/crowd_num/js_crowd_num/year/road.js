@@ -8,6 +8,9 @@ $(function () {
             text: '拥堵指数年趋势分析',
             x: -20 //center
         },
+		credits:{
+			enabled:false
+			},
         yAxis: {
             title: {
                 text: '拥堵指数'
@@ -24,7 +27,7 @@ $(function () {
         legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle',
+            verticalAlign: 'top',
             borderWidth: 0
         },
         series: [{

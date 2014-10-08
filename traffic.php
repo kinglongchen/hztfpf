@@ -272,10 +272,10 @@ function initialize(){
 	 clievent();   
  };
 //初始化结束
-/*function incr() {
+function incr() {
 	draw_via_rnxml_Request(map.getBounds());
 	setTimeout("incr()",20000);
-	}*/
+	}
 	
 	var win = document.documentElement;
 	window.onload=function()

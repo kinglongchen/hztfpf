@@ -8,6 +8,9 @@ $(function () {
             text: '拥堵指数日趋势分析',
             x: -20 //center
         },
+		credits:{
+			enabled:false
+			},
 		xAxis: {
 			allowDecimals:false,
 			labels:{
@@ -15,27 +18,6 @@ $(function () {
 					return this.value+':00';
 					}
 				},
-			/*plotLines:[{
-                color:'red',            //线的颜色，定义为红色
-                dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:7.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
-                width:2,                //标示线的宽度，2px
-            },{
-				color:'red',            //线的颜色，定义为红色
-                dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:8.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
-                width:2,                //标示线的宽度，2
-				},{
-                color:'red',            //线的颜色，定义为红色
-                dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:17.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
-                width:2,                //标示线的宽度，2px
-            },{
-				color:'red',            //线的颜色，定义为红色
-                dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:18.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
-                width:2,                //标示线的宽度，2
-				}]*/
 			},
         yAxis: {
             title: {
@@ -53,7 +35,7 @@ $(function () {
         legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle',
+            verticalAlign: 'top',
             borderWidth: 0
         },
         series: [{

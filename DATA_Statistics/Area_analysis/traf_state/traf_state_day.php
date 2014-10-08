@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../../../css/scollbar.css">
 <script src="../../../js/jquery.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
-<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>
+<!--<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>-->
 <script src="js_traf_state/day/road.js"></script>
 <script type="text/javascript" src="../../../js2/common.js"></script>
 <style>

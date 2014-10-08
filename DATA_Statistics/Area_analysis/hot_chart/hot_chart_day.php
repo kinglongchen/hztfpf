@@ -26,6 +26,7 @@
 <div> 
 	<div style="width:96%;height:40px;border:2px solid #0150a2;float:left; margin:10px 0 0 20px;">
       <div style="float:left;margin-right:50px;margin:7px 0 10px 20px;">
+      <form>
       <input type="text" id="sliderValue" readonly name="sliderValue"  size="4" />
       <script language="JavaScript">
 	  
@@ -56,6 +57,7 @@
 				t_slider.f_setValue(3600,1)	
             </script>
             </div>
+            </form>
       <div style="float:left;margin-right:50px;margin:7px 0 10px 20px;">   
          <input type="button"   id="play" value="播放"/>
          <span id = 't_itvsetter' ><!--style="margin:19px 0 0 40px;float:left;"-->

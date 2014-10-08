@@ -1,5 +1,5 @@
 <?php
-$dbconn = oci_connect("scott", "123456", '192.168.0.102');  
+$dbconn = oci_connect("scott", "123456", '192.168.0.112');  
 if(!$dbconn) 
 {
      $e = oci_error();

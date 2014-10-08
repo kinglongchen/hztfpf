@@ -8,6 +8,9 @@ $(function () {
             text: '交通状态月趋势分析',
             x: -20 //center
         },
+		credits:{
+			enabled:false
+			},
         yAxis: {
             title: {
                 text: '交通状态'
@@ -24,7 +27,7 @@ $(function () {
         legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle',
+            verticalAlign: 'top',
             borderWidth: 0
         },
 		xAxis: {
@@ -61,6 +64,9 @@ $(function () {
                 '拖拽放大区域' :
                 'Pinch the chart to zoom in'
         },
+		credits:{
+			enabled:false
+			},
         xAxis: {
             type: 'datetime',
             maxZoom: 1 * 48* 1000000, // fourteen days
@@ -161,7 +167,7 @@ $(function () {
         legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle',
+            verticalAlign: 'top',
             borderWidth: 0
         },
         series: [{
@@ -181,6 +187,9 @@ $(function () {
         title: {
             text: '行程车速月趋势分析'
         },
+		credits:{
+			enabled:false
+			},
         xAxis: {
 			categories:[
 				'1','2','3','4','5',

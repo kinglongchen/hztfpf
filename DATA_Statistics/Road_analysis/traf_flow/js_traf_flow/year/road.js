@@ -8,6 +8,9 @@ $(function () {
             text: '交通流量年趋势分析',
             x: -20 //center
         },
+		credits:{
+			enabled:false
+			},
         yAxis: {
             title: {
                 text: '交通流量'
@@ -19,12 +22,20 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
+			formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>车流量：'+this.y+'辆';
+				}
         },
         legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle',
+            verticalAlign: 'top',
             borderWidth: 0
         },
         series: [{
@@ -105,11 +116,11 @@ function data_update(data) {
 	
 	chart_data = data;
 	pie_data = new Array();
-	pie_data.push(new Array("小于20公里",0));
-	pie_data.push(new Array("20—40公里",0));
-	pie_data.push(new Array("40-60公里",0));
-	pie_data.push(new Array("40-80公里",0));
-	pie_data.push(new Array("大于>80公里",0));
+	pie_data.push(new Array("小于52万辆/月",0));
+	pie_data.push(new Array("52-103万辆/月",0));
+	pie_data.push(new Array("103-156万辆/月",0));
+	pie_data.push(new Array("156-207万辆/月",0));
+	pie_data.push(new Array("大于207万辆/月",0));
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
 		t = tv[0];
@@ -119,11 +130,11 @@ function data_update(data) {
 			max_val_time = t; 
 			}
 		total_val+=v;
-		if(v<20){pie_data[0][1]+=1/data.length;}
-		if(v>=20&&v<40){pie_data[1][1]+=1/data.length;}
-		if(v>=40&&v<60){pie_data[2][1]+=1/data.length;}
-		if(v>=60&&v<80){pie_data[3][1]+=1/data.length;}
-		if(v>=80){pie_data[4][1]+=1/data.length;}
+		if(v<520000){pie_data[0][1]+=1/data.length;}
+		if(v>=520000&&v<1030000){pie_data[1][1]+=1/data.length;}
+		if(v>=1030000&&v<1560000){pie_data[2][1]+=1/data.length;}
+		if(v>=1560000&&v<2070000){pie_data[3][1]+=1/data.length;}
+		if(v>=2070000){pie_data[4][1]+=1/data.length;}
 		}
 		
 	max_val_time_l = max_val_time-0.5;
@@ -139,7 +150,7 @@ function data_update(data) {
 	remove_avg_line()
 	add_avg_line()
 	remove_his_avg_line()
-	add_his_avg_line(49)
+	add_his_avg_line(60*60*24*30/2)
 	
 	$('#total_val').text(parseInt(total_val)*30*24*365);
 	$('#traf_stability').text(parseInt(total_val/180)+"   ↓");
@@ -254,8 +265,8 @@ function generate_data() {
 	data = new Array()
 	for (var i = 0;i<13;i++) {
 		t = i;
-		v = Math.random()*100;
-		data.push([t,v]);
+		v = Math.random()*60*60*24*30;
+		data.push([t,parseInt(v)]);
 		}
 	return data;
 	}

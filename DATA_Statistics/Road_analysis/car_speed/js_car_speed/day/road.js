@@ -8,6 +8,9 @@ $(function () {
             text: '行程车速日趋势分析',
             x: -20 //center
         },
+		credits:{
+			enabled:false
+			},
 		xAxis: {
 			allowDecimals:false,
 			labels:{
@@ -33,7 +36,7 @@ $(function () {
         legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle',
+            verticalAlign: 'top',
             borderWidth: 0
         },
         series: [{

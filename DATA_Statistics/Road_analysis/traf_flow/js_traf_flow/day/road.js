@@ -9,6 +9,9 @@ $(function () {
             text: '交通流量日变化趋势分析',
             x: -20 //center
         },
+		credits:{
+			enabled:false
+			},
 		xAxis: {
 			allowDecimals:false,
 			labels:{
@@ -29,12 +32,20 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
+			formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>车流量：'+this.y+'辆';
+				}
         },
         legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle',
+            verticalAlign: 'top',
             borderWidth: 0
         },
         series: [{
@@ -117,14 +128,14 @@ function data_update(data) {
 	var max_val = -1;
 	var max_val_time=0;
 	var total_val = 0;
-	
-	chart_data = data;
+	chart_data = data
+	var val_pie = t_itv*60/5;
 	pie_data = new Array();
-	pie_data.push(new Array("小于20公里",0));
-	pie_data.push(new Array("20—40公里",0));
-	pie_data.push(new Array("40-60公里",0));
-	pie_data.push(new Array("40-80公里",0));
-	pie_data.push(new Array("大于>80公里",0));
+	pie_data.push(new Array("小于"+val_pie+"辆/"+t_itv+"分钟",0));
+	pie_data.push(new Array(val_pie+"-"+val_pie*2+"辆/"+t_itv+"分钟",0));
+	pie_data.push(new Array(val_pie*2+"-"+val_pie*3+"辆/"+t_itv+"分钟",0));
+	pie_data.push(new Array(val_pie*3+"-"+val_pie*4+"辆/"+t_itv+"分钟",0));
+	pie_data.push(new Array("大于"+val_pie*4+"辆/"+t_itv+"分钟",0));
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
 		t = tv[0];
@@ -135,12 +146,11 @@ function data_update(data) {
 			}
 		total_val+=v;
 		
-		//if (i == 0) {alert(v);alert(index)}
-		if(v<20){pie_data[0][1]+=1/data.length;}
-		if(v>=20&&v<40){pie_data[1][1]+=1/data.length;}
-		if(v>=40&&v<60){pie_data[2][1]+=1/data.length;}
-		if(v>=60&&v<80){pie_data[3][1]+=1/data.length;}
-		if(v>=80){pie_data[4][1]+=1/data.length;}
+		if(v<val_pie){pie_data[0][1]+=1/data.length;}
+		if(v>=val_pie&&v<val_pie*2){pie_data[1][1]+=1/data.length;}
+		if(v>=val_pie*2&&v<val_pie*3){pie_data[2][1]+=1/data.length;}
+		if(v>=val_pie*3&&v<val_pie*4){pie_data[3][1]+=1/data.length;}
+		if(v>=val_pie*4){pie_data[4][1]+=1/data.length;}
 		
 		}
 	max_val_time_l = max_val_time-t_itv/120;
@@ -164,7 +174,7 @@ function data_update(data) {
 	remove_avg_line()
 	add_avg_line()
 	remove_his_avg_line()
-	add_his_avg_line(49)  
+	add_his_avg_line(60*t_itv/2)  
 	$('#chart_container').highcharts().series[0].setData(chart_data);
 	$('#chart_container').highcharts().yAxis[0].setTitle({text:'交通流量(辆/'+t_itv+'分钟）'})
 	$('#pie_container').highcharts().series[0].setData(pie_data);
@@ -331,9 +341,8 @@ function generate_data() {
 	data = new Array()
 	for (var i = 0;i<dc;i++) {
 		t = i*t_itv/60;
-		v = Math.random()*100;
-		
-		data.push([t,v]);
+		v = Math.random()*60*t_itv;
+		data.push([t,parseInt(v)]);
 		}
 	return data;
 	}
