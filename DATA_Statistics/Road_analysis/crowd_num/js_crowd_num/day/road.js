@@ -229,7 +229,7 @@ function add_tfctl_line() {
 	chart.xAxis[0].addPlotLine({
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:7.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:7,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
 				id:pline_id_pref+'1'
             });
@@ -245,7 +245,7 @@ function add_tfctl_line() {
 	chart.xAxis[0].addPlotLine({
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:17.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:17,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
 				id:pline_id_pref+'3'
             });
