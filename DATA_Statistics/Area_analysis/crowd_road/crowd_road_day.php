@@ -3,19 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../../css/scollbar.css">
 <script src="../../../js/jquery.js"></script>
 <script type='text/javascript' src='../../../js/map.js'></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>
 <script src="http://webapi.amap.com/maps?v=1.3&key=a1dbe1455fe51c2c903a6b9cd35af2fc"></script>
 <script src="js_crowd_road/day/road.js"></script>
+<script type="text/javascript" src="../../../js2/common2.js"></script>
 </head>
 
 <body>
-<div> 
-    <div id="map_container" style="border:1px solid #000;width:98%;height:500px;"></div>
-    <div id="chart_container" style="width:98%;margin-top:10px"></div>
-    <div style="width:98%;margin-top:10px;">
+<div id="scroll">
+                       <div id="scroLeft">
+   <div id="map">
+    <div id="map_container" style="border:1px solid #000;width:98%;height:500px;margin:10px 0 5px 20px;"></div>
+    </div>
+    <div id="chart_container" style="width:98%;margin-top:10px;margin:10px 0 0 20px;"></div>
+    <div style="width:98%;margin-top:10px;margin:10px 0 0 20px;">
     	<table style="width:100%;table-layout:fixed" border="1" cellpadding="0" cellspacing="0">
         	<tr><th>道路名称</th><th>拥堵里程比例</th><th>日拥堵平均时长</th><th>行程车速</th><th>自由车速时间占有率</th><th>交通流量</th><th>拥堵指数</th></tr>
             <tr><td>学院路</td><td>78.8%</td><td>18</td><td>100m/s</td><td>10%</td><td>980</td><td>0.7</td></tr>
@@ -31,6 +36,11 @@
         </table>
     </div>
 </div>
+                           
+                       <div id="scroRight" >
+                             <div id="scroLine"></div>
+                       </div>
+                </div>
 <div style="clear:both"></div> 
 </body>
 </html>
