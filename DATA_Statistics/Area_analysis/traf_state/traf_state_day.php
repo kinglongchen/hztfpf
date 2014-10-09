@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../../../css/scollbar.css">
 <script src="../../../js/jquery.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
+<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/heatmap.js"></script>
 <!--<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>-->
 <script src="js_traf_state/day/road.js"></script>
 <script type="text/javascript" src="../../../js2/common.js"></script>
@@ -35,24 +36,22 @@ $(document).ready(function(e) {
 			});
 
 function road_analysis() {
-	road_sec_id = $("#rs_slcer").val()
-	if (road_sec_id==null) road_sec_id=1
+	zone_id = $("#zone_slcer").val()
+	if (zone_id==null) zone_id=1
 	date = $("#sub_date").val()
 	if (date==''){
 		nowdate = new Date()
 		year = nowdate.getFullYear()
-		month = nowdate.getMonth()+1
+		month = nowdate.getMonth()
 		day = nowdate.getDate()
 		}
 	else {
 		date = date.split('-')
 		year = parseInt(date[0])
-		month = parseInt(date[1])
+		month = parseInt(date[1])-1
 		day = parseInt(date[2])
-		}	
-	data_req(year,month,day,road_sec_id)	
-		
-	
+		}
+	data_req(year,month,day,zone_id)
 	}
 
 
@@ -65,7 +64,7 @@ function road_analysis() {
     <form style="margin:10px 0 5px 20px;">
       区域选择：
       <span style="height:20px;margin:0 30px 0 -13px;">
-          <select id = "sroadid" >
+          <select id = "zone_slcer" >
               <option value="1">西湖区</option>
               <option value="2">拱墅区</option>
               <option value="3">余杭区</option>
@@ -73,7 +72,6 @@ function road_analysis() {
               <option value="5">下城区</option>
               <option value="6">萧山区</option>
               <option value="7">江干区</option>
-              <option value="8">XX区</option>
           </select>
       </span>
       时间选择：

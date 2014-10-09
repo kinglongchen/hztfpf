@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../../../css/scollbar.css">
 <script src="../../../js/jquery.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
+<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/heatmap.js"></script>
 <!--<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>-->
 <script type="text/javascript" src="../../../js2/common.js"></script>
 <script src="js_traf_state/year/road.js"></script>
@@ -17,6 +18,21 @@
 	margin:20px 0 0 20px;
 	float:left;}
 </style>
+
+<script>
+function road_analysis() {
+	zone_id = $("#zone_slcer").val()
+	if (zone_id==null) zone_id=1
+	year = $("#year_selec").val()
+	data_req(year,0,1,zone_id)
+	}
+$(document).ready(function(e) {
+    var date = new Date();
+	year = date.getFullYear();
+	$("#year_selec").val(year);
+});
+</script>
+
 </head>
 
 <body>
@@ -33,24 +49,24 @@
               <option value="5">下城区</option>
               <option value="6">萧山区</option>
               <option value="7">江干区</option>
-              <option value="8">XX区</option>
           </select>
       </span>
       时间选择：
-      <span style="height:20px;margin-left:-13px;">
-          <select id="sub_date">
-          	<option value="2005">2005</option>
-            <option value="2006">2006</option>
-            <option value="2007">2007</option>
-            <option value="2008">2008</option>
-            <option value="2009">2009</option>
-            <option value="2010">2010</option>
-            <option value="2011">2011</option>
-            <option value="2012">2012</option>
+     <span style="height:20px;margin-left:3px;">
+          <select id="year_selec">
+          	<option value="2014">2014</option>
             <option value="2013">2013</option>
-            <option value="2014">2014</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
+            <option value="2009">2009</option>
+            <option value="2008">2008</option>
+            <option value="2007">2007</option>
+            <option value="2006">2006</option>
+            <option value="2005">2005</option>
+            
           </select>
-      </span>
+      </span>年
       <button type="button" onclick="road_analysis()">确定</button>
     </form>
 <div> 
