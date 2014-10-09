@@ -2,7 +2,7 @@
 $(function () {
     $('#chart_container').highcharts({
 		chart: {
-			type:"spline"
+			type:"column"
 			},
         title: {
             text: '拥堵指数月趋势分析',
@@ -21,8 +21,16 @@ $(function () {
                 color: '#808080'
             }]
         },
-        tooltip: {
-            valueSuffix: '°C'
+         tooltip: {
+			formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>拥堵指数：'+this.y;
+				}
         },
         legend: {
             layout: 'vertical',
@@ -261,7 +269,7 @@ function generate_data() {
 		t = i;
 		v = Math.random()*10;
 		
-		data.push([t,v]);
+		data.push([t,Math.round(v*100)/100]);
 		}
 	return data;
 	}

@@ -121,7 +121,7 @@ function data_update(data) {
 	pie_data.push(new Array("12—24公里/小时",0));
 	pie_data.push(new Array("24-36公里/小时",0));
 	pie_data.push(new Array("36-48公里/小时",0));
-	pie_data.push(new Array("大于>48公里/小时",0));
+	pie_data.push(new Array("大于48公里/小时",0));
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
 		t = tv[0];
