@@ -11,6 +11,9 @@ $(function () {
 		credits:{
 			enabled:false
 			},
+		xAxis: {
+			allowDecimals:false
+			},
         yAxis: {
             title: {
                 text: '拥堵指数'
@@ -23,13 +26,7 @@ $(function () {
         },
          tooltip: {
 			formatter:function() {
-				var h = parseInt(this.x);
-				var h_str = h.toString();
-				if (h<10) h_str='0'+h_str
-				var m = Math.round((this.x%1)*60);
-				var m_str = m.toString()
-				if (m<10) m_str = '0'+m_str;
-				return '时间：'+h_str+':'+m_str+'<br>拥堵指数：'+this.y;
+				return '时间：'+this.x+'号'+'<br>拥堵指数：'+this.y;
 				}
         },
         legend: {
@@ -191,7 +188,7 @@ function rte_road_data_req(year,month,day,zone) {
 	}
 
 function data_req(year,month,day,zone) {
-	data = generate_data()
+	data = generate_data({"year":year,"month":month,"day":day})
 	data_update(data)
 	}
 	
@@ -263,9 +260,12 @@ function remove_his_avg_line() {
 	}
 	
 //test funciton
-function generate_data() {
+function generate_data(date) {
+	
+	day_num = 31
+	if (date!=null)day_num=(Date.UTC(date.year,date.month+1,1)-Date.UTC(date.year,date.month,1))/(1000*60*60*24)
 	data = new Array()
-	for (var i = 0;i<31;i++) {
+	for (var i = 1;i<=day_num;i++) {
 		t = i;
 		v = Math.random()*10;
 		

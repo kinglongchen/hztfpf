@@ -11,6 +11,9 @@ $(function () {
 		credits:{
 			enabled:false
 			},
+		xAxis: {
+			allowDecimals:false
+			},
         yAxis: {
             title: {
                 text: '拥堵指数'
@@ -29,7 +32,7 @@ $(function () {
 				var m = Math.round((this.x%1)*60);
 				var m_str = m.toString()
 				if (m<10) m_str = '0'+m_str;
-				return '时间：'+h_str+':'+m_str+'<br>拥堵指数：'+this.y;
+				return '时间：'+this.x+'月'+'<br>拥堵指数：'+this.y;
 				}
         },
         legend: {
@@ -263,7 +266,7 @@ function remove_his_avg_line() {
 //test funciton
 function generate_data() {
 	data = new Array()
-	for (var i = 0;i<13;i++) {
+	for (var i = 1;i<13;i++) {
 		t = i;
 		v = Math.random()*10;
 		data.push([t,Math.round(v*100)/100]);
