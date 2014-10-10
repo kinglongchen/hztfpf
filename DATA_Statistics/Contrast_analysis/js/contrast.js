@@ -48,7 +48,15 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '辆'
+            formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>车流量：'+this.y+'辆';
+				}
         },
         legend: {
             layout: 'vertical',
@@ -113,7 +121,15 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '公里/小时'
+			 formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>行车速度：'+this.y+'公里/小时';
+				}
         },
         legend: {
             layout: 'vertical',
@@ -182,7 +198,15 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '###'//单位未知
+             formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>拥堵指数：'+this.y;
+				}
         },
         legend: {
             layout: 'vertical',
@@ -250,7 +274,15 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '分钟'
+             formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>拥堵时间：'+this.y+'分钟';
+				}
         },
         legend: {
             layout: 'vertical',
@@ -317,7 +349,15 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: ' '
+             formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>交通状态：'+this.y;
+				}
         },
         legend: {
             layout: 'vertical',
@@ -557,8 +597,8 @@ function generate_vhs_data() {
 	var data = new Array()
 	for (var i = 0;i<48;i++) {
 		t = i*30/60;
-		v = Math.random()*100;
-		data.push([t,v]);
+		v = Math.random()*60;
+		data.push([t,Math.round(v*100)/100]);
 		}
 	return data;
 	}
@@ -569,8 +609,8 @@ function generate_coi_data() {
 	var data = new Array()
 	for (var i = 0;i<48;i++) {
 		t = i*30/60;
-		if (t<36)v = Math.random()*100;
-		data.push([t,v]);
+		if (t<36)v = Math.random()*10;
+		data.push([t,Math.round(v*100)/100]);
 		}
 	return data;
 	}
@@ -579,8 +619,8 @@ function generate_cot_data() {
 	var data = new Array()
 	for (var i = 0;i<48;i++) {
 		t = i*30/60;
-		if (t<36)v = Math.random()*100;
-		data.push([t,v]);
+		if (t<36)v = Math.random()*20;
+		data.push([t,Math.round(v*100)/100]);
 		}
 	return data;
 	}
