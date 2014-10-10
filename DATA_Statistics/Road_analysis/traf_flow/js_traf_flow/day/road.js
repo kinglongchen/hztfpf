@@ -127,6 +127,7 @@ var avg_val = -1
 function data_update(data) {
 	var max_val = -1;
 	var max_val_time=0;
+	var max_val_index=0;
 	var total_val = 0;
 	chart_data = data
 	var val_pie = t_itv*60/5;
@@ -142,7 +143,8 @@ function data_update(data) {
 		v = tv[1];
 		if(v>max_val){
 			max_val = v;
-			max_val_time = t; 
+			max_val_time = t;
+			max_val_index = i;
 			}
 		total_val+=v;
 		
@@ -153,6 +155,7 @@ function data_update(data) {
 		if(v>=val_pie*4){pie_data[4][1]+=1/data.length;}
 		
 		}
+	data[max_val_index]={x:max_val_time,y:max_val,color:'#FF0000',marker:{radius:6}}
 	max_val_time_l = max_val_time-t_itv/120;
 	max_val_time_r = max_val_time+t_itv/120;
 	var h = parseInt(max_val_time_l)>=10?String(parseInt(max_val_time_l)):('0'+String(parseInt(max_val_time_l)))
@@ -179,8 +182,8 @@ function data_update(data) {
 	$('#chart_container').highcharts().yAxis[0].setTitle({text:'交通流量(辆/'+t_itv+'分钟）'})
 	$('#pie_container').highcharts().series[0].setData(pie_data);
 	
-	remove_max_timeband()
-	add_max_timeband(max_val_time_l,max_val_time_r)
+	//remove_max_timeband()
+	//add_max_timeband(max_val_time_l,max_val_time_r)
 	 
 	}
 function rtetime_data_update(data) {
