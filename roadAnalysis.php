@@ -219,13 +219,13 @@ function road_analysis() {
 	if (date==''){
 		nowdate = new Date()
 		year = nowdate.getFullYear()
-		month = nowdate.getMonth()+1
+		month = nowdate.getMonth()
 		day = nowdate.getDate()
 		}
 	else {
 		date = date.split('-')
 		year = parseInt(date[0])
-		month = parseInt(date[1])
+		month = parseInt(date[1])-1
 		day = parseInt(date[2])
 		}
 		

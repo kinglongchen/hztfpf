@@ -11,6 +11,9 @@ $(function () {
 		credits:{
 			enabled:false
 			},
+		xAxis: {
+			allowDecimals:false
+			},
         yAxis: {
             title: {
                 text: '行程车速'
@@ -23,13 +26,7 @@ $(function () {
         },
         tooltip: {
 			formatter:function() {
-				var h = parseInt(this.x);
-				var h_str = h.toString();
-				if (h<10) h_str='0'+h_str
-				var m = Math.round((this.x%1)*60);
-				var m_str = m.toString()
-				if (m<10) m_str = '0'+m_str;
-				return '时间：'+h_str+':'+m_str+'<br>车流量：'+this.y+'公里/小时';
+				return '时间：'+this.x+'月'+'<br>车流量：'+this.y+'公里/小时';
 				}
         },
         legend: {
@@ -121,7 +118,7 @@ function data_update(data) {
 	pie_data.push(new Array("12—24公里/小时",0));
 	pie_data.push(new Array("24-36公里/小时",0));
 	pie_data.push(new Array("36-48公里/小时",0));
-	pie_data.push(new Array("大于>48公里/小时",0));
+	pie_data.push(new Array("大于48公里/小时",0));
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
 		t = tv[0];
@@ -264,7 +261,7 @@ function remove_his_avg_line() {
 //test funciton
 function generate_data() {
 	data = new Array()
-	for (var i = 0;i<13;i++) {
+	for (var i = 1;i<13;i++) {
 		t = i;
 		v = Math.random()*60;
 		data.push([t,Math.round(v*100)/100]);

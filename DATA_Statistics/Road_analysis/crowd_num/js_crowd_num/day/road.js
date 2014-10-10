@@ -2,7 +2,7 @@
 $(function () {
     $('#chart_container').highcharts({
 		chart: {
-			type:"spline"
+			type:"column"
 			},
         title: {
             text: '拥堵指数日趋势分析',
@@ -30,7 +30,15 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
+			formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>拥堵指数：'+this.y;
+				}
         },
         legend: {
             layout: 'vertical',
@@ -221,7 +229,7 @@ function add_tfctl_line() {
 	chart.xAxis[0].addPlotLine({
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:7.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:7,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
 				id:pline_id_pref+'1'
             });
@@ -237,7 +245,7 @@ function add_tfctl_line() {
 	chart.xAxis[0].addPlotLine({
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:17.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:17,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
 				id:pline_id_pref+'3'
             });
@@ -333,7 +341,7 @@ function generate_data() {
 		t = i*t_itv/60;
 		v = Math.random()*10;
 		
-		data.push([t,v]);
+		data.push([t,Math.round(v*100)/100]);
 		}
 	return data;
 	}

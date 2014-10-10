@@ -11,6 +11,9 @@ $(function () {
 		credits:{
 			enabled:false
 			},
+		xAxis: {
+			allowDecimals:false
+			},
         yAxis: {
             title: {
                 text: '行程车速'
@@ -29,7 +32,7 @@ $(function () {
 				var m = Math.round((this.x%1)*60);
 				var m_str = m.toString()
 				if (m<10) m_str = '0'+m_str;
-				return '时间：'+h_str+':'+m_str+'<br>车流量：'+this.y+'公里/小时';
+				return '时间：'+this.x+'号'+'<br>车流量：'+this.y+'公里/小时';
 				}
         },
         legend: {
@@ -119,7 +122,7 @@ function data_update(data) {
 	pie_data.push(new Array("12—24公里/小时",0));
 	pie_data.push(new Array("24-36公里/小时",0));
 	pie_data.push(new Array("36-48公里/小时",0));
-	pie_data.push(new Array("大于>48公里/小时",0));
+	pie_data.push(new Array("大于48公里/小时",0));
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
 		t = tv[0];
@@ -191,7 +194,7 @@ function rte_road_data_req(year,month,day,zone) {
 	}
 
 function data_req(year,month,day,zone) {
-	data = generate_data()
+	data = generate_data({"year":year,"month":month,"day":day})
 	data_update(data)
 	}
 	
@@ -263,9 +266,11 @@ function remove_his_avg_line() {
 	}
 	
 //test funciton
-function generate_data() {
+function generate_data(date) {
+	day_num = 31
+	if (date!=null)day_num=(Date.UTC(date.year,date.month+1,1)-Date.UTC(date.year,date.month,1))/(1000*60*60*24)
 	data = new Array()
-	for (var i = 0;i<31;i++) {
+	for (var i = 1;i<=day_num;i++) {
 		t = i;
 		v = Math.random()*60;
 		

@@ -1,57 +1,7 @@
 // JavaScript Document
 $(function () {
     $('#chart_container').highcharts({
-		chart: {
-			type:"spline"
-			},
-        title: {
-            text: '行程车速日趋势分析',
-            x: -20 //center
-        },
-		credits:{
-			enabled:false
-			},
-		xAxis: {
-			allowDecimals:false,
-			labels:{
-				formatter:function() {
-					return this.value+':00';
-					}
-				}
-			},
-        yAxis: {
-            title: {
-                text: '行程车速(公里/小时)'
-            },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }]
-			
-        },
-        tooltip: {
-			formatter:function() {
-				var h = parseInt(this.x);
-				var h_str = h.toString();
-				if (h<10) h_str='0'+h_str
-				var m = Math.round((this.x%1)*60);
-				var m_str = m.toString()
-				if (m<10) m_str = '0'+m_str;
-				return '时间：'+h_str+':'+m_str+'<br>车流量：'+this.y+'公里/小时';
-				}
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'top',
-            borderWidth: 0
-        },
-        series: [{
-            name: '车速',
-            data: []
-        }
-		]
+		
     });
 });
 
@@ -133,7 +83,7 @@ function data_update(data) {
 	pie_data.push(new Array("12—24公里/小时",0));
 	pie_data.push(new Array("24-36公里/小时",0));
 	pie_data.push(new Array("36-48公里/小时",0));
-	pie_data.push(new Array("大于>48公里/小时",0));
+	pie_data.push(new Array("大于48公里/小时",0));
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
 		t = tv[0];
@@ -232,7 +182,7 @@ function add_tfctl_line() {
 	chart.xAxis[0].addPlotLine({
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:7.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:7,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
 				id:pline_id_pref+'1'
             });
@@ -248,7 +198,7 @@ function add_tfctl_line() {
 	chart.xAxis[0].addPlotLine({
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:17.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:17,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
 				id:pline_id_pref+'3'
             });

@@ -2,7 +2,7 @@
 $(function () {
     $('#chart_container').highcharts({
 		chart: {
-			type:"spline"
+			type:"column"
 			},
         title: {
             text: '拥堵指数月趋势分析',
@@ -10,6 +10,9 @@ $(function () {
         },
 		credits:{
 			enabled:false
+			},
+		xAxis: {
+			allowDecimals:false
 			},
         yAxis: {
             title: {
@@ -21,8 +24,10 @@ $(function () {
                 color: '#808080'
             }]
         },
-        tooltip: {
-            valueSuffix: '°C'
+         tooltip: {
+			formatter:function() {
+				return '时间：'+this.x+'号'+'<br>拥堵指数：'+this.y;
+				}
         },
         legend: {
             layout: 'vertical',
@@ -183,7 +188,7 @@ function rte_road_data_req(year,month,day,zone) {
 	}
 
 function data_req(year,month,day,zone) {
-	data = generate_data()
+	data = generate_data({"year":year,"month":month,"day":day})
 	data_update(data)
 	}
 	
@@ -255,13 +260,16 @@ function remove_his_avg_line() {
 	}
 	
 //test funciton
-function generate_data() {
+function generate_data(date) {
+	
+	day_num = 31
+	if (date!=null)day_num=(Date.UTC(date.year,date.month+1,1)-Date.UTC(date.year,date.month,1))/(1000*60*60*24)
 	data = new Array()
-	for (var i = 0;i<31;i++) {
+	for (var i = 1;i<=day_num;i++) {
 		t = i;
 		v = Math.random()*10;
 		
-		data.push([t,v]);
+		data.push([t,Math.round(v*100)/100]);
 		}
 	return data;
 	}

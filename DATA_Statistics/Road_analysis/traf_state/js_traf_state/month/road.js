@@ -305,7 +305,7 @@ function update_data(data) {
 	$('#chart_day_container').highcharts().series[0].setData(chart_day_data[0]);
 	$('#chart_day_container').highcharts().series[1].setData(chart_day_data[1]);
 	$('#chart_day_container').highcharts().series[2].setData(chart_day_data[2]);
-	$('#pie_container').highcharts().series[0].setData(pie_data);
+	//$('#pie_container').highcharts().series[0].setData(pie_data);
 	}
 	
 function data_req(year,month,data) {
