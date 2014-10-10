@@ -22,7 +22,11 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '%'
+            formatter:function() {
+				var ymd = (/[\d-]+/).exec(this.series.name)
+				var rname = (/[^\d-]+/).exec(this.series.name)
+				return '路段：'+rname+'<br>时间：'+ymd+'-'+this.x+'<br>拥堵里程比例：'+this.y;
+				}
         },
         legend: {
             layout: 'vertical',
@@ -37,95 +41,15 @@ $(function () {
 
 $(document).ready(function(e) {
 	var def_date = new Date();
-	def_year = def_date.getYear();
+	def_year = def_date.getFullYear();
 	def_month = def_date.getMonth();
 	def_day = def_date.getDay();
-	def_zone = 1;//默认的区域编号
-	data_req(def_year,def_month,def_day,def_zone); 
+	def_zone_id = 1;//默认的区域编号
+	data_req(def_year,def_month,def_day,def_zone_id); 
 //	history_req(def_year,def_month,def_day,def_zone)
 //	hot_data_req(def_year,def_month,def_day,def_zone)
 });
 
-function data_update(data) {
-	var max_val = -1;
-	var max_val_time=0;
-	var avg_val = -1;
-	var total_val = 0;
-	
-	chart_data = data;
-	pie_data = new Array();
-	for (var i = 0;i<5;i++) {
-		pie_data.push(new Array("第"+i+"级",0));
-		}
-	for (var i=0;i < data.length;i++) {
-		tv=data[i];
-		t = tv[0];
-		v = tv[1];
-		if(v>max_val){
-			max_val = v;
-			max_time = t; 
-			}
-		total_val+=v;
-		index = parseInt(v/20<5?v/20:4);
-		//if (i == 0) {alert(v);alert(index)}
-		pie_data[index][1]+=1/data.length;
-		}
-		
-//	$('#max_val').text(parseInt(max_val));
-//	$('#time').text(parseInt(max_time));
-//	$('#arv_val').text(parseInt(total_val/24));
-//	$('#total_val').text(parseInt(total_val))
-//	$('#chart_container').highcharts().series[0].setData(chart_data);
-//	$('#pie_container').highcharts().series[0].setData(pie_data);
-tc_data_req('1','2014-9');
-	}
-		
-function history_req(year,month,day,zone) {
-	data = generate_his_data()
-	history_update(data)
-	}
-
-function hot_data_req(year,month,day,zone) {
-	data = generate_hot_data()
-	hot_data_update(data)
-	}
-
-function data_req(year,month,day,zone) {
-	data = generate_data()
-	data_update(data)
-	}
-//test funciton
-function generate_data() {
-	data = new Array()
-	for (var i = 0;i<145;i++) {
-		t = i*5/60;
-		if (t<36)v =parseInt( Math.random()*10);
-		
-		data.push([t,v]);
-		}
-	return data;
-	}
-
-function generate_his_data() {
-	data = new Array()
-	data.push(100)
-	data.push(200)
-	data.push(300)
-	data.push(400)
-	data.push(1000)
-	return data
-	}
-function generate_hot_data() {
-	data = new Array()
-	for (var i = 0;i<4;i++) {
-		h_data = new Array()
-		h_data.push(100)
-		h_data.push(200)
-		h_data.push(300)
-		data.push(h_data)
-		}
-	return data
-	}
 
 
 function chart_data_remove() {
@@ -160,31 +84,23 @@ function data_add(char_obj,data) {
 			}
 		)
 	}
+var zone_name_dic = new Array("西湖区","拱墅区","余杭区","上城区","下城区","萧山区","江干区");
 
-function trf_tc_data_req(road_id,args) {
-	if(road_id == 1)road_name="文一路"
-	else if(road_id == 2)road_name="古墩路"
-	else if(road_id == 3)road_name="凤起路"
-	else if(road_id == 4)road_name="东坡路"
-	else if(road_id == 5)road_name="平海路"
-	for(var i = 0;i <args.length;i++) {
-		var data = new Array()
-		data.push(road_name+args[i]);
-		data.push(generate_trf_data())
-		chart_obj = $('#chart_container')
-		data_add(chart_obj,data)
-		}
-	
-	
+function data_req(year,month,day,zone_id) {
+	road_name = zone_name_dic[parseInt(zone_id)-1]
+	var data = new Array()
+	data.push(road_name+year+'-'+month);
+	data.push(generate_data({year:year,month:month,day:day}))
+	chart_obj = $('#chart_container')
+	data_add(chart_obj,data)
 	}
 
-function tc_data_req(road_id,date) {
-	trf_tc_data_req(road_id,new Array(date));
-}
-
-function generate_trf_data() {
+function generate_data(date) {
+	var pdate = new Date(date.year,date.month-1,1)
+	var ldate = new Date(date.year,date.month,1)
+	var daynum = (ldate-pdate)/(1000*60*60*24)
 	var data = new Array()
-	for (var i = 0;i<31;i++) {
+	for (var i = 1;i<=daynum;i++) {
 		t = i;
 		v = parseInt(Math.random()*100);
 		data.push([t,v]);

@@ -11,34 +11,52 @@
 
 <body>
     <form style="margin:10px 0 0 20px;">
-      路段选择：
+      区域选择：
       <span style="height:20px;margin:0 30px 0 -13px;">
-          <select id = "sroadid" >
-              <option value="1">文一路</option>
-              <option value="2">古墩路</option>
-              <option value="3">凤起路</option>
-              <option value="4">东坡路</option>
-              <option value="5">平海路</option>
+          <select id = "zone_slcer" >
+              <option value="1">西湖区</option>
+              <option value="2">拱墅区</option>
+              <option value="3">余杭区</option>
+              <option value="4">上城区</option>
+              <option value="5">下城区</option>
+              <option value="6">萧山区</option>
+              <option value="7">江干区</option>
           </select>
       </span>
-      时间选择：
-      <span style="height:20px;margin-left:-13px;">
-          <select id="sub_date">
-          	<option value="2013-10">2013-10</option>
-            <option value="2013-11">2013-11</option>
-            <option value="2013-12">2013-12</option>
-            <option value="2014-1">2014-1</option>
-            <option value="2014-2">2014-2</option>
-            <option value="2014-3">2014-3</option>
-            <option value="2014-4">2014-4</option>
-            <option value="2014-5">2014-5</option>
-            <option value="2014-6">2014-6</option>
-            <option value="2014-7">2014-7</option>
-            <option value="2014-8">2014-8</option>
-            <option value="2014-9">2014-9</option>
+     时间选择：
+      <span style="height:20px;margin-left:3px;">
+          <select id="year_selec">
+          	<option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
+            <option value="2009">2009</option>
+            <option value="2008">2008</option>
+            <option value="2007">2007</option>
+            <option value="2006">2006</option>
+            <option value="2005">2005</option>
+            
           </select>
-      </span>
-      <button type="button" onclick="tc_data_req($('#sroadid').val(),$('#sub_date').val())">确定</button>
+      </span>年
+      <span style="height:20px;margin-left:3px;">
+          <select id="month_selec">
+          	<option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            
+          </select>
+      </span>月
+      <button type="button" onclick="data_req($('#year_selec').val(),$('#month_selec').val(),1,$('#sroadid').val())">确定</button>
     </form>
 <div> 
     <div id="chart_container" style="width:96%;height:300px;border:1px solid #000;margin:20px 0 0 20px;float:left"></div>

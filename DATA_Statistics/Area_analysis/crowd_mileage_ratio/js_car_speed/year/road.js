@@ -22,7 +22,11 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '%'
+            formatter:function() {
+				var ymd = (/[\d-]+/).exec(this.series.name)
+				var rname = (/[^\d-]+/).exec(this.series.name)
+				return '路段：'+rname+'<br>时间：'+ymd+' '+this.x+'月'+'<br>拥堵里程比例：'+this.y;
+				}
         },
         legend: {
             layout: 'vertical',
@@ -160,13 +164,13 @@ function data_add(char_obj,data) {
 			}
 		)
 	}
-
+	
+	
+	
+	
+var zone_name_dic = new Array("西湖区","拱墅区","余杭区","上城区","下城区","萧山区","江干区");
 function trf_tc_data_req(road_id,args) {
-	if(road_id == 1)road_name="文一路"
-	else if(road_id == 2)road_name="古墩路"
-	else if(road_id == 3)road_name="凤起路"
-	else if(road_id == 4)road_name="东坡路"
-	else if(road_id == 5)road_name="平海路"
+	road_name = zone_name_dic[parseInt(road_id)-1]
 	for(var i = 0;i <args.length;i++) {
 		var data = new Array()
 		data.push(road_name+args[i]);
