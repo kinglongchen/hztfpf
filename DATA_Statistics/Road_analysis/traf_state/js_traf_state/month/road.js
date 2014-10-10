@@ -64,8 +64,8 @@ $(function () {
 
         tooltip: {
             formatter: function () {
-                return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> sold <br><b>' +
-                    this.point.value + '</b> items on <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>';
+                return '时间：<b>' + this.point.y+'号'+this.point.x+'时' + '</b><br>交通状态值：<b>' +
+                    this.point.value + '</b>';
             }
         },
 
@@ -152,8 +152,8 @@ $(function () {
 
         tooltip: {
             formatter: function () {
-                return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> sold <br><b>' +
-                    this.point.value + '</b> items on <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>';
+               return '时间：<b>' + this.point.y+'月'+this.point.x+'时' + '</b><br>交通状态值：<b>' +
+                    this.point.value + '</b>';
             }
         },
 
@@ -200,7 +200,7 @@ $(function () {
             }
         },
         tooltip: {
-            pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br>',
+            pointFormat: '<span style="color:{series.color}">{series.name}</span>: {point.percentage:.0f}%<br>',
             shared: true
         },
         plotOptions: {

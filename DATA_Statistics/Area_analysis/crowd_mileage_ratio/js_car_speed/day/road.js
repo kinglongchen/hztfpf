@@ -22,7 +22,17 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '%'
+           formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				var ymd = (/[\d-]+/).exec(this.series.name)
+				var rname = (/[^\d-]+/).exec(this.series.name)
+				return '路段：'+rname+'<br>时间：'+ymd+' '+h_str+':'+m_str+'<br>拥堵里程比例：'+this.y;
+				}
         },
         legend: {
             layout: 'vertical',
@@ -41,7 +51,11 @@ $(document).ready(function(e) {
 	def_month = def_date.getMonth();
 	def_day = def_date.getDay();
 	def_zone = 1;//默认的区域编号
-	data_req(def_year,def_month,def_day,def_zone); 
+	data_req(def_year,def_month,def_day,def_zone);
+	
+	
+	alert(res)
+	 
 //	history_req(def_year,def_month,def_day,def_zone)
 //	hot_data_req(def_year,def_month,def_day,def_zone)
 });
@@ -160,13 +174,11 @@ function data_add(char_obj,data) {
 			}
 		)
 	}
+var zone_name_dic = new Array("西湖区","拱墅区","余杭区","上城区","下城区","萧山区","江干区");
+
 
 function trf_tc_data_req(road_id,args) {
-	if(road_id == 1)road_name="文一路"
-	else if(road_id == 2)road_name="古墩路"
-	else if(road_id == 3)road_name="凤起路"
-	else if(road_id == 4)road_name="东坡路"
-	else if(road_id == 5)road_name="平海路"
+	road_name = zone_name_dic[parseInt(road_id)-1]
 	for(var i = 0;i <args.length;i++) {
 		var data = new Array()
 		data.push(road_name+args[i]);

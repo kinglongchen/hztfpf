@@ -1,7 +1,57 @@
 // JavaScript Document
 $(function () {
     $('#chart_container').highcharts({
-		
+		chart: {
+			type:"spline"
+			},
+        title: {
+            text: '行程车速日趋势分析',
+            x: -20 //center
+        },
+		credits:{
+			enabled:false
+			},
+		xAxis: {
+			allowDecimals:false,
+			labels:{
+				formatter:function() {
+					return this.value+':00';
+					}
+				}
+			},
+        yAxis: {
+            title: {
+                text: '行程车速(公里/小时)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+			
+        },
+        tooltip: {
+			formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>车流量：'+this.y+'公里/小时';
+				}
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            borderWidth: 0
+        },
+        series: [{
+            name: '车速',
+            data: []
+        }
+		]
     });
 });
 
