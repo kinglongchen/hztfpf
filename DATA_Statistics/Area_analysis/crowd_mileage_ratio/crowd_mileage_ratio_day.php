@@ -7,9 +7,18 @@
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
 <!--<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>-->
 <script src="js_car_speed/day/road.js"></script>
+<script>
+//时间选择器显示当前日期
+function get_now()
+{
+	var date=new Date();
+	today=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
+	document.getElementById("sub_date").value=today;
+}
+</script>
 </head>
 
-<body>
+<body onload="get_now()">
     <form style="margin:10px 0 0 20px;">
       区域选择：
       <span style="height:20px;margin:0 30px 0 -13px;">
