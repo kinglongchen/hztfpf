@@ -33,7 +33,8 @@ $(document).ready(function(e) {
 		if (check==false)
 			remove_tfctl_line()
 		})
-			});
+	get_now();
+});
 
 function road_analysis() {
 	zone_id = $("#zone_slcer").val()
@@ -54,7 +55,13 @@ function road_analysis() {
 	data_req(year,month,day,zone_id)
 	}
 
-
+//时间选择器显示当前日期
+function get_now()
+{
+	var date=new Date();
+	today=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
+	document.getElementById("sub_date").value=today;
+}
 </script>
 </head>
 
