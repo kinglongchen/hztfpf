@@ -61,7 +61,7 @@ a:hover{
     <div class="tb1">关联时段分析</div>
     <div class="glfx">
       <table class="tqjz">
-          <th class="h">注意：本数据是近一年内相关数据对比结果</th>
+          <th class="h">注：本数据是近一年内相关数据对比结果</th>
           <tr class="t1">
             <th scope="col">
                 历史同期均值
@@ -71,7 +71,7 @@ a:hover{
                 <div>最低:<span id='rtetime_min_val' class="green">Loading...</span></div>
             </th>
           </tr>
-          <th class="h">注意：本数据是近一月内相关数据对比结果</th>
+          <th class="h">注：本数据是近一月内相关数据对比结果</th>
           <tr class="t1">
             <th>近一个月均值</th>
             <th>
