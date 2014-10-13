@@ -258,6 +258,14 @@ var max_val_time_r = t_itv/120;
 var avg_val = -1;
 
 function state_data_update(data) {
+	remove_traf_ctb_data();
+	var chart_year_data=data;
+	for (var i = 0;i<chart_year_data.length;i++) {
+		var time = chart_year_data[i][0];
+		var month = chart_year_data[i][1];
+		var val = chart_year_data[i][2];
+		add_traf_ctb_data(i,time,month,val)
+		}
 	$('#chart_traf_flow').highcharts().series[0].setData(data);
 	}
 
@@ -268,10 +276,12 @@ function ct_data_update(data) {
 	var total_val = 0;
 	var max_val_index=0;
 	chart_data = data;
+	remove_ctime_ctb_data()
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
 		t = tv[0];
 		v = tv[1];
+		add_ctime_ctb_data(i,t,v)
 		if(v>max_val){
 			max_val = v;
 			max_val_time = t;
@@ -304,12 +314,13 @@ function ci_data_update(data) {
 	var max_val_time=0;
 	var total_val = 0;
 	var max_val_index=0;
-	
+	remove_cnum_ctb_data();
 	chart_data = data;
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
 		t = tv[0];
 		v = tv[1];
+		add_cnum_ctb_data(i,t,v)
 		if(v>max_val){
 			max_val = v;
 			max_val_time = t;
@@ -339,12 +350,13 @@ function speed_data_update(data) {
 	var max_val_time=0;
 	var total_val = 0;
 	var max_val_index=0;
-	
+	remove_cspeed_ctb_data();
 	chart_data = data;
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
 		t = tv[0];
 		v = tv[1];
+		add_cspeed_ctb_data(i,t,v)
 		if(v>max_val){
 			max_val = v;
 			max_val_time = t; 
@@ -367,6 +379,43 @@ function speed_data_update(data) {
 	
 	
 	}
+
+
+function add_traf_ctb_data(id,time,month,val) {
+	var ctbg = id%2==0?'ctbg1':'ctbg2';
+	var tr = '<tr class='+ctbg+'><td width="25%">'+id+'</td><td width="25%">'+month+'月</td><td width="25%">'+time+'点</td><td width="25%">'+val+'</td></tr>';
+	$('#traf_ctb').append(tr);
+	}
+function remove_traf_ctb_data() {
+	$('#traf_ctb').empty();
+	}
+function add_ctime_ctb_data(id,time,val) {
+	var ctbg = id%2==0?'ctbg1':'ctbg2';
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'月</td><td width="33%">'+val+'分钟</td></tr>';
+	$('#ctime_ctb').append(tr);
+	}
+function remove_ctime_ctb_data() {
+	$('#ctime_ctb').empty();
+	}
+function add_cnum_ctb_data(id,time,val) {
+	var ctbg = id%2==0?'ctbg1':'ctbg2';
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'月</td><td width="33%">'+val+'</td></tr>';
+	$('#cnum_ctb').append(tr);
+	}
+function remove_cnum_ctb_data() {
+	$('#cnum_ctb').empty();
+	}
+function add_cspeed_ctb_data(id,time,val) {
+	var ctbg = id%2==0?'ctbg1':'ctbg2';
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'月</td><td width="33%">'+val+'公里/小时</td></tr>';
+	$('#cspeed_ctb').append(tr);
+	}
+function remove_cspeed_ctb_data() {
+	$('#cspeed_ctb').empty();
+	}
+
+
+
 
 function state_data_req(year,month,day,zoneid) {
 	var data = generate_state_data({year:year,month:month,day:day})

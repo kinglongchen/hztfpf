@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../../css/tab3.css">
 <link rel="stylesheet" type="text/css" href="../../../css/scollbar.css">
 <script src="../../../js/jquery.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
@@ -90,10 +91,102 @@ $(document).ready(function(e) {
       <button type="button" onclick="road_analysis()">确定</button>
     </form>
 <div> 
-    <div id="chart_traf_flow" ></div>
-    <div id="chart_crowd_time" ></div>
-    <div id="chart_crowd_num" ></div>
-    <div id="chart_car_speed" ></div>
+   <div id="chart_traf_flow" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
+                    <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
+                    <div style="margin-right:17px;">
+                    <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
+  						<tr style="margin:0 10px 0 0;">
+    						<th width="25%">编号</th>
+                            <th width="25%">日</th>
+    						<th width="25%">时</th>
+                            <th	width="25%">交通状态</th>
+ 				 		</tr>
+                    </table>
+                    </div>
+                    <div style="float:left;overflow-x: hidden; width: 100%;margin:0px 0 0 0px;height: 232px">
+                    	<table id ='traf_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
+  							<tr>
+    							<td width="25%">Loading</td>
+    							<td width="25%">Loading</td>
+                            	<td width="25%">Loading</td>
+                                <td width="25%">Loading</td>
+ 				 			</tr> 
+                    	</table>
+					</div>
+					</div>
+                    <!--
+                    <div style="clear:both"></div>-->
+    
+   
+    <div id="chart_crowd_time" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
+                    <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
+                    <div style="margin-right:17px;">
+                    <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
+  						<tr style="margin:0 10px 0 0;">
+    						<th width="33%">编号</th>
+    						<th width="33%">时间</th>
+                            <th	width="33%">拥堵时间</th>
+ 				 		</tr>
+                    </table>
+                    </div>
+                    <div style="float:left;overflow-x: hidden; width: 100%;margin:0px 0 0 0px;height: 232px">
+                    	<table id ='ctime_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
+  							<tr>
+    							<td width="33%">Loading</td>
+    							<td width="33%">Loading</td>
+                            	<td width="33%">Loading</td>
+ 				 			</tr> 
+                    	</table>
+					</div>
+                    
+					</div>
+
+    <div id="chart_crowd_num" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
+                    <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
+                    <div style="margin-right:17px;">
+                    <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
+  						<tr style="margin:0 10px 0 0;">
+    						<th width="33%">编号</th>
+    						<th width="33%">时间</th>
+                            <th	width="33%">拥堵指数</th>
+ 				 		</tr>
+                    </table>
+                    </div>
+                    <div style="float:left;overflow-x: hidden; width: 100%;margin:0px 0 0 0px;height: 232px">
+                    	<table id ='cnum_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
+  							<tr>
+    							<td width="33%">Loading</td>
+    							<td width="33%">Loading</td>
+                            	<td width="33%">Loading</td>
+ 				 			</tr> 
+                    	</table>
+					</div>
+                    
+					</div>
+    
+    <div id="chart_car_speed" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
+                    <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
+                    <div style="margin-right:17px;">
+                    <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
+  						<tr style="margin:0 10px 0 0;">
+    						<th width="33%">编号</th>
+    						<th width="33%">时间</th>
+                            <th	width="33%">行车速度</th>
+ 				 		</tr>
+                    </table>
+                    </div>
+                    <div style="float:left;overflow-x: hidden; width: 100%;margin:0px 0 0 0px;height: 232px">
+                    	<table id ='cspeed_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
+  							<tr>
+    							<td width="33%">Loading</td>
+    							<td width="33%">Loading</td>
+                            	<td width="33%">Loading</td>
+ 				 			</tr> 
+                    	</table>
+					</div>
+                    
+					</div>
+    
 </div>
 </div>
                            
