@@ -7,6 +7,7 @@
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
 <!--<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>-->
 <script src="js_car_speed/year/road.js"></script>
+<link type="text/css" rel="stylesheet" href="css/crowd_mileage_ratio.css" />
 </head>
 
 <body>
@@ -21,6 +22,7 @@
               <option value="5">下城区</option>
               <option value="6">萧山区</option>
               <option value="7">江干区</option>
+              <option value="8">滨江区</option>
           </select>
       </span>
        <span style="height:20px;margin-left:3px;">
@@ -40,9 +42,16 @@
       </span>年
       <button type="button" onclick="tc_data_req($('#zone_slcer').val(),$('#year_selec').val())">确定</button>
     </form>
-<div> 
-    <div id="chart_container" style="width:96%;height:300px;border:1px solid #000;margin:20px 0 0 20px;float:left"></div>
-</div>
-<div style="clear:both"></div> 
+    <div> 
+        <div id="chart_container" style="width:96%;height:300px;border:1px solid #000;margin:20px 0 0 20px;float:left"></div>
+    </div>
+    <div style="clear:both"></div> 
+    <div>
+    	<table id="crowd_mileage_list" border="1" cellspacing="0" cellpadding="0" >
+        	<tr>
+            	<th>Loading······</th>
+            </tr>
+        </table>
+    </div> 
 </body>
 </html>

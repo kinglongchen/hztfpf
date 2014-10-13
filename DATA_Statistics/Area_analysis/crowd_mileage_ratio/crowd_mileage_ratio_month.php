@@ -7,6 +7,7 @@
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
 <!--<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>-->
 <script src="js_car_speed/month/road.js"></script>
+<link type="text/css" rel="stylesheet" href="css/crowd_mileage_ratio.css" />
 </head>
 
 <body>
@@ -21,6 +22,7 @@
               <option value="5">下城区</option>
               <option value="6">萧山区</option>
               <option value="7">江干区</option>
+              <option value="8">滨江区</option>
           </select>
       </span>
      时间选择：
@@ -56,11 +58,18 @@
             
           </select>
       </span>月
-      <button type="button" onclick="data_req($('#year_selec').val(),$('#month_selec').val(),1,$('#sroadid').val())">确定</button>
+      <button type="button" onclick="data_req($('#year_selec').val(),$('#month_selec').val(),1,$('#zone_slcer').val())">确定</button>
     </form>
-<div> 
-    <div id="chart_container" style="width:96%;height:300px;border:1px solid #000;margin:20px 0 0 20px;float:left"></div>
-</div>
-<div style="clear:both"></div> 
+    <div> 
+        <div id="chart_container" style="width:96%;height:300px;border:1px solid #000;margin:20px 0 0 20px;float:left"></div>
+    </div>
+    <div style="clear:both"></div> 
+    <div>
+    	<table id="crowd_mileage_list" border="1" cellspacing="0" cellpadding="0" >
+        	<tr>
+            	<th>时间</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th><th>29</th><th>30</th><th>31</th>
+            </tr>
+        </table>
+    </div> 
 </body>
 </html>
