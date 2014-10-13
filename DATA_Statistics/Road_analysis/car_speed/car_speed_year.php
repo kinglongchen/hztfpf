@@ -83,17 +83,17 @@ a:hover{
                                 <th class="h2" align="left">前一天统计数据:</th>
                                 <tr class="t1">
                               		<th scope="col">
-                                 	 	<div>最高值:<span id='max_val' class="red">Loading...</span></div>
-                                  		<div>时段:<span id='time' class="red">Loading...</span></div>
+                                 	 	<div>最高值:<span id='pre_max_val' class="red">Loading...</span></div>
+                                  		<div>时段:<span id='pre_time' class="red">Loading...</span></div>
                               		</th>
                              		<th scope="col">
-                                  		<div>平均值:<span id='arv_val' class="green">Loading...</span></div>
+                                  		<div>平均值:<span id='pre_arv_val' class="green">Loading...</span></div>
                               		</th>
                               		<th scope="col">
-                                  		<div>总流量:<span id='total_val' class="green">Loading...</span></div>
+                                  		<div>总流量:<span id='pre_total_val' class="green">Loading...</span></div>
                               		</th>
                               		<th scope="col">
-                                  		<div>交通稳定度:<span id='traf_stability' class="green">Loading...</span></div>
+                                  		<div>交通稳定度:<span id='pre_traf_stability' class="green">Loading...</span></div>
                               		</th>
                            		</tr>
                                 <th class="h2"></th>
