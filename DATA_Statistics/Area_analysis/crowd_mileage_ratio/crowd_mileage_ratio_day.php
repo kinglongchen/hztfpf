@@ -7,18 +7,10 @@
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
 <!--<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>-->
 <script src="js_car_speed/day/road.js"></script>
-<script>
-//时间选择器显示当前日期
-function get_now()
-{
-	var date=new Date();
-	today=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
-	document.getElementById("sub_date").value=today;
-}
-</script>
+<link type="text/css" rel="stylesheet" href="css/crowd_mileage_ratio.css" />
 </head>
 
-<body onload="get_now()">
+<body >
     <form style="margin:10px 0 0 20px;">
       区域选择：
       <span style="height:20px;margin:0 30px 0 -13px;">
@@ -30,6 +22,7 @@ function get_now()
               <option value="5">下城区</option>
               <option value="6">萧山区</option>
               <option value="7">江干区</option>
+              <option value="8">滨江区</option>
           </select>
       </span>
       时间选择：
@@ -38,9 +31,16 @@ function get_now()
       </span>
       <button type="button" onclick="tc_data_req($('#zone_slcer').val(),$('#sub_date').val())">确定</button>
     </form>
-<div> 
-    <div id="chart_container" style="width:96%;height:300px;border:1px solid #000;margin:20px 0 0 20px;float:left"></div>
-</div>
-<div style="clear:both"></div> 
+    <div> 
+        <div id="chart_container" style="width:96%;height:300px;border:1px solid #000;margin:20px 0 0 20px;float:left"></div>
+    </div>
+	<div style="clear:both"></div>
+    <div>
+    	<table id="crowd_mileage_list" border="1" cellspacing="0" cellpadding="0" >
+        	<tr>
+            	<th>Loading······</th>
+            </tr>
+        </table>
+    </div> 
 </body>
 </html>
