@@ -12,23 +12,24 @@
 <script src="js_traf_flow/day/road.js"></script>
 </head>
 
-<body style=" font-size:14px; color:#414141; font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;" >
+<body style=" font-size:14px; color:#414141; overflow-x:auto; min-width:1220px; font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;" >
  <div id="scroll">
                        <div id="scroLeft">
-            <div class="tabs"> 
-                    <div id="chart_container" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 20px;float:left"></div>
+            <div class="tabs" style="background:#f0f8fe;"> 
+                    <div id="chart_container" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
                     
-                    <div class="glfx2" style="float:left; width: 40%;margin:10px 0 0 20px;height: 250px">
-                    <table border="1px" style="width:97%;border-collapse:collapse;">
-  						<tr>
+                    <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
+                    <div style="margin-right:17px;">
+                    <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
+  						<tr style="margin:0 10px 0 0;">
     						<th width="33%">编号</th>
     						<th width="33%">时间</th>
                             <th	width="33%">交通流量</th>
  				 		</tr>
                     </table>
-                    
-                    <div style="float:left;overflow-x: hidden; overflow: scroll; width: 100%;margin:0px 0 0 0px;height: 220px">
-                    	<table id ='ctb' border="1" style="width:100%;border-collapse:collapse;">
+                    </div>
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 232px">
+                    	<table id ='ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td>Loading</td>
     							<td>Loading</td>
@@ -40,7 +41,7 @@
 					</div>
                     
                     <div style="clear:both"></div>
-                    <div style="width:96%;margin:10px 0 10px 10px; ">
+                    <div style="width:98%;margin:10px 0 0 10px; ">
                     	<div class="tb2" >统计数据</div>
                     	<div class="glfx2">
                         	<table  class="tqjz2" border="0">
@@ -167,7 +168,7 @@
                     </table>
                 </div>
             </div>
-            <div style="float:left;width:500px;margin-right:50px;margin:10px 0 0 10px;">
+            <div style="float:left;width:495px;margin-right:50px;margin:10px 0 0 10px;">
                 <div class="tb2">行程车速日分布</div>
                  <div class="glfx">
                 <div id="pie_container"></div>	
