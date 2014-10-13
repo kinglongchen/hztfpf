@@ -26,7 +26,7 @@
  				 		</tr>
                     </table>
                     </div>
-                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 229px">
                     	<table id ='ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td>Loading</td>
@@ -114,7 +114,7 @@
                 <div class="tb2">关联路段分析</div>
                 <div class="glfx">
                     <table id = "rte_roads" border="1" bordercolor="#70c3e9"
-                     style=" background:#FFF;margin-top:5px;border-collapse:collapse;width:347px;margin-left:3.5px;table-layout:fixed;text-align:center;">
+                     style=" background:#FFF;margin-top:3px;border-collapse:collapse;width:347px;margin-left:3.5px;table-layout:fixed;text-align:center;font-size:13px;">
                       <tr class="t2">
                         <th scope="col">路段名</th>
                         <th scope="col">最高值</th>
