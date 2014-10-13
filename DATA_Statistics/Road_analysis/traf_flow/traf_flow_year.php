@@ -40,6 +40,7 @@ a:hover{
     
     <div id="chart_container" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
     <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
+    		<div style="margin-right:17px;">
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
   						<tr>
     						<th width="33%">编号</th>
@@ -47,8 +48,8 @@ a:hover{
                             <th	width="33%">交通流量</th>
  				 		</tr>
                     </table>
-                    
-                    <div style="float:left;overflow-x: hidden; width: 100%;margin:0px 0 0 0px;height: 230px">
+             </div>       
+                    <div style="float:left;overflow-x: hidden; width: 100%;margin:0px 0 0 0px;height: 229px">
                     	<table id ='ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td>Loading</td>
@@ -135,7 +136,7 @@ a:hover{
     <div class="tb2">关联路段分析</div>
         <div class="glfx">
           <table id = "rte_roads" border="1" bordercolor="#70c3e9"
-                     style=" background:#FFF;margin-top:5px;border-collapse:collapse;width:347px;margin-left:3.5px;table-layout:fixed;text-align:center;">
+                     style=" background:#FFF;margin-top:3px;border-collapse:collapse;width:347px;margin-left:3.5px;table-layout:fixed;text-align:center;font-size:13px;">
               <tr class="t2">
                 <th scope="col">路段名</th>
                 <th scope="col">最高值</th>
