@@ -1,6 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
 
+body{
+	font-family: Verdana, 宋体, Helvetica, sans-serif;
+	}
+
 .tab1{
 	width:100%;
 	table-layout:fixed; 
