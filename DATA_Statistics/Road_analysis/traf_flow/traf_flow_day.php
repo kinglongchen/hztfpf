@@ -26,7 +26,7 @@
  				 		</tr>
                     </table>
                     </div>
-                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 228px">
                     	<table id ='ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td>Loading</td>
