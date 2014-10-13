@@ -4,7 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
 <link rel="stylesheet" type="text/css" href="../../../css/tab3.css">
-<link rel="stylesheet" type="text/css" href="../../../css/scollbar2.css">
 <script src="../../../js/util.js"></script>
 <script src="../../../js/jquery.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
@@ -12,10 +11,8 @@
 <script src="js_traf_flow/day/road.js"></script>
 </head>
 
-<body style=" font-size:14px; color:#414141; overflow-x:auto; min-width:1220px; font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;" >
- <div id="scroll">
-
-                       <div id="scroLeft">
+<body style=" font-size:14px; color:#414141; overflow-x:auto;margin:0px; font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;" >
+      <div style="float:left;height:100%;width:98%;overflow:hidden;">      
             <div class="tabs" style="background:#f0f8fe;"> 
                     <div id="chart_container" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
                     
@@ -29,7 +26,7 @@
  				 		</tr>
                     </table>
                     </div>
-                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 232px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
                     	<table id ='ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td>Loading</td>
@@ -173,13 +170,10 @@
                 <div class="tb2">行程车速日分布</div>
                  <div class="glfx">
                 <div id="pie_container"></div>	
-                </div>
-            </div>
-            </div>
 </div>
 
 </div>             
             <div style="clear:both"></div> 
-            
+</div>            
 </body>
 </html>
