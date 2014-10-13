@@ -142,7 +142,7 @@ function data_update(data) {
 	max_val_time_r = max_val_time+0.5;
 	
 	
-	$('#max_val').text(parseInt(max_val));
+	$('#max_val').text(parseInt(max_val)+"   ↑");
 	$('#time').text(String(max_val_time)+"月");
 	
 	avg_val = total_val/data.length
@@ -153,8 +153,16 @@ function data_update(data) {
 	remove_his_avg_line()
 	add_his_avg_line(60*60*24*30/2)
 	
-	$('#total_val').text(parseInt(total_val)*30*24*365);
+	$('#total_val').text(parseInt(total_val)*30*24*365+"   ↓");
 	$('#traf_stability').text(parseInt(total_val/180)+"   ↓");
+	
+	$('#pre_max_val').text(parseInt(max_val-Math.random()*10)+"   ↑");
+	$('#pre_time').text(String(max_val_time)+"月");
+	$('#pre_arv_val').text(parseInt(avg_val+Math.random()*10)+"  ↓");
+	$('#pre_total_val').text(parseInt(total_val+Math.random()*10)+"   ↓");
+	$('#pre_traf_stability').text(parseInt(total_val/180+Math.random()*10)+"   ↓");
+	
+	
 	$('#chart_container').highcharts().series[0].setData(chart_data);
 	$('#pie_container').highcharts().series[0].setData(pie_data);
 	

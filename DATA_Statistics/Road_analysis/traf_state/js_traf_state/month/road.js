@@ -276,6 +276,7 @@ function update_data(data) {
 	
 	remote_day_ctb_data()
 	remote_month_ctb_data()
+	remote_year_ctb_data()
 	
 	for (var i =0;i<chart_day_data[0].length;i++) {
 		var r = chart_day_data[0][i];
@@ -363,7 +364,7 @@ function add_year_ctb_data(id,time,month,val) {
 	$('#year_ctb').append(tr);
 	}
 function remote_year_ctb_data() {
-	$('#ctb').empty();
+	$('#year_ctb').empty();
 	}
 	
 	

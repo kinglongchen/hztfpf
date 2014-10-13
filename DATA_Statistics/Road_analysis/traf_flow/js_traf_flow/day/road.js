@@ -170,13 +170,24 @@ function data_update(data) {
 	m=m>=10?String(m):("0"+String(m))
 	max_val_time_str+="-"+h+":"+m
 	$('#max_val').text(parseInt(max_val)+"   ↑");
+	
 	$('#time').text(max_val_time_str);
+	
 	avg_val = total_val/data.length
+	
 	$('#arv_val').text(parseInt(avg_val)+"  ↓");
 	
 	$('#total_val').text(parseInt(total_val)+"   ↓");
 	//交通稳定度暂时没数据，用的是total_val/180
 	$('#traf_stability').text(parseInt(total_val/180)+"   ↓"); 
+	
+	$('#pre_max_val').text(parseInt(max_val-Math.random()*10)+"   ↑");
+	$('#pre_time').text(max_val_time_str);
+	$('#pre_arv_val').text(parseInt(avg_val+Math.random()*10)+"  ↓");
+	$('#pre_total_val').text(parseInt(total_val+Math.random()*10)+"   ↓");
+	$('#pre_traf_stability').text(parseInt(total_val/180+Math.random()*10)+"   ↓");
+	
+	
 	remove_avg_line()
 	add_avg_line()
 	remove_his_avg_line()
