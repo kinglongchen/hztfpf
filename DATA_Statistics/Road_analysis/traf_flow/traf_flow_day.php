@@ -5,38 +5,87 @@
 <title>无标题文档</title>
 <link rel="stylesheet" type="text/css" href="../../../css/tab3.css">
 <link rel="stylesheet" type="text/css" href="../../../css/scollbar2.css">
+<script src="../../../js/util.js"></script>
 <script src="../../../js/jquery.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
 <!--<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>-->
 <script src="js_traf_flow/day/road.js"></script>
 </head>
 
-<body style=" font-size:14px; color:#414141; font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;" >
+<body style=" font-size:14px; color:#414141; overflow-x:auto; min-width:1220px; font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;" >
  <div id="scroll">
+
                        <div id="scroLeft">
-            <div class="tabs"> 
-                    <div id="chart_container" style="width:96%;height:300px;border:1px solid #000;margin:10px 0 0 20px;float:left"></div>
-                       <!-- <div id="chart_time" style="height:30px; width:200px; border:1px solid #000; z-index:20;float:right;margin:-300px 40px 0 0;"></div><!--本来这里是要显示时间的东西，但是没办法浮在最上面一层-->
-                    <div style="clear:both"></div> 
-                    <div style="width:96.2%;margin:10px 0 0 20px;">
-                        <table  class="tab1" >
-                              <tr>
-                              <th scope="col" >
-                                  <div><span>最高值:<span id='max_val' class="red">Loading...</span></span><span style="margin-left:20px">对应时段:<span id='time' class="red">Loading...</span></span></div>
-                              
-                              </th>
-                              <th scope="col">
-                                  <div>平均值:<span id='arv_val' class="green">Loading...</span></div>
-                              </th>
-                              <th scope="col">
-                                  <div>总流量:<span id='total_val' class="green">Loading...</span></div>
-                              </th>
-                              <th scope="col">
-                                  <div>交通稳定度:<span id='traf_stability' class="green">Loading...</span></div>
-                              </th>
-                            </tr>
-                        </table>
+            <div class="tabs" style="background:#f0f8fe;"> 
+                    <div id="chart_container" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
+                    
+                    <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
+                    <div style="margin-right:17px;">
+                    <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
+  						<tr style="margin:0 10px 0 0;">
+    						<th width="33%">编号</th>
+    						<th width="33%">时间</th>
+                            <th	width="33%">交通流量</th>
+ 				 		</tr>
+                    </table>
                     </div>
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 232px">
+                    	<table id ='ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
+  							<tr>
+    							<td>Loading</td>
+    							<td>Loading</td>
+                            	<td>Loading</td>
+ 				 			</tr> 
+                    	</table>
+					</div>
+                    
+					</div>
+                    
+                    <div style="clear:both"></div>
+                    <div style="width:98%;margin:10px 0 0 10px; ">
+                    	<div class="tb2" >统计数据</div>
+                    	<div class="glfx2">
+                        	<table  class="tqjz2" border="0">
+                            	<th class="h2" align="left">当前统计数据:</th>
+                              	<tr class="t1">
+                              		<th scope="col">
+                                 	 	<div>最高值:<span id='max_val' class="red">Loading...</span></div>
+                                  		<div>时段:<span id='time' class="red">Loading...</span></div>
+                              		</th>
+                             		<th scope="col">
+                                  		<div>平均值:<span id='arv_val' class="green">Loading...</span></div>
+                              		</th>
+                              		<th scope="col">
+                                  		<div>总流量:<span id='total_val' class="green">Loading...</span></div>
+                              		</th>
+                              		<th scope="col">
+                                  		<div>交通稳定度:<span id='traf_stability' class="green">Loading...</span></div>
+                              		</th>
+                           		</tr>
+                                <th class="h2" align="left">前一天统计数据:</th>
+                                <tr class="t1">
+                              		<th scope="col">
+                                 	 	<div>最高值:<span id='max_val' class="red">Loading...</span></div>
+                                  		<div>时段:<span id='time' class="red">Loading...</span></div>
+                              		</th>
+                             		<th scope="col">
+                                  		<div>平均值:<span id='arv_val' class="green">Loading...</span></div>
+                              		</th>
+                              		<th scope="col">
+                                  		<div>总流量:<span id='total_val' class="green">Loading...</span></div>
+                              		</th>
+                              		<th scope="col">
+                                  		<div>交通稳定度:<span id='traf_stability' class="green">Loading...</span></div>
+                              		</th>
+                           		</tr>
+                                <th class="h2"></th>
+                        	</table>
+                     	</div> 
+                    </div>
+                    
+                    
+             
+                  
             <div style="float:left;width:300px;margin:20px 0 0 0;">
                     <div class="tb1" >关联时段分析</div>
                     <div class="glfx">
@@ -120,7 +169,7 @@
                     </table>
                 </div>
             </div>
-            <div style="float:left;width:500px;margin-right:50px;margin:10px 0 0 10px;">
+            <div style="float:left;width:495px;margin-right:50px;margin:10px 0 0 10px;">
                 <div class="tb2">行程车速日分布</div>
                  <div class="glfx">
                 <div id="pie_container"></div>	

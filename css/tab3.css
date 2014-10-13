@@ -57,14 +57,27 @@
 	border:1px solid #0d60b6;
 	height:282px;
 	background:url(../img/tbg3.png);
-	}	
+	}
+		
+.glfx2{
+	border:1px solid #0d60b6;
+	background:url(../img/tbg3.png);
+	}
 
 .tqjz{
 	border-collapse:collapse;
 	width:280px;
 	table-layout:fixed;
 	margin:auto;
-	}	
+	}
+
+.tqjz2{
+	border-collapse:collapse;
+	width:98%;
+	table-layout:fixed;
+	margin:auto;
+	}
+	
 	
 .h{
 	font-size:3px;
@@ -73,7 +86,17 @@
 	float:left;
 	width:270px;
 	color: #444;
-	}	
+	}
+
+.h2{
+	font-size:3px;
+	margin:10px 0 10px 0;
+	text-height:20px;
+	float:left;
+	width:270px;
+	color: #444;
+	}
+
 	
 .t1{
 	border:1px solid #70c3e9;
@@ -90,6 +113,13 @@
 	border:1px solid #0d60b6;
 	height:280px;
 	background:#ecf7ff;
+	}
+
+.ctbg1{
+	background:#e2eaf0
+	}
+.ctbg2{
+	background:#fff
 	}
 #pie_container{
 	height:280px;
