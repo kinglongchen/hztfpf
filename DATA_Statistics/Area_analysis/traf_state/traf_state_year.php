@@ -9,7 +9,7 @@
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/heatmap.js"></script>
 <!--<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>-->
-<script type="text/javascript" src="../../../js2/common.js"></script>
+<script type="text/javascript" src="../../../js2/common3.js"></script>
 <script src="js_traf_state/year/road.js"></script>
 <style>
 #chart_traf_flow,#chart_crowd_time,#chart_crowd_num,#chart_car_speed{
@@ -83,7 +83,7 @@ $(document).ready(function(e) {
  				 		</tr>
                     </table>
                     </div>
-                    <div style="float:left;overflow-x: hidden; width: 100%;margin:0px 0 0 0px;height: 232px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
                     	<table id ='traf_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="25%">Loading</td>
@@ -101,7 +101,6 @@ $(document).ready(function(e) {
    
     <div id="chart_crowd_time" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
                     <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
-                    <div style="margin-right:17px;">
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
   						<tr style="margin:0 10px 0 0;">
     						<th width="33%">编号</th>
@@ -109,8 +108,7 @@ $(document).ready(function(e) {
                             <th	width="33%">拥堵时间</th>
  				 		</tr>
                     </table>
-                    </div>
-                    <div style="float:left;overflow-x: hidden; width: 100%;margin:0px 0 0 0px;height: 232px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
                     	<table id ='ctime_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="33%">Loading</td>
@@ -124,7 +122,6 @@ $(document).ready(function(e) {
 
     <div id="chart_crowd_num" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
                     <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
-                    <div style="margin-right:17px;">
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
   						<tr style="margin:0 10px 0 0;">
     						<th width="33%">编号</th>
@@ -132,8 +129,7 @@ $(document).ready(function(e) {
                             <th	width="33%">拥堵指数</th>
  				 		</tr>
                     </table>
-                    </div>
-                    <div style="float:left;overflow-x: hidden; width: 100%;margin:0px 0 0 0px;height: 232px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
                     	<table id ='cnum_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="33%">Loading</td>
@@ -147,7 +143,6 @@ $(document).ready(function(e) {
     
     <div id="chart_car_speed" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
                     <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
-                    <div style="margin-right:17px;">
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
   						<tr style="margin:0 10px 0 0;">
     						<th width="33%">编号</th>
@@ -155,8 +150,7 @@ $(document).ready(function(e) {
                             <th	width="33%">行车速度</th>
  				 		</tr>
                     </table>
-                    </div>
-                    <div style="float:left;overflow-x: hidden; width: 100%;margin:0px 0 0 0px;height: 232px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
                     	<table id ='cspeed_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="33%">Loading</td>

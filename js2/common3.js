@@ -83,7 +83,7 @@ $(function(){
 			  $("scroRight").onclick= scroNow;
 			  //鼠标滚轮    
 			  $("scroll").onmousewheel=function scrollWheel(){
-				  var div = document.getElementById("day_ctb"); 
+				  var div = document.getElementById("traf_ctb"); 
 						var x=event.clientX;  
                         var y=event.clientY;  
                         var divx1 = div.offsetLeft;  

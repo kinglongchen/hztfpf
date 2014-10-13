@@ -10,7 +10,7 @@
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/heatmap.js"></script>
 <!--<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>-->
 <script src="js_traf_state/month/road.js"></script>
-<script type="text/javascript" src="../../../js2/common.js"></script>
+<script type="text/javascript" src="../../../js2/common3.js"></script>
 <style>
 #chart_traf_flow,#chart_crowd_time,#chart_crowd_num,#chart_car_speed{
 	width:96%;
@@ -103,7 +103,7 @@ $(document).ready(function(e) {
  				 		</tr>
                     </table>
                     </div>
-                    <div style="float:left;overflow-x: hidden; width: 100%;margin:0px 0 0 0px;height: 232px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
                     	<table id ='traf_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="25%">Loading</td>
@@ -129,7 +129,7 @@ $(document).ready(function(e) {
  				 		</tr>
                     </table>
                     </div>
-                    <div style="float:left;overflow-x: hidden; width: 100%;margin:0px 0 0 0px;height: 232px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
                     	<table id ='ctime_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="33%">Loading</td>
@@ -152,7 +152,7 @@ $(document).ready(function(e) {
  				 		</tr>
                     </table>
                     </div>
-                    <div style="float:left;overflow-x: hidden; width: 100%;margin:0px 0 0 0px;height: 232px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
                     	<table id ='cnum_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="33%">Loading</td>
@@ -175,7 +175,7 @@ $(document).ready(function(e) {
  				 		</tr>
                     </table>
                     </div>
-                    <div style="float:left;overflow-x: hidden; width: 100%;margin:0px 0 0 0px;height: 232px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
                     	<table id ='cspeed_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="33%">Loading</td>
