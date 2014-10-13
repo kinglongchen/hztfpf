@@ -26,6 +26,7 @@ $(function(){
 });
 
 
+						
 $(function(){
 			  var scrolling=false;
 			  $("scroll").onselectstart=function(e){return false}
@@ -82,17 +83,20 @@ $(function(){
 			  $("scroRight").onclick= scroNow;
 			  //鼠标滚轮    
 			  $("scroll").onmousewheel=function scrollWheel(){
-					   var Y=$("scroLeft").scrollTop;
-					   var H=$("scroLeft").scrollHeight-$("scroLeft").clientHeight;
-					   if (event.wheelDelta >=10)
-					   {Y=Y-70}
-					   else
-					   {Y=Y+70}
-					   if(Y<0)Y=0;if(Y>H)Y=H;
-					   $("scroLeft").scrollTop=Y;
-					   var SH=Y/H*$("scroll").clientHeight-$("scroLine").clientHeight;
-					   if(SH<0)SH=0;
-					   $("scroLine").style.top=SH+"px";
+
+						   var Y=$("scroLeft").scrollTop;
+						   var H=$("scroLeft").scrollHeight-$("scroLeft").clientHeight;
+						   if (event.wheelDelta >=10)
+						   {Y=Y-70}
+						   else
+						   {Y=Y+70}
+						   if(Y<0)Y=0;if(Y>H)Y=H;
+						   $("scroLeft").scrollTop=Y;
+						   var SH=Y/H*$("scroll").clientHeight-$("scroLine").clientHeight;
+						   if(SH<0)SH=0;
+						   $("scroLine").style.top=SH+"px";
+					   
 			  }
 
 });
+
