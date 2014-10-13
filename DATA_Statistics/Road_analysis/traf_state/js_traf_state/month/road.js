@@ -308,6 +308,36 @@ function update_data(data) {
 	//$('#pie_container').highcharts().series[0].setData(pie_data);
 	}
 	
+	
+function add_ctb_data(id,time,val) {
+	var ctbg = id%2==0?'ctbg1':'ctbg2';
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'辆</td></tr>';
+	$('#ctb').append(tr);
+	}
+function remote_ctb_data() {
+	$('#ctb').empty();
+	}
+
+
+function add_ctb_data(id,time,val) {
+	var ctbg = id%2==0?'ctbg1':'ctbg2';
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'辆</td></tr>';
+	$('#ctb').append(tr);
+	}
+function remote_ctb_data() {
+	$('#ctb').empty();
+	}
+
+function add_ctb_data(id,time,val) {
+	var ctbg = id%2==0?'ctbg1':'ctbg2';
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'辆</td></tr>';
+	$('#ctb').append(tr);
+	}
+function remote_ctb_data() {
+	$('#ctb').empty();
+	}
+	
+	
 function data_req(year,month,data) {
 	data = data_generate(year,month,data)
 	update_data(data)

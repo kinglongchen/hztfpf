@@ -14,7 +14,7 @@
 
 <body style=" font-size:14px; color:#414141; font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;" >
  <div id="scroll">
-                       <div id="scroLeft">
+            <div id="scroLeft">
             <div class="tabs"> 
                     <div id="chart_container" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 20px;float:left"></div>
                     
