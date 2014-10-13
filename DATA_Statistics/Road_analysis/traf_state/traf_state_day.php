@@ -18,19 +18,20 @@
 <body>
  <div id="scroll">
                        <div id="scroLeft">
-                    <div style="height:400px;border:1px solid #000;margin:20px 0 0 20px;">
+                    <div style="height:400px;border:1px solid #000;margin:10px 0 0 10px;">
                         <div id="chart_day_container" style="width:55%;float:left;"></div>
-                     	<div class="glfx2" style="float:left; width: 40%;margin:10px 0 0 20px;height: 250px">
-                    		<table border="1px" style="width:97%;border-collapse:collapse;">
-  								<tr>
-    								<th width="33%">编号</th>
-    								<th width="33%">时间</th>
-                            		<th	width="33%">交通状态</th>
- 				 				</tr>
-                    		</table>
-                    
-                    		<div style="float:left;overflow-x: hidden; overflow: scroll; width: 100%;margin:0px 0 0 0px;height: 220px">
-                    			<table id ='day_ctb' border="1" style="width:100%;border-collapse:collapse;">
+                     	<div class="glfx2" style="float:left; width: 42%;margin:45px 0 0 20px;height: 280px">
+                    		<div style="margin-right:17px;">
+                                <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
+                                    <tr>
+                                        <th width="33%">编号</th>
+                                        <th width="33%">时间</th>
+                                        <th	width="33%">交通状态</th>
+                                    </tr>
+                                </table>
+                    		</div>
+                            <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 260px">
+                    			<table id ='day_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   									<tr>
     									<td>Loading</td>
     									<td>Loading</td>
@@ -40,21 +41,22 @@
 							</div>
 						</div>
                     </div>
-                    <div style="height:400px;border:1px solid #000;margin:20px 0 0 20px;">
+                    <div style="height:400px;border:1px solid #000;margin:10px 0 0 10px;">
                         <div id="chart_month_container" style="width:55%;float:left;"></div>
                         
-                        <div class="glfx2" style="float:left; width: 40%;margin:10px 0 0 20px;height: 250px">
-                    		<table border="1px" style="width:97%;border-collapse:collapse;">
-  								<tr>
-    								<th width="25%">编号</th>
-                                    <th width="25%">日</th>
-    								<th width="25%">时</th>
-                            		<th	width="25%">交通状态</th>
- 				 				</tr>
-                    		</table>
-                    
-                    		<div style="float:left;overflow-x: hidden; overflow: scroll; width: 100%;margin:0px 0 0 0px;height: 220px">
-                    			<table id ='month_ctb' border="1" style="width:100%;border-collapse:collapse;">
+                        <div class="glfx2" style="float:left; width: 42%;margin:45px 0 0 20px;height: 320px">
+                    		<div style="margin-right:17px;">
+                                <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
+                                    <tr>
+                                        <th width="25%">编号</th>
+                                        <th width="25%">日</th>
+                                        <th width="25%">时</th>
+                                        <th	width="25%">交通状态</th>
+                                    </tr>
+                                </table>
+                    		</div>
+                            <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 300px">
+                    			<table id ='month_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   									<tr>
     									<td width="25%">Loading</td>
     									<td width="25%">Loading</td>
@@ -67,23 +69,24 @@
                         
                         
                     </div>
-                    <div style="height:400px;border:1px solid #000;margin:20px 0 0 20px;">
+                    <div style="height:400px;border:1px solid #000;margin:10px 0 0 10px;">
                         <div id="chart_year_container" style="width:55%;float:left;"></div>
                         
                         
                         
-                        <div class="glfx2" style="float:left; width: 40%;margin:10px 0 0 20px;height: 250px">
-                    		<table border="1px" style="width:97%;border-collapse:collapse;">
-  								<tr>
-    								<th width="25%">编号</th>
-                                    <th width="25%">月</th>
-    								<th width="25%">时</th>
-                            		<th	width="25%">交通状态</th>
- 				 				</tr>
-                    		</table>
-                    
-                    		<div style="float:left;overflow-x: hidden; overflow: scroll; width: 100%;margin:0px 0 0 0px;height: 220px">
-                    			<table id ='year_ctb' border="1" style="width:100%;border-collapse:collapse;">
+                        <div class="glfx2" style="float:left; width: 42%;margin:45px 0 0 20px;height: 320px">
+                    		<div style="margin-right:17px;">
+                                <table border="1px" style="width:100%;border-collapse:collapse;background:#3b88e7;color:#fff;">
+                                    <tr>
+                                        <th width="25%">编号</th>
+                                        <th width="25%">月</th>
+                                        <th width="25%">时</th>
+                                        <th	width="25%">交通状态</th>
+                                    </tr>
+                                </table>
+                    		</div>
+                    		<div style="float:left;overflow-x: hidden;width: 99.9%;margin:0px 0 0 0px;height: 300px">
+                    			<table id ='year_ctb' border="1" style="width:100%;border-collapse:collapse;text-align:center;">
   									<tr>
     									<td width="25%">Loading</td>
     									<td width="25%">Loading</td>
