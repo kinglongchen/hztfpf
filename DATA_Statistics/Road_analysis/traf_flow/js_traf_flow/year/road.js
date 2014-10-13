@@ -108,6 +108,7 @@ function data_update(data) {
 	var max_val = -1;
 	var max_val_time=0;
 	var total_val = 0;
+	var max_val_index=0;
 	
 	chart_data = data;
 	pie_data = new Array();
@@ -116,13 +117,18 @@ function data_update(data) {
 	pie_data.push(new Array("103-156万辆/月",0));
 	pie_data.push(new Array("156-207万辆/月",0));
 	pie_data.push(new Array("大于207万辆/月",0));
+	
+	
+	remote_ctb_data()//删除ctb表格中的内
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
 		t = tv[0];
 		v = tv[1];
+		add_ctb_data(i,t,v)
 		if(v>max_val){
 			max_val = v;
-			max_val_time = t; 
+			max_val_time = t;
+			max_val_index = i; 
 			}
 		total_val+=v;
 		if(v<520000){pie_data[0][1]+=1/data.length;}
@@ -131,7 +137,7 @@ function data_update(data) {
 		if(v>=1560000&&v<2070000){pie_data[3][1]+=1/data.length;}
 		if(v>=2070000){pie_data[4][1]+=1/data.length;}
 		}
-		
+	data[max_val_index]={x:max_val_time,y:max_val,color:'#FF0000',marker:{radius:6}}	
 	max_val_time_l = max_val_time-0.5;
 	max_val_time_r = max_val_time+0.5;
 	
@@ -153,9 +159,19 @@ function data_update(data) {
 	$('#pie_container').highcharts().series[0].setData(pie_data);
 	
 	
-	remove_max_timeband()
-	add_max_timeband(max_val_time_l,max_val_time_r)
+	//remove_max_timeband()
+//	add_max_timeband(max_val_time_l,max_val_time_r)
 	}
+
+	function add_ctb_data(id,time,val) {
+	var ctbg = id%2==0?'ctbg1':'ctbg2';
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'月</td><td width="33%">'+val+'辆</td></tr>';
+	$('#ctb').append(tr);
+	}
+function remote_ctb_data() {
+	$('#ctb').empty();
+	}
+
 
 function rtetime_data_update(data) {
 	$('#rtetime_max_val').text(data[1])

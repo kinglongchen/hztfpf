@@ -226,7 +226,17 @@ function query_road_sec() {
 window.onload=function() {
 	var date =new Date()
 	tc_data_req(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),"文三路-教工路-学院路");
+	
+	get_now();
 	}
+
+//时间选择器显示当前日期
+function get_now()
+{
+	var date=new Date();
+	today=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
+	document.getElementById("dataslec").value=today;
+}
 </script>
 
 

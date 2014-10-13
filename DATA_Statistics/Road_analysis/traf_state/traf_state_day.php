@@ -27,6 +27,7 @@
                         <div id="chart_year_container" style="width:75%;float:left;"></div>
                                     
                     </div>
+
 </div>
                            
                        <div id="scroRight" >

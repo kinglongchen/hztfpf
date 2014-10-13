@@ -266,6 +266,7 @@ function ct_data_update(data) {
 	var max_val = -1;
 	var max_val_time=0;
 	var total_val = 0;
+	var max_val_index=0;
 	chart_data = data;
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
@@ -274,16 +275,17 @@ function ct_data_update(data) {
 		if(v>max_val){
 			max_val = v;
 			max_val_time = t; 
+			max_val_index = i;
 			}
 		total_val+=v;
 		
 		}
-		
+	data[max_val_index]={x:max_val_time,y:max_val,color:'#FF0000',marker:{radius:6}}	
 	max_val_time_l = max_val_time-t_itv/120;
 	max_val_time_r = max_val_time+t_itv/120;
 	
-	remove_max_timeband('chart_crowd_time')
-	add_max_timeband('chart_crowd_time',max_val_time_l,max_val_time_r)
+	//remove_max_timeband('chart_crowd_time')
+//	add_max_timeband('chart_crowd_time',max_val_time_l,max_val_time_r)
 	
 	avg_val = total_val/data.length
 	remove_avg_line('chart_crowd_time')
@@ -301,6 +303,7 @@ function ci_data_update(data) {
 	var max_val = -1;
 	var max_val_time=0;
 	var total_val = 0;
+	var max_val_index=0;
 	
 	chart_data = data;
 	for (var i=0;i < data.length;i++) {
@@ -310,9 +313,11 @@ function ci_data_update(data) {
 		if(v>max_val){
 			max_val = v;
 			max_val_time = t; 
+			max_val_index = i;
 			}
 		total_val+=v;
 		}
+	data[max_val_index]={x:max_val_time,y:max_val,color:'#FF0000',marker:{radius:6}}
 	max_val_time_l = max_val_time-t_itv/120;
 	max_val_time_r = max_val_time+t_itv/120;
 	
@@ -323,8 +328,8 @@ function ci_data_update(data) {
 	add_his_avg_line("chart_crowd_num",4.5)  
 	$('#chart_crowd_num').highcharts().series[0].setData(chart_data);
 	
-	remove_max_timeband("chart_crowd_num")
-	add_max_timeband("chart_crowd_num",max_val_time_l,max_val_time_r)
+	//remove_max_timeband("chart_crowd_num")
+//	add_max_timeband("chart_crowd_num",max_val_time_l,max_val_time_r)
 	
 	
 	}
@@ -333,6 +338,7 @@ function speed_data_update(data) {
 	var max_val = -1;
 	var max_val_time=0;
 	var total_val = 0;
+	var max_val_index=0;
 	
 	chart_data = data;
 	for (var i=0;i < data.length;i++) {
@@ -341,10 +347,12 @@ function speed_data_update(data) {
 		v = tv[1];
 		if(v>max_val){
 			max_val = v;
-			max_val_time = t; 
+			max_val_time = t;
+			max_val_index = i; 
 			}
 		total_val+=v;
 		}
+	data[max_val_index]={x:max_val_time,y:max_val,color:'#FF0000',marker:{radius:6}}
 	max_val_time_l = max_val_time-t_itv/120;
 	max_val_time_r = max_val_time+t_itv/120;
 	
@@ -354,8 +362,8 @@ function speed_data_update(data) {
 	remove_his_avg_line('chart_car_speed')
 	add_his_avg_line('chart_car_speed',30)  
 	$('#chart_car_speed').highcharts().series[0].setData(chart_data);
-	remove_max_timeband("chart_car_speed")
-	add_max_timeband("chart_car_speed",max_val_time_l,max_val_time_r)
+	//remove_max_timeband("chart_car_speed")
+//	add_max_timeband("chart_car_speed",max_val_time_l,max_val_time_r)
 	
 	
 	}

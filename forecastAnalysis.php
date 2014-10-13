@@ -11,6 +11,15 @@
 <script src="js/slider.js"></script>
 <!--<script type="text/javascript" src="js/sliderTime.js" ></script>-->
 <script src="http://webapi.amap.com/maps?v=1.3&key=a1dbe1455fe51c2c903a6b9cd35af2fc"></script>
+<script>
+//时间选择器显示当前日期
+function get_now()
+{
+	var date=new Date();
+	today=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
+	document.getElementById("sub_date").value=today;
+}
+</script>
 <link type="text/css" rel="stylesheet" href="DATA_Statistics/Forecast_analysis/css/forecast.css">
 
 </head>
@@ -21,7 +30,7 @@
 	margin:7px 0 10px 10px;
 	}
 </style>
-<body style="margin:0;">
+<body style="margin:0;" onload="get_now()">
 <div>
  <script language="JavaScript">
 	  

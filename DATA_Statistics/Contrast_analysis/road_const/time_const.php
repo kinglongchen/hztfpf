@@ -228,7 +228,16 @@ function road_slec_change() {
 window.onload=function() {
 	var date =new Date()
 	tc_data_req("文三路-教工路-学院路",date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate());
+	get_now();
 	}
+	
+//时间选择器显示当前日期
+function get_now()
+{
+	var date=new Date();
+	today=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
+	document.getElementById("sub_date").value=today;
+}
 </script>
 
 </head>
@@ -264,7 +273,7 @@ window.onload=function() {
               
         
                 <span style="margin:19px 0 0 40px;float:left;">
-                    选择对比时间:<input type="date"  onchange="tc_data_req($('#sroadid').val(),this.value)"/>
+                    选择对比时间:<input type="date" id="sub_date"  onchange="tc_data_req($('#sroadid').val(),this.value)"/>
                 </span>
                 <span style="margin:19px 0 0 40px;float:left;">
                     <input type="button"  onclick="chart_data_remove()" value="清空"/>

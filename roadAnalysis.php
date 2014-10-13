@@ -107,6 +107,7 @@ var De=document.documentElement;
 var Ww=self.innerWidth ||(De && De.clientWidth) ||document.body.clientWidth;
 document.getElementById("Ana_iframe").style.width =(Ww-40)+"px";
 //document.getElementById("Ana_iframe").style.height=(Wh-5)+"px";
+get_now();
 };
 
 //给Ana_iframe一个标识，在点击年月日分析得时候识别这属于哪一个板块
@@ -382,7 +383,13 @@ $autocomplete.css({'position':'relative','left':xpos + "px",'top':ypos +"px"});
 }); 
 }); 
 
-
+//时间选择器显示当前日期
+function get_now()
+{
+	var date=new Date();
+	today=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
+	document.getElementById("date").value=today;
+}
 
 </script>
 
