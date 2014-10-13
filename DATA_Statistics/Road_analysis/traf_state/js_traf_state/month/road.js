@@ -273,6 +273,33 @@ function update_data(data) {
 	chart_day_data = data[0];
 	chart_month_data = data[1];
 	chart_year_data = data[2];
+	
+	remote_day_ctb_data()
+	remote_month_ctb_data()
+	
+	for (var i =0;i<chart_day_data[0].length;i++) {
+		var r = chart_day_data[0][i];
+		var y = chart_day_data[1][i];
+		var g = chart_day_data[2][i];
+		var a = g+y+r;
+		add_day_ctb_data(i,i+1,new Array(r/a,y/a,g/a));
+		}
+	
+	for (var i = 0;i<chart_month_data.length;i++) {
+		var time = chart_month_data[i][0];
+		var day = chart_month_data[i][1];
+		var val = chart_month_data[i][2];
+		add_month_ctb_data(i,time,day,val)
+		}
+		
+	for (var i = 0;i<chart_year_data.length;i++) {
+		var time = chart_year_data[i][0];
+		var month = chart_year_data[i][1];
+		var val = chart_year_data[i][2];
+		add_year_ctb_data(i,time,month,val)
+		}	
+		
+		
 	/*pie_data = new Array();
 	pie_data.push(new Array("状态为1",0));
 	pie_data.push(new Array("状态为2",0));
@@ -301,7 +328,6 @@ function update_data(data) {
 	//$('#total_val').text(String(total_val)
 	$('#chart_month_container').highcharts().series[0].setData(chart_month_data);
 	$('#chart_year_container').highcharts().series[0].setData(chart_year_data);
-	
 	$('#chart_day_container').highcharts().series[0].setData(chart_day_data[0]);
 	$('#chart_day_container').highcharts().series[1].setData(chart_day_data[1]);
 	$('#chart_day_container').highcharts().series[2].setData(chart_day_data[2]);
@@ -309,31 +335,34 @@ function update_data(data) {
 	}
 	
 	
-function add_ctb_data(id,time,val) {
+function add_day_ctb_data(id,time,val) {
 	var ctbg = id%2==0?'ctbg1':'ctbg2';
-	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'辆</td></tr>';
-	$('#ctb').append(tr);
+	val[0]=Math.round(val[0]*10000)/100
+	val[1]=Math.round(val[1]*10000)/100
+	val[2]=Math.round(val[2]*10000)/100
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">拥堵：'+val[0]+'%<br>一般：'+val[1]+'%<br>通常：'+val[2]+'%</td></tr>';
+	$('#day_ctb').append(tr);
 	}
-function remote_ctb_data() {
-	$('#ctb').empty();
+function remote_day_ctb_data() {
+	$('#day_ctb').empty();
 	}
 
 
-function add_ctb_data(id,time,val) {
+function add_month_ctb_data(id,time,day,val) {
 	var ctbg = id%2==0?'ctbg1':'ctbg2';
-	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'辆</td></tr>';
-	$('#ctb').append(tr);
+	var tr = '<tr class='+ctbg+'><td width="25%">'+id+'</td><td width="25%">'+day+'号</td><td width="25%">'+time+'点</td><td width="25%">'+val+'</td></tr>';
+	$('#month_ctb').append(tr);
 	}
-function remote_ctb_data() {
-	$('#ctb').empty();
+function remote_month_ctb_data() {
+	$('#month_ctb').empty();
 	}
 
-function add_ctb_data(id,time,val) {
+function add_year_ctb_data(id,time,month,val) {
 	var ctbg = id%2==0?'ctbg1':'ctbg2';
-	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'辆</td></tr>';
-	$('#ctb').append(tr);
+	var tr = '<tr class='+ctbg+'><td width="25%">'+id+'</td><td width="25%">'+month+'月</td><td width="25%">'+time+'点</td><td width="25%">'+val+'</td></tr>';
+	$('#year_ctb').append(tr);
 	}
-function remote_ctb_data() {
+function remote_year_ctb_data() {
 	$('#ctb').empty();
 	}
 	
