@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../../css/tab3.css">
 <link rel="stylesheet" type="text/css" href="../../../css/scollbar.css">
 <script src="../../../js/jquery.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
@@ -98,8 +99,39 @@ function get_now()
       <span id = 'trctl_ck_span' style="margin:10px 0 0 20px;float:left;">
         <input id = 'trctl_ck' type="checkbox" >限行显示</input>
       </span>
+      <div style="clear:both"></div>
 <div> 
-    <div id="chart_traf_flow" ></div>
+    <div id="chart_traf_flow" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
+    
+    
+     <!--<div id="chart_traf_flow" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>-->
+                    
+                    <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
+                    <div style="margin-right:17px;">
+                    <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
+  						<tr style="margin:0 10px 0 0;">
+    						<th width="33%">编号</th>
+    						<th width="33%">时间</th>
+                            <th	width="33%">交通流量</th>
+ 				 		</tr>
+                    </table>
+                    </div>
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 232px">
+                    	<table id ='ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
+  							<tr>
+    							<td width="33%">Loading</td>
+    							<td width="33%">Loading</td>
+                            	<td width="33%">Loading</td>
+ 				 			</tr> 
+                    	</table>
+					</div>
+                    
+					</div>
+                    <!--
+                    <div style="clear:both"></div>-->
+    
+    
+    
     <div id="chart_crowd_time" ></div>
     <div id="chart_crowd_num" ></div>
     <div id="chart_car_speed" ></div>
