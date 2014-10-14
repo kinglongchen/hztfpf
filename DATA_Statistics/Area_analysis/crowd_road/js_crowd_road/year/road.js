@@ -117,12 +117,12 @@ function data_req(year,month,day,zone) {
 //test funciton
 function generate_data() {
 	data = new Array()
-	var max=19;
+	var max=26;
 	do{
 			v = parseInt(Math.random()*100);
-			}while(v > max && v <24)
+			}while(v < max || v >35)
 	for (var i = 0;i<10;i++) {
-		if (i<11)v-=1
+		if (i<11)v-=2.1
 		data.push([i,v]);
 		}
 	return data;
