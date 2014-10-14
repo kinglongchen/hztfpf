@@ -232,7 +232,7 @@ $(document).ready(function(e) {
 	def_month = def_date.getMonth();
 	def_day = def_date.getDay();
 	def_zone = 1;//默认的区域编号
-	data_req(def_year,def_month,def_day,def_zone);
+	data_req(def_year,def_month,def_day,def_zone,'西湖区');
 });
 
 var t_itv=5
@@ -241,7 +241,7 @@ var max_val_time_r = t_itv/120;
 
 var avg_val = -1;
 
-function state_data_update(data) {
+function state_data_update(data,zone_name) {
 	var chart_day_data = data;
 	remove_traf_ctb_data();
 	for (var i =0;i<chart_day_data[0].length;i++) {
@@ -254,10 +254,11 @@ function state_data_update(data) {
 	$('#chart_traf_flow').highcharts().series[0].setData(data[0]);
 	$('#chart_traf_flow').highcharts().series[1].setData(data[1]);
 	$('#chart_traf_flow').highcharts().series[2].setData(data[2]);
+	$('#chart_traf_flow').highcharts().setTitle({text:zone_name+'交通状态日变化情况'});
 	}
 
 
-function ct_data_update(data) {
+function ct_data_update(data,zone_name) {
 	var max_val = -1;
 	var max_val_time=0;
 	var total_val = 0;
@@ -291,10 +292,11 @@ function ct_data_update(data) {
 	add_his_avg_line('chart_crowd_time',10);
 	//$('#chart_crowd_num').highcharts().series[0].setData(chart_data);
 	$('#chart_crowd_time').highcharts().series[0].setData(chart_data);
+	$('#chart_crowd_time').highcharts().setTitle({text:zone_name+'拥堵时间日变化情况'})
 	//$('#chart_car_speed').highcharts().series[0].setData(chart_data);
 	}
 
-function ci_data_update(data) {
+function ci_data_update(data,zone_name) {
 	
 	
 	var max_val = -1;
@@ -325,13 +327,13 @@ function ci_data_update(data) {
 	remove_his_avg_line("chart_crowd_num")
 	add_his_avg_line("chart_crowd_num",4.5)  
 	$('#chart_crowd_num').highcharts().series[0].setData(chart_data);
-	
+	$('#chart_crowd_num').highcharts().setTitle({text:zone_name+'拥堵指数日变化情况'})
 	//remove_max_timeband("chart_crowd_num")
 //	add_max_timeband("chart_crowd_num",max_val_time_l,max_val_time_r)
 	
 	
 	}
-function speed_data_update(data) {
+function speed_data_update(data,zone_name) {
 	
 	var max_val = -1;
 	var max_val_time=0;
@@ -361,6 +363,7 @@ function speed_data_update(data) {
 	remove_his_avg_line('chart_car_speed')
 	add_his_avg_line('chart_car_speed',30)  
 	$('#chart_car_speed').highcharts().series[0].setData(chart_data);
+	$('#chart_car_speed').highcharts().setTitle({text:zone_name+'行程车速日变化情况'})
 	//remove_max_timeband("chart_car_speed")
 //	add_max_timeband("chart_car_speed",max_val_time_l,max_val_time_r)
 	
@@ -404,30 +407,30 @@ function remove_cspeed_ctb_data() {
 	}
 
 
-function state_data_req(year,month,day,zoneid) {
+function state_data_req(year,month,day,zoneid,zone_name) {
 	var data = generate_state_data({year:year,month:month,day:day})
-	state_data_update(data)
+	state_data_update(data,zone_name)
 	}
 
-function ct_data_req(year,month,day,zoneid) {
+function ct_data_req(year,month,day,zoneid,zone_name) {
 	var data = generate_ct_data({year:year,month:month,day:day})
-	ct_data_update(data);
+	ct_data_update(data,zone_name);
 	}
 
-function ci_data_req(year,month,day,zoneid) {
+function ci_data_req(year,month,day,zoneid,zone_name) {
 	var data = generate_ci_data({year:year,month:month,day:day})
-	ci_data_update(data);
+	ci_data_update(data,zone_name);
 	}
-function speed_data_req(year,month,day,zoneid) {
+function speed_data_req(year,month,day,zoneid,zone_name) {
 	var data = generate_speed_data({year:year,month:month,day:day})
-	speed_data_update(data);
+	speed_data_update(data,zone_name);
 	}
 
-function data_req(year,month,day,zoneid) {
-	state_data_req(year,month,day,zoneid);
-	ct_data_req(year,month,day,zoneid)
-	ci_data_req(year,month,day,zoneid)
-	speed_data_req(year,month,day,zoneid)
+function data_req(year,month,day,zoneid,zone_name) {
+	state_data_req(year,month,day,zoneid,zone_name);
+	ct_data_req(year,month,day,zoneid,zone_name)
+	ci_data_req(year,month,day,zoneid,zone_name)
+	speed_data_req(year,month,day,zoneid,zone_name)
 	}
 
 function history_update(data) {

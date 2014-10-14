@@ -40,6 +40,7 @@ $(document).ready(function(e) {
 
 function road_analysis() {
 	zone_id = $("#zone_slcer").val()
+	zone_name = $("#zone_slcer").find("option:selected").text();
 	if (zone_id==null) zone_id=1
 	date = $("#sub_date").val()
 	if (date==''){
@@ -54,7 +55,7 @@ function road_analysis() {
 		month = parseInt(date[1])-1
 		day = parseInt(date[2])
 		}
-	data_req(year,month,day,zone_id)
+	data_req(year,month,day,zone_id,zone_name)
 	}
 
 //时间选择器显示当前日期

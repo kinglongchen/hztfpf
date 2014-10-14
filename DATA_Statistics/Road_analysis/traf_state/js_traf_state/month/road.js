@@ -263,7 +263,7 @@ function setYCateg(month) {
 	}
 	
 	
-function update_data(data) {
+function update_data(data,road_name) {
 	
 	/*var max_val = -1;
 	var max_val_time=0;
@@ -326,12 +326,15 @@ function update_data(data) {
 //	$('#max_val').text(String(max_val));
 //	$('#time').text(String(max_time));
 //	$('#arv_val').text(String(avg_val/24));
-	//$('#total_val').text(String(total_val)
+	//$('#total_val').text(String(total_val)$('#chart_container').highcharts().setTitle({text:road_name+'交通流量日变化情况'})
 	$('#chart_month_container').highcharts().series[0].setData(chart_month_data);
+	$('#chart_month_container').highcharts().setTitle({text:road_name+'交通状态月变化情况'});
 	$('#chart_year_container').highcharts().series[0].setData(chart_year_data);
+	$('#chart_year_container').highcharts().setTitle({text:road_name+'交通状态年变化情况'});
 	$('#chart_day_container').highcharts().series[0].setData(chart_day_data[0]);
 	$('#chart_day_container').highcharts().series[1].setData(chart_day_data[1]);
 	$('#chart_day_container').highcharts().series[2].setData(chart_day_data[2]);
+	$('#chart_day_container').highcharts().setTitle({text:road_name+'交通状态日变化情况'});
 	//$('#pie_container').highcharts().series[0].setData(pie_data);
 	}
 	
@@ -371,9 +374,9 @@ function remote_year_ctb_data() {
 	}
 	
 	
-function data_req(year,month,data) {
+function data_req(year,month,data,road_id,road_name) {
 	data = data_generate(year,month,data)
-	update_data(data)
+	update_data(data,road_name)
 	}
 	
 $(document).ready(function(e) {
@@ -383,8 +386,8 @@ $(document).ready(function(e) {
 	def_year = def_date.getYear();
 	def_month = def_date.getMonth();
 	def_day = def_date.getDay();
-	def_zone = 1;//默认的区域编号
-	data_req(def_year,def_month,def_day,def_zone); 
+	road_id = 1;//默认的区域编号
+	data_req(def_year,def_month,def_day,road_id,'文三路-教工路-学院路'); 
 //	history_req(def_year,def_month,def_day,def_zone)
 //	hot_data_req(def_year,def_month,def_day,def_zone)	
 });

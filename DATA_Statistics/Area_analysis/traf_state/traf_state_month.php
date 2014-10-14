@@ -23,10 +23,11 @@
 <script>
 function road_analysis() {
 	zone_id = $("#zone_slcer").val()
+	zone_name = $("#zone_slcer").find("option:selected").text();
 	if (zone_id==null) zone_id=1
 	year = $("#year_selec").val()
 	month = $("#month_selec").val()
-	data_req(year,month,1,zone_id)
+	data_req(year,month,1,zone_id,zone_name)
 	}
 $(document).ready(function(e) {
     var date = new Date();
@@ -45,7 +46,7 @@ $(document).ready(function(e) {
     <form style="margin:10px 0 0 20px;">
       区域选择：
       <span style="height:20px;margin:0 30px 0 -13px;">
-          <select id = "sroadid" >
+          <select id = "zone_slcer" >
               <option value="1">西湖区</option>
               <option value="2">拱墅区</option>
               <option value="3">余杭区</option>

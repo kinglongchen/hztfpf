@@ -398,7 +398,13 @@ function data_update(chart_obj,data) {
 		data_add(new Array(s_name,s_data))	
 		}
 	}
-
+function setTitle(name) {
+		$('#trf_container').highcharts().setTitle({text:name+'交通流量对比分析'})
+		$('#vhs_container').highcharts().setTitle({text:name+'行程车速对比分析'})
+		$('#coi_container').highcharts().setTitle({text:name+'拥堵指数对比分析'})
+		$('#cot_container').highcharts().setTitle({text:name+'拥堵时间对比分析'})
+		$('#rst_container').highcharts().setTitle({text:name+'交通状态对比分析'})
+	}
 function data_add(char_obj,data) {
 	
 	chart_obj.highcharts().addSeries(
@@ -553,6 +559,7 @@ function rst_rc_data_req(date,args) {
 	}
 
 function tc_data_req(road_id,date) {
+	setTitle(date)
 	trf_tc_data_req(road_id,new Array(date));
 	vhs_tc_data_req(road_id,new Array(date));
 	cot_tc_data_req(road_id,new Array(date));
@@ -563,6 +570,7 @@ function tc_data_req(road_id,date) {
 	}
 
 function rc_data_req(date,road_id,road_name) {
+	setTitle(road_name)
 	trf_rc_data_req(date,new Array(road_name));
 	vhs_rc_data_req(date,new Array(road_name));
 	cot_rc_data_req(date,new Array(road_name));
