@@ -447,7 +447,7 @@ function get_now()
         </div>
         <div style="clear:both"></div> 
         
-        <iframe id="Ana_iframe" class="1" src="DATA_Statistics/Road_analysis/traf_flow/traf_flow_day.php" name="anaframe" height="1000" style="border:0;margin:0 0 0 0;"></iframe>
+        <iframe id="Ana_iframe" class="1" src="DATA_Statistics/Road_analysis/traf_flow/traf_flow_day.php" name="anaframe" height="880" style="border:0;margin:0 0 0 0;"></iframe>
     </div>   <!--到这里为止是下面最大框框的结束-->
 </div>
 </body>

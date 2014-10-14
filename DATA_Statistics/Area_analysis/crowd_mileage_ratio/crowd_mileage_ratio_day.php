@@ -36,7 +36,7 @@
     </div>
 	<div style="clear:both"></div>
     <div>
-    	<table id="crowd_mileage_list" border="1" cellspacing="0" cellpadding="0" >
+    	<table id="crowd_mileage_list" border="1" cellspacing="0" cellpadding="0"  style=" text-align:center;">
         	<tr>
             	<th>Loading······</th>
             </tr>
