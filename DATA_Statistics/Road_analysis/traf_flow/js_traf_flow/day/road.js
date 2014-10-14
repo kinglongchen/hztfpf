@@ -6,7 +6,7 @@ $(function () {
 			type:"spline"
 			},
         title: {
-            text: '交通流量日变化趋势分析',
+            text: '文三路-教工路-学院路交通流量日变化情况',
             x: -20 //center
         },
 		credits:{
@@ -112,7 +112,7 @@ $(document).ready(function(e) {
 	
 	
 	
-	data_req(def_year,def_month,def_day,def_zone); 
+	data_req(def_year,def_month,def_day,def_zone,'文三路-教工路-学院路'); 
 	rtetime_data_req(def_year,def_month,def_day,def_zone);
 	rte_road_data_req(def_year,def_month,def_day,def_zone);
 });
@@ -124,7 +124,7 @@ var max_val_time_r = t_itv/120;
 
 var avg_val = -1
 
-function data_update(data) {
+function data_update(data,road_name) {
 	var max_val = -1;
 	var max_val_time=0;
 	var max_val_index=0;
@@ -194,6 +194,7 @@ function data_update(data) {
 	add_his_avg_line(60*t_itv/2)  
 	$('#chart_container').highcharts().series[0].setData(chart_data);
 	$('#chart_container').highcharts().yAxis[0].setTitle({text:'交通流量(辆/'+t_itv+'分钟）'})
+	$('#chart_container').highcharts().setTitle({text:road_name+'交通流量日变化情况'})
 	$('#pie_container').highcharts().series[0].setData(pie_data);
 	
 	//remove_max_timeband()
@@ -238,9 +239,9 @@ function rte_road_data_req(year,month,day,zone) {
 	rte_road_data_update(data)
 	}
 
-function data_req(year,month,day,zone) {
+function data_req(year,month,day,road_id,road_name) {
 	data = generate_data()
-	data_update(data)
+	data_update(data,road_name)
 	}
 
 

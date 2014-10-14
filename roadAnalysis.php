@@ -215,6 +215,7 @@ function query_road_sec() {
 	}
 function road_analysis() {
 	road_sec_id = $("#rs_slcer").val()
+	road_sec_name = $("#rs_slcer").find("option:selected").text();
 	if (road_sec_id==null) road_sec_id=1
 	date = $("#date").val()
 	if (date==''){
@@ -230,7 +231,7 @@ function road_analysis() {
 		day = parseInt(date[2])
 		}
 		
-	document.getElementById('Ana_iframe').contentWindow.data_req(year,month,day,road_sec_id)	
+	document.getElementById('Ana_iframe').contentWindow.data_req(year,month,day,road_sec_id,road_sec_name)	
 		
 	
 	}

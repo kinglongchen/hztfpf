@@ -157,7 +157,7 @@ function data_update(data) {
 	remove_his_avg_line()
 	add_his_avg_line(30)
 	
-	$('#total_val').text(parseInt(total_val)*30*24*365+"   ↓");
+	$('#total_val').text(parseInt(total_val)+"   ↓");
 	$('#traf_stability').text(parseInt(total_val/180)+"   ↓");
 	
 	$('#pre_max_val').text(parseInt(max_val-Math.random()*10)+"   ↑");
