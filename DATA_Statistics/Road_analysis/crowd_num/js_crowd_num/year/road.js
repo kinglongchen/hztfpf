@@ -101,7 +101,7 @@ $(document).ready(function(e) {
 	def_month = def_date.getMonth();
 	def_day = def_date.getDay();
 	def_zone = 1;//默认的区域编号
-	data_req(def_year,def_month,def_day,def_zone);
+	data_req(def_year,def_month,def_day,def_zone,'文三路-教工路-学院路');
 	 
 	rtetime_data_req(def_year,def_month,def_day,def_zone);
 	
@@ -112,7 +112,7 @@ var max_val_time_l = 0.5
 var max_val_time_r = 1.5;
 var avg_val = -1
 
-function data_update(data) {
+function data_update(data,road_name) {
 	var max_val = -1;
 	var max_val_time=0;
 	var total_val = 0;
@@ -170,6 +170,7 @@ function data_update(data) {
 	$('#pre_traf_stability').text(parseInt(total_val/180+Math.random()*10)+"   ↓");
 	
 	$('#chart_container').highcharts().series[0].setData(chart_data);
+	$('#chart_container').highcharts().setTitle({text:road_name+'拥堵指数年变化情况'})
 	$('#pie_container').highcharts().series[0].setData(pie_data);
 	
 	
@@ -214,9 +215,9 @@ function rte_road_data_req(year,month,day,zone) {
 	rte_road_data_update(data)
 	}
 
-function data_req(year,month,day,zone) {
+function data_req(year,month,day,zone,road_name) {
 	data = generate_data()
-	data_update(data)
+	data_update(data,road_name)
 	}
 
 band_id_pref = 'timeband'	
