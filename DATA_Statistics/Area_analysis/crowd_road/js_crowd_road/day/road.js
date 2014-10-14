@@ -28,7 +28,15 @@ $(function () {
 				'文三路',
 				'留和路',
 				'建国北路'
-				]
+				],
+				labels: {
+                rotation: -45,
+                align: 'right',
+                style: {
+                    fontSize: '10px',
+                    fontFamily: '微软雅黑'
+                }
+            }
 			},
 			
         yAxis: {
