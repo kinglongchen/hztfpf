@@ -51,7 +51,7 @@
             <option value="6">6</option>
             <option value="7">7</option>
             <option value="8">8</option>
-            <option value="9">9</option>
+            <option value="9" selected="selected">9</option>
             <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
@@ -66,8 +66,8 @@
     <div style="clear:both"></div> 
     <div>
     	<table id="crowd_mileage_list" border="1" cellspacing="0" cellpadding="0" style="text-align:center;">
-        	<tr>
-            	<th>时间</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th><th>29</th><th>30</th><th>31</th>
+        	<tr style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
+            	<th style="width:8%">时间</th><th>1  号</th><th>2  号</th><th>3  号</th><th>4  号</th><th>5  号</th><th>6  号</th><th>7  号</th><th>8  号</th><th>9  号</th><th>10号</th><th>11 号</th><th>12 号</th><th>13 号</th><th>14 号</th><th>15 号</th><th>16 号</th><th>17 号</th><th>18 号</th><th>19 号</th><th>20 号</th><th>21 号</th><th>22 号</th><th>23 号</th><th>24 号</th><th>25 号</th><th>26 号</th><th>27 号</th><th>28 号</th><th>29 号</th><th>30 号</th><th>31 号</th>
             </tr>
         </table>
     </div> 
