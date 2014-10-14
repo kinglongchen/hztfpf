@@ -189,7 +189,7 @@ a:hover{
         </div>
     </div>
 <div style="float:left;width:495px;margin-right:50px;margin:10px 0 0 10px;">
-    <div class="tb2">行程车速日分布</div>
+    <div class="tb2">交通流量年分布</div>
     <div class="glfx">
     <div id="pie_container"></div>
     </div>	

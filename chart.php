@@ -115,11 +115,11 @@ function sidebar_bcolor(obj)
                     	<a href="contrastAnalysis.php" target="showframe" id="Contrast_A" onclick="sidebar_bcolor(this)"><img src="./img/dbfx.png" /><div class="menufont">对比分析</div></a>
                     </li>
                     <li>
-                    	<a href="overallAnalysis.php" target="showframe" id="Overall_A" onclick="sidebar_bcolor(this)"><img src="./img/ztfx.png" /><div class="menufont">总体分析</div></a>
-                    </li>
-                    <li>
                     	<a href="forecastAnalysis.php" target="showframe" id="Forecast_A" onclick="sidebar_bcolor(this)"><img src="./img/ycfx.png" /><div class="menufont">预测分析</div></a>
-                    </li>   
+                    </li> 
+                    <li>
+                    	<a href="overallAnalysis.php" target="showframe" id="Overall_A" onclick="sidebar_bcolor(this)"><img src="./img/ztfx.png" /><div class="menufont">总体分析</div></a>
+                    </li>  
                  </ul>
   	    </div>
     </div>
