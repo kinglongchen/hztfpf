@@ -158,7 +158,7 @@ function data_update(data,road_name) {
 		if(v>=val_pie*4){pie_data[4][1]+=1/data.length;}
 		
 		}
-	data[max_val_index]={x:max_val_time,y:max_val,color:'#FF0000',marker:{radius:6}}
+	chart_data[max_val_index]={x:max_val_time,y:max_val,color:'#FF0000',marker:{radius:6}}
 	max_val_time_l = max_val_time-t_itv/120;
 	max_val_time_r = max_val_time+t_itv/120;
 	var h = parseInt(max_val_time_l)>=10?String(parseInt(max_val_time_l)):('0'+String(parseInt(max_val_time_l)))
@@ -188,10 +188,10 @@ function data_update(data,road_name) {
 	$('#pre_traf_stability').text(parseInt(total_val/180+Math.random()*10)+"   ↓");
 	
 	
-	remove_avg_line()
+	/*remove_avg_line()
 	add_avg_line()
 	remove_his_avg_line()
-	add_his_avg_line(60*t_itv/2)  
+	add_his_avg_line(60*t_itv/2)*/  
 	$('#chart_container').highcharts().series[0].setData(chart_data);
 	$('#chart_container').highcharts().yAxis[0].setTitle({text:'交通流量(辆/'+t_itv+'分钟）'})
 	$('#chart_container').highcharts().setTitle({text:road_name+'交通流量日变化情况'})

@@ -446,8 +446,6 @@ function vhs_tc_data_req(road_id,args) {
 		chart_obj = $('#vhs_container')
 		data_add(chart_obj,data)
 		}
-	
-	
 	}
 
 

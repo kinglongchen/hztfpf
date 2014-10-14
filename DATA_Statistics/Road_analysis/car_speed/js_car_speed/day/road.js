@@ -183,10 +183,10 @@ function data_update(data,road_name) {
 	$('#pre_total_val').text(parseInt(total_val+Math.random()*10)+"   ↓");
 	$('#pre_traf_stability').text(parseInt(total_val/180+Math.random()*10)+"   ↓");
 	
-	remove_avg_line()
+	/*remove_avg_line()
 	add_avg_line()
 	remove_his_avg_line()
-	add_his_avg_line(30)  
+	add_his_avg_line(30)  */
 	$('#chart_container').highcharts().series[0].setData(chart_data);
 	$('#chart_container').highcharts().setTitle({text:road_name+'行程车速日变化情况'})
 	//$('#chart_container').highcharts().yAxis[0].setTitle({text:'行程车速(辆/'+t_itv+'分钟）'})

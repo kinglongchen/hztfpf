@@ -80,10 +80,7 @@
                         	</table>
                      	</div> 
                     </div>
-                    
-                    
-             
-                  
+                             
             <div style="float:left;width:300px;margin:20px 0 0 0;">
                     <div class="tb1" >关联时段分析</div>
                     <div class="glfx">

@@ -155,10 +155,10 @@ function data_update(data,road_name) {
 	avg_val = total_val/data.length
 	$('#arv_val').text(parseInt(avg_val)+"  ↓");
 	
-	remove_avg_line()
+	/*remove_avg_line()
 	add_avg_line()
 	remove_his_avg_line()
-	add_his_avg_line(4.0)
+	add_his_avg_line(4.0)*/
 	
 	$('#total_val').text(parseInt(total_val)+"   ↓");
 	$('#traf_stability').text(parseInt(total_val/2)+"   ↓");

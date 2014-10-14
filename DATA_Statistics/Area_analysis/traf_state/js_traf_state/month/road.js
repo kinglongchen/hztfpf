@@ -524,6 +524,7 @@ function remove_max_timeband(chart_cont) {
 
 var avg_id_pref="avg_val_line"
 function add_avg_line(chart_cont,avg_val) {
+	return null;
 		var chart = $("#"+chart_cont).highcharts();
 		chart.yAxis[0].addPlotLine({ // mark the weekend
               	color:'#1E90FF',            //线的颜色，定义为红色
@@ -542,6 +543,7 @@ function add_avg_line(chart_cont,avg_val) {
 	}
 	
 function remove_avg_line(chart_cont) {
+	return null;
 		var chart = $("#"+chart_cont).highcharts();
 		chart.yAxis[0].removePlotLine(avg_id_pref+chart_cont+'0');
 	}
@@ -549,6 +551,7 @@ function remove_avg_line(chart_cont) {
 
 var his_avg_id_pref="his_avg_val_line"
 function add_his_avg_line(chart_cont,h_avg_val) {
+	return null;
 		var chart = $("#"+chart_cont).highcharts();
 		chart.yAxis[0].addPlotLine({ // mark the weekend
               	color:'#FF0000',            //线的颜色，定义为红色
@@ -569,6 +572,7 @@ function add_his_avg_line(chart_cont,h_avg_val) {
 	}
 	
 function remove_his_avg_line(chart_cont) {
+	return null;
 		var chart = $("#"+chart_cont).highcharts();
 		chart.yAxis[0].removePlotLine(his_avg_id_pref+chart_cont+'0');
 	}
