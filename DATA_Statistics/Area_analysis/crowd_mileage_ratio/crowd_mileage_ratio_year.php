@@ -28,7 +28,7 @@
        <span style="height:20px;margin-left:3px;">
           <select id="year_selec">
           	<option value="2014">2014</option>
-            <option value="2013">2013</option>
+            <option value="2013" >2013</option>
             <option value="2012">2012</option>
             <option value="2011">2011</option>
             <option value="2010">2010</option>
@@ -47,11 +47,17 @@
     </div>
     <div style="clear:both"></div> 
     <div>
-    	<table id="crowd_mileage_list" border="1" cellspacing="0" cellpadding="0" style="text-align:center;" >
-        	<tr>
-            	<th>Loading······</th>
-            </tr>
-        </table>
+    	<div id="div_crowd_mileage_list_head">
+            <table id="crowd_mileage_list_head" border="1" cellspacing="0" cellpadding="0" style="text-align:center;margin:15px 20px 0 20px;" >
+                <tr>
+                    <th>Loading······</th>
+                </tr>
+            </table>
+        </div>
+        <div id="div_crowd_mileage_list_body" >
+            <table id="crowd_mileage_list_body" border="1" cellspacing="0" cellpadding="0" style="text-align:center;margin:-1px 20px 0 20px;" >
+            </table>
+        </div>
     </div> 
 </body>
 </html>

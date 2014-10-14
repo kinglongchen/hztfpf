@@ -224,7 +224,7 @@ function table_get_data(d_m_y,area_id,data)
 	var tr2_str="";
 	if(d_m_y == "day")
 	{
-		tr1_str+='<tr><th>时间</th>'
+		tr1_str+='<tr style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;"><th style="width:8%">时间</th>'
 		for(i=0;i<data.length;i++)
 		{
 			if(i%2 == 0)
@@ -235,7 +235,7 @@ function table_get_data(d_m_y,area_id,data)
 	}
 	else if(d_m_y == "month")
 	{
-		tr1_str+='<tr><th>时间</th>'
+		tr1_str+='<tr style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;"><th>时间</th>'
 		for(i=0;i<data.length;i++)
 		{
 			tr1_str+='<th>'+month_display[i]+'</th>'
@@ -245,7 +245,7 @@ function table_get_data(d_m_y,area_id,data)
 	}
 	else if(d_m_y == "year")
 	{
-		tr1_str+='<tr><th>时间</th>'
+		tr1_str+='<tr style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;"><th>时间</th>'
 		for(i=0;i<data.length;i++)
 		{
 			if(i%2 == 0)
@@ -264,26 +264,39 @@ function table_get_data(d_m_y,area_id,data)
 	tr2_str+='</tr>'
 	document.getElementById("crowd_mileage_list").innerHTML+=tr2_str;
 }
+
+//定义一个全局变量保存<tr>背景标示符，如果为0，则表格背景色为白色，如果为1，则表格背景色为#e2eaf0
+var tr_bgcolor=1;
 function table_get_data_add(d_m_y,area_id,data)
 {
 	var tr2_str="";
 	area_name = zone_name_dic[parseInt(area_id)-1]
-	tr2_str+='<tr><td>'+area_name+'</td>'
+	if(tr_bgcolor==0) tr2_str+='<tr style="background-color:#e2eaf0"><td>'+area_name+'</td>'
+	else tr2_str+='<tr><td>'+area_name+'</td>'
 	if(d_m_y == 'day')
 	{
 		for(i=0;i<data.length;i++)
 		{
-			if(i%2 == 0)
-			tr2_str+='<td>'+data[i]+'%</td>'
+			if(tr_bgcolor==0)
+			{
+				if(i%2 == 0)tr2_str+='<td style="background-color:#e2eaf0">'+data[i]+'%</td>'
+			}
+			else
+			{
+				if(i%2 == 0)tr2_str+='<td>'+data[i]+'%</td>'
+			}
 		}
 	}
 	else
 	{
 		for(i=0;i<data.length;i++)
 		{
-			tr2_str+='<td>'+data[i]+'%</td>'
+			if(tr_bgcolor==0) {tr2_str+='<td style="background-color:#e2eaf0">'+data[i]+'%</td>'}
+			else {tr2_str+='<td>'+data[i]+'%</td>'}
 		}
 	}
 	tr2_str+='</tr>'
 	document.getElementById("crowd_mileage_list").innerHTML+=tr2_str;
+	if(tr_bgcolor==0)tr_bgcolor=1
+	else tr_bgcolor=0;
 }	

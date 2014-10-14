@@ -82,11 +82,23 @@ a{
 //	this.style.backgroundColor="#fff";
 //})
 window.onload=window.onresize=function(){
-var De=document.documentElement;
-//var Wh=self.innerHeight||(De && De.clientHeight)||document.body.clientHeight;
-var Ww=self.innerWidth ||(De && De.clientWidth) ||document.body.clientWidth;
-document.getElementById("Ana_iframe").style.width =(Ww-40)+"px";
-//document.getElementById("Ana_iframe").style.height=(Wh-5)+"px";
+	var iframeid=document.getElementById("Ana_iframe");
+	var De=document.documentElement;
+	//var Wh=self.innerHeight||(De && De.clientHeight)||document.body.clientHeight;
+	var Ww=self.innerWidth ||(De && De.clientWidth) ||document.body.clientWidth;
+	iframeid.style.width =(Ww-40)+"px";
+	//iframeid.style.height=(Wh-5)+"px";
+//	if(document.getElementById)
+//	{
+//		if (iframeid.contentDocument && iframeid.contentDocument.body.offsetHeight)
+//		{
+//			iframeid.height = iframeid.contentDocument.body.offsetHeight;
+//		}
+//		else if(iframeid.Document && iframeid.Document.body.scrollHeight)
+//		{
+//			iframeid.height = iframeid.Document.body.scrollHeight;
+//		}	
+//	}
 };
 
 //给Ana_iframe一个标识，在点击年月日分析得时候识别这属于哪一个板块

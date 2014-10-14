@@ -133,9 +133,9 @@ function generate_data() {
 	var max=19;
 	do{
 			v = parseInt(Math.random()*100);
-			}while(v > max && v <24)
+			}while(v < max || v >24)
 	for (var i = 0;i<10;i++) {
-		if (i<11)v-=1
+		if (i<11)v-=1.5
 		data.push([i,v]);
 		}
 	return data;
