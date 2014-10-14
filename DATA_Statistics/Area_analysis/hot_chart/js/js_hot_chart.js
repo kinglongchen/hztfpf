@@ -123,7 +123,7 @@ $(function () {
 			type:"column"
 			},
         title: {
-            text: '最拥堵的路口',
+            text: '最繁忙路口',
             x: -20 //center
         },
 		credits:{

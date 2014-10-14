@@ -76,7 +76,23 @@
    	</div>
     <div id="map" style="width: 100%;height: 500px;">
     			<div id="container" style="width:96%;height:500px;border:1px solid #000;margin:20px 0 0 20px;float:left"></div></div> 
-    <div id="chart_container" style="width:98%;"></div>      		 
+    <div id="chart_container" style="width:48%;height:290px;margin-top:10px;margin:10px 0 0 20px;float:left"></div>
+    <div style="width:48%;margin-top:10px;margin:10px 0 0 20px;float:left">
+    	<table style="width:100%;table-layout:fixed" border="1" cellpadding="0" cellspacing="0">
+        	<tr><th style="width:26%">路口名称</th><th>拥堵里程比例</th><th>日拥堵平均时长</th><th>行程车速</th><th>自由车速时间占有率</th><th>交通流量</th><th>拥堵指数</th></tr>
+            
+            <tr><td>建国北路文晖路口</td><td>76%</td><td>17</td><td>91m/s</td><td>14%</td><td>980</td><td>0.7</td></tr>
+            <tr><td>留和路小和山路口</td><td>55.5%</td><td>16</td><td>90m/s</td><td>15%</td><td>980</td><td>0.7</td></tr>
+            <tr><td>古翠路文三路口</td><td>54.7%</td><td>16</td><td>87m/s</td><td>20%</td><td>980</td><td>0.7</td></tr>
+            <tr><td>东坡路平海路口</td><td>53.7%</td><td>15</td><td>77m/s</td><td>22%</td><td>980</td><td>0.7</td></tr>
+            <tr><td>南山路钱王祠路口</td><td>53.4%</td><td>14.5</td><td>76m/s</td><td>25%</td><td>980</td><td>0.7</td></tr>
+            <tr><td>登云路余杭塘路口</td><td>50.9%</td><td>13</td><td>74m/s</td><td>27%</td><td>980</td><td>0.7</td></tr>
+            <tr><td>海关路学院路口</td><td>43%</td><td>13</td><td>73m/s</td><td>33%</td><td>980</td><td>0.7</td></tr>
+            <tr><td>教工路文三路口</td><td>42.8%</td><td>13</td><td>71m/s</td><td>34%</td><td>980</td><td>0.7</td></tr>
+            <tr><td>天目山路玉古路口</td><td>41.1%</td><td>12</td><td>70m/s</td><td>37%</td><td>980</td><td>0.7</td></tr>
+            <tr><td>文二路学院路口</td><td>40.8%</td><td>18</td><td>100m/s</td><td>10%</td><td>980</td><td>0.7</td></tr>
+        </table>
+    </div>     		 
 </div>
                        <div id="scroRight" >
                              <div id="scroLine"></div>
