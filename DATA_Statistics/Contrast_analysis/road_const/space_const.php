@@ -11,7 +11,7 @@
 <script src="../../../DATA_Statistics/Contrast_analysis/js/contrast.js"></script>
 <script src="../../../js/AMP_F.js"></script>
 <script src="../../../js/slider.js"></script>
-<script type="text/javascript" src="../../../js2/common.js"></script>
+<script type="text/javascript" src="../../../js2/common4.js"></script>
 <style>
 #trf_container,#vhs_container,#coi_container,#cot_container,#rst_container{
 	width:100%;
