@@ -176,7 +176,7 @@ function data_update(data) {
 
 function add_ctb_data(id,time,val) {
 	var ctbg = id%2==0?'ctbg1':'ctbg2';
-	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'月</td><td width="33%">'+val+'公里/小时</td></tr>';
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'</td></tr>';
 	$('#ctb').append(tr);
 	}
 function remote_ctb_data() {

@@ -22,7 +22,7 @@
   						<tr style="margin:0 10px 0 0;">
     						<th width="33%">编号</th>
     						<th width="33%">时间</th>
-                            <th	width="33%">交通流量</th>
+                            <th	width="33%">交通流量(辆)</th>
  				 		</tr>
                     </table>
                     </div>

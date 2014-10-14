@@ -197,12 +197,12 @@ function data_update(data) {
 	$('#pie_container').highcharts().series[0].setData(pie_data);
 	
 	//remove_max_timeband()
-	//add_max_timeband(max_val_time_l,max_val_time_r)
+//	add_max_timeband(max_val_time_l,max_val_time_r)
 	 
 	}
 function add_ctb_data(id,time,val) {
 	var ctbg = id%2==0?'ctbg1':'ctbg2';
-	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'辆</td></tr>';
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'</td></tr>';
 	$('#ctb').append(tr);
 	}
 function remote_ctb_data() {

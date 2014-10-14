@@ -21,7 +21,7 @@
   						<tr>
     						<th width="33%">编号</th>
     						<th width="33%">时间</th>
-                            <th	width="33%">交通流量</th>
+                            <th	width="33%">行程车速(公里/小时)</th>
  				 		</tr>
                     </table>
                </div>     

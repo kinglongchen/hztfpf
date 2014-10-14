@@ -49,8 +49,8 @@
                                 <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
                                     <tr>
                                         <th width="25%">编号</th>
-                                        <th width="25%">日</th>
-                                        <th width="25%">时</th>
+                                       <th width="25%">日期(号)</th>
+                                        <th width="25%">时间(时)</th>
                                         <th	width="25%">交通状态</th>
                                     </tr>
                                 </table>
@@ -79,8 +79,8 @@
                                 <table border="1px" style="width:100%;border-collapse:collapse;background:#3b88e7;color:#fff;">
                                     <tr>
                                         <th width="25%">编号</th>
-                                        <th width="25%">月</th>
-                                        <th width="25%">时</th>
+                                        <th width="25%">日期(号)</th>
+                                        <th width="25%">时间(时)</th>
                                         <th	width="25%">交通状态</th>
                                     </tr>
                                 </table>

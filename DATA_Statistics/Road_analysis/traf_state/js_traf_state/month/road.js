@@ -351,7 +351,9 @@ function remote_day_ctb_data() {
 
 function add_month_ctb_data(id,time,day,val) {
 	var ctbg = id%2==0?'ctbg1':'ctbg2';
-	var tr = '<tr class='+ctbg+'><td width="25%">'+id+'</td><td width="25%">'+day+'号</td><td width="25%">'+time+'点</td><td width="25%">'+val+'</td></tr>';
+	val=val>=2?'拥堵':(val>=1?'一般':'通常');
+	
+	var tr = '<tr class='+ctbg+'><td width="25%">'+id+'</td><td width="25%">'+day+'</td><td width="25%">'+time+'</td><td width="25%">'+val+'</td></tr>';
 	$('#month_ctb').append(tr);
 	}
 function remote_month_ctb_data() {
@@ -360,7 +362,8 @@ function remote_month_ctb_data() {
 
 function add_year_ctb_data(id,time,month,val) {
 	var ctbg = id%2==0?'ctbg1':'ctbg2';
-	var tr = '<tr class='+ctbg+'><td width="25%">'+id+'</td><td width="25%">'+month+'月</td><td width="25%">'+time+'点</td><td width="25%">'+val+'</td></tr>';
+	val=val>=2?'拥堵':(val>=1?'一般':'通常');
+	var tr = '<tr class='+ctbg+'><td width="25%">'+id+'</td><td width="25%">'+month+'</td><td width="25%">'+time+'</td><td width="25%">'+val+'</td></tr>';
 	$('#year_ctb').append(tr);
 	}
 function remote_year_ctb_data() {

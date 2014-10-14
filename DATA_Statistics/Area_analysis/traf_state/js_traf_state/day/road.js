@@ -380,7 +380,7 @@ function remove_traf_ctb_data() {
 	}
 function add_ctime_ctb_data(id,time,val) {
 	var ctbg = id%2==0?'ctbg1':'ctbg2';
-	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'分钟</td></tr>';
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'</td></tr>';
 	$('#ctime_ctb').append(tr);
 	}
 function remove_ctime_ctb_data() {
@@ -396,7 +396,7 @@ function remove_cnum_ctb_data() {
 	}
 function add_cspeed_ctb_data(id,time,val) {
 	var ctbg = id%2==0?'ctbg1':'ctbg2';
-	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'公里/小时</td></tr>';
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'</td></tr>';
 	$('#cspeed_ctb').append(tr);
 	}
 function remove_cspeed_ctb_data() {

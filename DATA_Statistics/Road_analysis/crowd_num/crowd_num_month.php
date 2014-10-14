@@ -42,7 +42,7 @@ a:hover{
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
   						<tr>
     						<th width="33%">编号</th>
-    						<th width="33%">时间</th>
+    						<th width="33%">日期(号)</th>
                             <th	width="33%">拥堵指数</th>
  				 		</tr>
                     </table>

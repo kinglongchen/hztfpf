@@ -97,8 +97,8 @@ $(document).ready(function(e) {
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
   						<tr style="margin:0 10px 0 0;">
     						<th width="25%">编号</th>
-                            <th width="25%">日</th>
-    						<th width="25%">时</th>
+                            <th width="25%">日期(号)</th>
+    						<th width="25%">时间（时）</th>
                             <th	width="25%">交通状态</th>
  				 		</tr>
                     </table>
@@ -124,8 +124,8 @@ $(document).ready(function(e) {
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
   						<tr style="margin:0 10px 0 0;">
     						<th width="33%">编号</th>
-    						<th width="33%">时间</th>
-                            <th	width="33%">拥堵时间</th>
+    						<th width="33%">日期(号)</th>
+                            <th	width="33%">拥堵时间(分钟)</th>
  				 		</tr>
                     </table>
                     </div>
@@ -147,7 +147,7 @@ $(document).ready(function(e) {
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
   						<tr style="margin:0 10px 0 0;">
     						<th width="33%">编号</th>
-    						<th width="33%">时间</th>
+    						<th width="33%">日期(号)</th>
                             <th	width="33%">拥堵指数</th>
  				 		</tr>
                     </table>
@@ -170,8 +170,8 @@ $(document).ready(function(e) {
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
   						<tr style="margin:0 10px 0 0;">
     						<th width="33%">编号</th>
-    						<th width="33%">时间</th>
-                            <th	width="33%">行车速度</th>
+    						<th width="33%">日期(号)</th>
+                            <th	width="33%">行车速度(公里/小时)</th>
  				 		</tr>
                     </table>
                     </div>
