@@ -7,7 +7,6 @@ ul{-webkit-padding-start: 0; -webkit-margin-after: 0;-webkit-margin-before: 0;}
 </style>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/menu_min.js"></script>
-<script type="text/javascript" src="js2/autoheight.js"></script>
 <link rel="stylesheet" type="text/css" href="css/menu-css.css">
 <link rel="stylesheet" type="text/css" href="css/choose.css">
 <script type="text/javascript">
