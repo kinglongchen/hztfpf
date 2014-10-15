@@ -24,7 +24,6 @@
 function road_analysis() {
 	zone_id = $("#zone_slcer").val()
 	zone_name = $("#zone_slcer").find("option:selected").text();
-	alert(zone_name);
 	if (zone_id==null) zone_id=1
 	year = $("#year_selec").val()
 	data_req(year,0,1,zone_id,zone_name)

@@ -304,7 +304,7 @@ function ct_data_update(data,zone_name) {
 	remove_his_avg_line('chart_crowd_time');
 	add_his_avg_line('chart_crowd_time',10);
 	//$('#chart_crowd_num').highcharts().series[0].setData(chart_data);
-	$('#chart_crowd_time').highcharts().series[0].setData(chart_data);
+	$('#chart_crowd_time').highcharts().series[0].setData(chart_data,null,null,false);
 	$('#chart_crowd_time').highcharts().setTitle({text:zone_name+'拥堵时间月变化情况'})
 	//$('#chart_car_speed').highcharts().series[0].setData(chart_data);
 	}
@@ -339,7 +339,7 @@ function ci_data_update(data,zone_name) {
 	add_avg_line("chart_crowd_num",avg_val)
 	remove_his_avg_line("chart_crowd_num")
 	add_his_avg_line("chart_crowd_num",4.5)  
-	$('#chart_crowd_num').highcharts().series[0].setData(chart_data);
+	$('#chart_crowd_num').highcharts().series[0].setData(chart_data,null,null,false);
 	
 	$('#chart_crowd_num').highcharts().setTitle({text:zone_name+'拥堵指数月变化情况'})
 	
@@ -377,13 +377,10 @@ function speed_data_update(data,zone_name) {
 	add_avg_line('chart_car_speed',avg_val)
 	remove_his_avg_line('chart_car_speed')
 	add_his_avg_line('chart_car_speed',30)  
-	$('#chart_car_speed').highcharts().series[0].setData(chart_data);
-	
+	$('#chart_car_speed').highcharts().series[0].setData(chart_data,null,null,false);
 	$('#chart_car_speed').highcharts().setTitle({text:zone_name+'行程车速月变化情况'})
 	//remove_max_timeband("chart_car_speed")
-//	add_max_timeband("chart_car_speed",max_val_time_l,max_val_time_r)
-	
-	
+	//add_max_timeband("chart_car_speed",max_val_time_l,max_val_time_r)
 	}
 
 

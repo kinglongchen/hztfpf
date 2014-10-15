@@ -129,7 +129,7 @@ function data_update(data,road_name) {
 	var max_val_time=0;
 	var max_val_index=0;
 	var total_val = 0;
-	chart_data = data
+	var chart_data = data
 	var val_pie = t_itv*60/5;
 	pie_data = new Array();
 	pie_data.push(new Array("小于"+val_pie+"辆/"+t_itv+"分钟",0));
@@ -192,7 +192,7 @@ function data_update(data,road_name) {
 	add_avg_line()
 	remove_his_avg_line()
 	add_his_avg_line(60*t_itv/2)*/  
-	$('#chart_container').highcharts().series[0].setData(chart_data);
+	$('#chart_container').highcharts().series[0].setData(chart_data,null,null,false);
 	$('#chart_container').highcharts().yAxis[0].setTitle({text:'交通流量(辆/'+t_itv+'分钟）'})
 	$('#chart_container').highcharts().setTitle({text:road_name+'交通流量日变化情况'})
 	$('#pie_container').highcharts().series[0].setData(pie_data);
@@ -240,7 +240,7 @@ function rte_road_data_req(year,month,day,zone) {
 	}
 
 function data_req(year,month,day,road_id,road_name) {
-	data = generate_data()
+	var data = generate_data()
 	data_update(data,road_name)
 	}
 
@@ -363,8 +363,8 @@ function remove_his_avg_line() {
 
 //test funciton
 function generate_data() {
-	dc = (24*60)/t_itv
-	data = new Array()
+	var dc = (24*60)/t_itv
+	var data = new Array()
 	for (var i = 0;i<dc;i++) {
 		t = i*t_itv/60;
 		v = Math.random()*60*t_itv;

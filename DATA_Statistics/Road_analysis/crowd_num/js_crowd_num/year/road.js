@@ -169,7 +169,7 @@ function data_update(data,road_name) {
 	$('#pre_total_val').text(parseInt(total_val+Math.random()*10)+"   ↓");
 	$('#pre_traf_stability').text(parseInt(total_val/180+Math.random()*10)+"   ↓");
 	
-	$('#chart_container').highcharts().series[0].setData(chart_data);
+	$('#chart_container').highcharts().series[0].setData(chart_data,null,null,false);
 	$('#chart_container').highcharts().setTitle({text:road_name+'拥堵指数年变化情况'})
 	$('#pie_container').highcharts().series[0].setData(pie_data);
 	

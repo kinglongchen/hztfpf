@@ -187,7 +187,7 @@ function data_update(data,road_name) {
 	add_avg_line()
 	remove_his_avg_line()
 	add_his_avg_line(30)  */
-	$('#chart_container').highcharts().series[0].setData(chart_data);
+	$('#chart_container').highcharts().series[0].setData(chart_data,null,null,false);
 	$('#chart_container').highcharts().setTitle({text:road_name+'行程车速日变化情况'})
 	//$('#chart_container').highcharts().yAxis[0].setTitle({text:'行程车速(辆/'+t_itv+'分钟）'})
 	$('#pie_container').highcharts().series[0].setData(pie_data);

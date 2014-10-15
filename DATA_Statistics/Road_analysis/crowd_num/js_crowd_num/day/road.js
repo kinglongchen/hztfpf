@@ -186,7 +186,7 @@ function data_update(data,road_name) {
 	add_avg_line()
 	remove_his_avg_line()
 	add_his_avg_line(4.5)  */
-	$('#chart_container').highcharts().series[0].setData(chart_data);
+	$('#chart_container').highcharts().series[0].setData(chart_data,null,null,false);
 	$('#chart_container').highcharts().setTitle({text:road_name+'拥堵指数日变化情况'})
 	//$('#chart_container').highcharts().yAxis[0].setTitle({text:'交通流量(辆/'+t_itv+'分钟）'})
 	$('#pie_container').highcharts().series[0].setData(pie_data);
