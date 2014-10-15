@@ -7,9 +7,9 @@ ul{-webkit-padding-start: 0; -webkit-margin-after: 0;-webkit-margin-before: 0;}
 </style>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/menu_min.js"></script>
+<script type="text/javascript" src="js2/autoheight.js"></script>
 <link rel="stylesheet" type="text/css" href="css/menu-css.css">
 <link rel="stylesheet" type="text/css" href="css/choose.css">
-
 <script type="text/javascript">
 $(document).ready(function (){ 
 
@@ -101,7 +101,7 @@ function sidebar_bcolor(obj)
 
 
     
-    <div id="sideMenu" style="width:100px;height:826px; overflow:hidden;border-right:#CCC 1px solid;float:left;background:#1e62a9;">
+    <div id="sideMenu" style="width:100px;border-right:#CCC 1px solid;float:left;background:#1e62a9;">
         <div class="menu" style="width:100%;">
         	<div style="height:20px;"></div>
                  <ul>
@@ -126,6 +126,21 @@ function sidebar_bcolor(obj)
     
      
       <iframe id="ifra" src="roadAnalysis.php" name="showframe" style="border:0;margin:0 0 0 0;"></iframe>
-
+<script type="text/javascript">
+function autoHeight(){	
+	if (window.innerHeight){//FF
+		nowHeight = window.innerHeight;
+	}else{
+		nowHeight = document.documentElement.clientHeight;
+	}
+		var jianHeight = 60;
+	if(nowHeight > jianHeight){
+		document.getElementById('sideMenu').style.height = nowHeight - 102 + 'px';
+	}else{
+		document.getElementById('sideMenu').style.height = jianHeight + 'px';
+	}
+	}
+    autoHeight();
+</script>
 </body>
 </html>
