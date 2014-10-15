@@ -122,7 +122,7 @@ function get_now()
     </form>
 <div style="width:100%"> 
     <div id="map_container" style="border:1px solid #000;margin:10px 0 0 20px;width:58%;height:460px;float:left;"></div>
-	<div style="width:36.9%;border:1px solid #000;margin:10px 0 0 20px;float:left;">
+	<div style="width:36.9%;border:1px solid #000;margin:10px 0 0 10px;float:left;">
         <div id="chart_container" style="height:250px"></div>
         <div id="crowd_container" style="height:210px"></div>
 	</div>
