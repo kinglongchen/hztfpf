@@ -11,7 +11,7 @@
 <script src="js_traf_flow/day/road.js"></script>
 </head>
 
-<body style=" font-size:14px; color:#414141; overflow-x:auto;margin:0px; font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;" >
+<body style=" font-size:14px; color:#414141; overflow-x:auto;overflow-y:hidden;margin:0px; font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;" >
       <div style="float:left;height:100%;width:98%;overflow:hidden;">      
             <div class="tabs" style="background:#f0f8fe;"> 
                     <div id="chart_container" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>

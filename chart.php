@@ -26,7 +26,7 @@ var de=document.documentElement;
 var wh=self.innerHeight||(de && de.clientHeight)||document.body.clientHeight;
 var ww=self.innerWidth ||(de && de.clientWidth) ||document.body.clientWidth;
 document.getElementById("ifra").style.width =(ww-101)+"px";
-document.getElementById("ifra").style.height=(wh-100)+"px";
+document.getElementById("ifra").style.height=(wh-102)+"px";
 };
 
 //增加一个对sidebar改变背景色的函数
