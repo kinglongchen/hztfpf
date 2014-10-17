@@ -28,8 +28,7 @@
 <body>
 <div id="scroll">
     <div id="scroLeft">
-         		
-				<div style="width:96%;height:40px;border-bottom:1px solid #ccc;float:left; margin:10px 0 0 20px;">
+				<div style="width:96%;height:40px;border:2px solid #0150a2;float:left; margin:10px 0 0 20px;">
      		 <div style="float:left;margin-right:50px;margin:7px 0 10px 20px;">
       <form>
       <input type="text" id="sliderValue" readonly name="sliderValue"  size="4" />
@@ -77,7 +76,7 @@
     <div id="map" style="width: 100%;height: 500px;">
     			<div id="container" style="width:96%;height:500px;border:1px solid #000;margin:20px 0 0 20px;float:left"></div></div> 
     <div id="chart_container" style="width:48%;height:290px;margin-top:10px;margin:10px 0 0 20px;float:left"></div>
-    <div style="width:48%;margin-top:10px;margin:10px 0 0 20px;float:left">
+    <div style="width:46.5%;margin-top:10px;margin:10px 0 0 20px;float:left">
     	<table style="width:100%;table-layout:fixed" border="1" cellpadding="0" cellspacing="0">
         	<tr style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;"><th style="width:26%">路口名称</th><th>拥堵里程比例</th><th>日拥堵平均时长</th><th>行程车速</th><th>自由车速时间占有率</th><th>交通流量</th><th>拥堵指数</th></tr>
             
