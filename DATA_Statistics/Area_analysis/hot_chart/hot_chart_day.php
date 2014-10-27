@@ -73,10 +73,11 @@
           </span>
           </div>
    	</div>
-    <div id="map" style="width: 100%;height: 500px;">
-    			<div id="container" style="width:96%;height:500px;border:1px solid #000;margin:20px 0 0 20px;float:left"></div></div> 
-    <div id="chart_container" style="width:48%;height:290px;margin-top:10px;margin:10px 0 0 20px;float:left"></div>
-    <div style="width:46.5%;margin-top:10px;margin:10px 0 0 20px;float:left">
+    <div id="map" style="width: 63%;float:left;">
+    	<div id="container" style="width:96%;height:795px;border:1px solid #000;margin:20px 0 0 20px;float:left"></div>
+    </div> 
+    <div id="chart_container" style="width:35%;height:290px;margin-top:10px;margin:10px 0 0 20px;float:left"></div>
+    <div style="width:35%;margin-top:10px;margin:10px 0 0 20px;float:left">
     	<table style="width:100%;table-layout:fixed" border="1" cellpadding="0" cellspacing="0">
         	<tr style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;"><th style="width:26%">路口名称</th><th>拥堵里程比例</th><th>日拥堵平均时长</th><th>行程车速</th><th>自由车速时间占有率</th><th>交通流量</th><th>拥堵指数</th></tr>
             
