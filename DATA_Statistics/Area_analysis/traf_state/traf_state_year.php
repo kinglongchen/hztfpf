@@ -72,7 +72,8 @@ $(document).ready(function(e) {
       <button type="button" onclick="road_analysis()">确定</button>
     </form>
 <div> 
-    <div id="chart_traf_flow" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
+    <div>
+    	<div id="chart_traf_flow" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
                     <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
                     <div style="margin-right:17px;">
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
@@ -84,7 +85,7 @@ $(document).ready(function(e) {
  				 		</tr>
                     </table>
                     </div>
-                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px;border-bottom:1px solid #0D60B6;">
                     	<table id ='traf_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="25%">Loading</td>
@@ -96,12 +97,14 @@ $(document).ready(function(e) {
 					</div>
                     
 					</div>
-                    <!--
-                    <div style="clear:both"></div>-->
+                </div>
+                <div style="clear:both"></div>
     
    
-    <div id="chart_crowd_time" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
+    <div style="margin-top:20px;">
+    	<div id="chart_crowd_time" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
                     <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
+                    <div style="margin-right:17px;">
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
   						<tr style="margin:0 10px 0 0;">
     						<th width="33%">编号</th>
@@ -109,7 +112,8 @@ $(document).ready(function(e) {
                             <th	width="33%">拥堵时间(分钟)</th>
  				 		</tr>
                     </table>
-                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
+                    </div>
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px;border-bottom:1px solid #0D60B6;">
                     	<table id ='ctime_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="33%">Loading</td>
@@ -120,9 +124,13 @@ $(document).ready(function(e) {
 					</div>
                     
 					</div>
+                </div>
+                <div style="clear:both"></div>
 
-    <div id="chart_crowd_num" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
+    <div style="margin-top:20px;">
+    	<div id="chart_crowd_num" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
                     <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
+                    <div style="margin-right:17px;">
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
   						<tr style="margin:0 10px 0 0;">
     						<th width="33%">编号</th>
@@ -130,7 +138,8 @@ $(document).ready(function(e) {
                             <th	width="33%">拥堵指数</th>
  				 		</tr>
                     </table>
-                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
+                    </div>
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px;border-bottom:1px solid #0D60B6;">
                     	<table id ='cnum_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="33%">Loading</td>
@@ -141,17 +150,22 @@ $(document).ready(function(e) {
 					</div>
                     
 					</div>
+                </div>
+                <div style="clear:both"></div>
     
+    <div style="margin-top:20px;">
     <div id="chart_car_speed" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
                     <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
+                    <div style="margin-right:17px;">
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
   						<tr style="margin:0 10px 0 0;">
     						<th width="33%">编号</th>
     						<th width="33%">月份(月)</th>
-                            <th	width="33%">行车速度(公里/小时)</th>
+                            <th	width="33%">行车速度(km/h)</th>
  				 		</tr>
                     </table>
-                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
+                    </div>
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px;border-bottom:1px solid #0D60B6;">
                     	<table id ='cspeed_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="33%">Loading</td>
@@ -162,6 +176,8 @@ $(document).ready(function(e) {
 					</div>
                     
 					</div>
+                </div>
+                <div style="clear:both"></div>
     
 </div>
 </div>
