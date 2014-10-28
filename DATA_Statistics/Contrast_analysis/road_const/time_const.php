@@ -266,7 +266,7 @@ function get_now()
               </span>
               
               <span style="margin:19px 0 0 40px;float:left;">
-              	选择对比路段：<select id="rs_slcer" onchange="road_slec_change()">
+              	选择路段：<select id="rs_slcer" onchange="road_slec_change()">
                 	<option value=8>文三路-教工路-学院路</option>>
                 </select>
               </span>

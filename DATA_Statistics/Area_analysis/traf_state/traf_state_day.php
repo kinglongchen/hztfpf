@@ -71,8 +71,9 @@ function get_now()
 <body>
  <div id="scroll">
                        <div id="scroLeft">
-    <form style="margin:10px 0 5px 20px;">
-      区域选择：
+    <div style="width:40%;float:left;">
+      <form style="margin:10px 0 5px 20px;">
+      区域选择： 
       <span style="height:20px;margin:0 30px 0 -13px;">
           <select id = "zone_slcer" >
               <option value="1">西湖区</option>
@@ -90,8 +91,10 @@ function get_now()
       </span>
       <button type="button" onclick="road_analysis()">确定</button>
       
-    </form>
-    <span id = 't_itvsetter' style="margin:10px 0 0 20px;float:left;">
+      </form>
+    </div>
+    <div style="width:53%;float:left;">
+    	<span id = 't_itvsetter' style="margin:10px 0 0 20px;float:left;">
         时间间隔：
         <input class='titvcls' checked="checked" type="radio" name="t_itv" value=5 /> 5分钟
         <input class='titvcls' type="radio" name="t_itv" value=10 /> 10分钟
@@ -101,9 +104,12 @@ function get_now()
       <span id = 'trctl_ck_span' style="margin:10px 0 0 20px;float:left;">
         <input id = 'trctl_ck' type="checkbox" >限行显示</input>
       </span>
+    </div>
       <div style="clear:both"></div>
+<!--<div style="background-color:#F0F8FE;border:1px solid #0150A2;">此处原本是添加背景色-->
 <div> 
-    <div id="chart_traf_flow" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
+	<div>
+    	<div id="chart_traf_flow" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
                     <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
                     <div style="margin-right:17px;">
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
@@ -114,7 +120,7 @@ function get_now()
  				 		</tr>
                     </table>
                     </div>
-                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px;border-bottom:1px solid #0D60B6;">
                     	<table id ='traf_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="33%">Loading</td>
@@ -125,11 +131,12 @@ function get_now()
 					</div>
                     
 					</div>
-                    <!--
-                    <div style="clear:both"></div>-->
+                </div>
+                    
+                <div style="clear:both"></div>
     
-   
-    <div id="chart_crowd_time" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
+	<div style="margin-top:20px;">   
+    	<div id="chart_crowd_time" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
                     <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
                     <div style="margin-right:17px;">
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
@@ -140,7 +147,7 @@ function get_now()
  				 		</tr>
                     </table>
                     </div>
-                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px;border-bottom:1px solid #0D60B6;">
                     	<table id ='ctime_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="33%">Loading</td>
@@ -151,8 +158,11 @@ function get_now()
 					</div>
                     
 					</div>
+                </div>
+                <div style="clear:both"></div>
 
-    <div id="chart_crowd_num" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
+	<div style="margin-top:20px;">
+    	<div id="chart_crowd_num" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
                     <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
                     <div style="margin-right:17px;">
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
@@ -163,7 +173,7 @@ function get_now()
  				 		</tr>
                     </table>
                     </div>
-                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px;border-bottom:1px solid #0D60B6;">
                     	<table id ='cnum_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="33%">Loading</td>
@@ -174,19 +184,22 @@ function get_now()
 					</div>
                     
 					</div>
+                </div>
+                <div style="clear:both"></div>
     
-    <div id="chart_car_speed" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
+	<div style="margin-top:20px;">    
+    	<div id="chart_car_speed" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
                     <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
                     <div style="margin-right:17px;">
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
   						<tr style="margin:0 10px 0 0;">
     						<th width="33%">编号</th>
     						<th width="33%">时间</th>
-                            <th	width="33%">行车速度(公里/小时)</th>
+                            <th	width="33%">行车速度(km/h)</th>
  				 		</tr>
                     </table>
                     </div>
-                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px">
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 230px;border-bottom:1px solid #0D60B6;">
                     	<table id ='cspeed_ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
   							<tr>
     							<td width="33%">Loading</td>
@@ -197,6 +210,7 @@ function get_now()
 					</div>
                     
 					</div>
+                </div>
     
 </div>
 </div>

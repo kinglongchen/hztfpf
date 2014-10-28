@@ -16,13 +16,13 @@
 <body>
 <div id="scroll">
                        <div id="scroLeft">
-   <div id="map">
-    <div id="map_container" style="border:1px solid #000;width:98%;height:500px;margin:10px 0 5px 20px;"></div>
+    <div id="map" style="float:left;width:63%;">
+        <div id="map_container" style="border:1px solid #000;width:98%;height:515px;margin:20px 0 5px 20px;"></div>
     </div>
-    <div id="chart_container" style="width:48%;height:260px;margin-top:10px;margin:10px 0 0 20px;float:left"></div>
-    <div style="width:48%;margin-top:10px;margin:10px 0 0 20px;float:left">
-    	<table style="width:100%;table-layout:fixed" border="1" cellpadding="0" cellspacing="0">
-        	<tr style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;"><th>道路名称</th><th>拥堵里程比例</th><th>日拥堵平均时长</th><th>行程车速</th><th>自由车速时间占有率</th><th>交通流量</th><th>拥堵指数</th></tr>
+    <div id="chart_container" style="width:35%;height:260px;margin-top:10px;margin:10px 0 0 20px;float:left"></div>
+    <div style="width:35%;margin-top:10px;margin:10px 0 0 20px;float:left">
+        <table style="width:100%;table-layout:fixed" border="1" cellpadding="0" cellspacing="0">
+            <tr style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;"><th style="width:20%">道路名称</th><th>拥堵里程比例</th><th>日拥堵平均时长</th><th>行程车速</th><th>自由车速时间占有率</th><th>交通流量</th><th>拥堵指数</th></tr>
             <tr><td>学院路</td><td>78.8%</td><td>18</td><td>100m/s</td><td>10%</td><td>980</td><td>0.7</td></tr>
             <tr><td>玉古路</td><td>76%</td><td>17</td><td>91m/s</td><td>14%</td><td>980</td><td>0.7</td></tr>
             <tr><td>教工路</td><td>55.5%</td><td>16</td><td>90m/s</td><td>15%</td><td>980</td><td>0.7</td></tr>

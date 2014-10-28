@@ -169,7 +169,7 @@ function day_month_year(obj)
         </div>
         <div style="clear:both"></div> 
         -->
-        <iframe id="Ana_iframe" class="7" src="DATA_Statistics/Area_analysis/traf_state/traf_state_day.php" name="anaframe" height="810" style="border:0;margin:0 0 0 0;"></iframe>
+        <iframe id="Ana_iframe" class="7" src="DATA_Statistics/Area_analysis/traf_state/traf_state_day.php" name="anaframe" height="465" style="border:0;margin:0 0 0 0;"></iframe>
     </div>   <!--到这里为止是下面最大框框的结束-->
 </div>
 </body>

@@ -248,7 +248,7 @@ function get_now()
         <div>
               <form>
               <span style="margin:19px 0 0 40px;float:left;">
-              	选择对比区域：<select id="rs_slcer" onchange = "chart_data_remove()">
+              	选择区域：<select id="rs_slcer" onchange = "chart_data_remove()">
                 		<option value="1">西湖区</option>
                         <option value="2">上城区</option>
                         <option value="3">滨江区</option>
