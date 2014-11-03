@@ -2,12 +2,15 @@
 $(function () {
     $('#chart_container').highcharts({
 		chart: {
-			type:"spline"
+			type:"column"
 			},
         title: {
             text: '拥堵指数日趋势分析',
             x: -20 //center
         },
+		credits:{
+			enabled:false
+			},
 		xAxis: {
 			allowDecimals:false,
 			labels:{
@@ -15,27 +18,6 @@ $(function () {
 					return this.value+':00';
 					}
 				},
-			/*plotLines:[{
-                color:'red',            //线的颜色，定义为红色
-                dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:7.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
-                width:2,                //标示线的宽度，2px
-            },{
-				color:'red',            //线的颜色，定义为红色
-                dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:8.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
-                width:2,                //标示线的宽度，2
-				},{
-                color:'red',            //线的颜色，定义为红色
-                dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:17.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
-                width:2,                //标示线的宽度，2px
-            },{
-				color:'red',            //线的颜色，定义为红色
-                dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:18.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
-                width:2,                //标示线的宽度，2
-				}]*/
 			},
         yAxis: {
             title: {
@@ -48,12 +30,20 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
+			formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>拥堵指数：'+this.y;
+				}
         },
         legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle',
+            verticalAlign: 'top',
             borderWidth: 0
         },
         series: [{
@@ -119,7 +109,7 @@ $(document).ready(function(e) {
 	
 	
 	
-	data_req(def_year,def_month,def_day,def_zone); 
+	data_req(def_year,def_month,def_day,def_zone,'文三路-教工路-学院路'); 
 	rtetime_data_req(def_year,def_month,def_day,def_zone);
 	rte_road_data_req(def_year,def_month,def_day,def_zone);
 });
@@ -131,10 +121,11 @@ var max_val_time_r = t_itv/120;
 
 var avg_val = -1
 
-function data_update(data) {
+function data_update(data,road_name) {
 	var max_val = -1;
 	var max_val_time=0;
 	var total_val = 0;
+	var max_val_index=0;
 	
 	chart_data = data;
 	pie_data = new Array();
@@ -143,13 +134,17 @@ function data_update(data) {
 	pie_data.push(new Array("4-6",0));
 	pie_data.push(new Array("4-8",0));
 	pie_data.push(new Array("大于>8",0));
+	remote_ctb_data()//删除ctb表格中的内容
+	
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
 		t = tv[0];
 		v = tv[1];
+		add_ctb_data(i,FloatToTime(t),v)
 		if(v>max_val){
 			max_val = v;
-			max_val_time = t; 
+			max_val_time = t;
+			max_val_index = i; 
 			}
 		total_val+=v;
 		
@@ -161,6 +156,7 @@ function data_update(data) {
 		if(v>=8){pie_data[4][1]+=1/data.length;}
 		
 		}
+	data[max_val_index]={x:max_val_time,y:max_val,color:'#FF0000',marker:{radius:6}}
 	max_val_time_l = max_val_time-t_itv/120;
 	max_val_time_r = max_val_time+t_itv/120;
 	var h = parseInt(max_val_time_l)>=10?String(parseInt(max_val_time_l)):('0'+String(parseInt(max_val_time_l)))
@@ -179,17 +175,33 @@ function data_update(data) {
 	$('#total_val').text(parseInt(total_val)+"   ↓");
 	//交通稳定度暂时没数据，用的是total_val/180
 	$('#traf_stability').text(parseInt(total_val/2)+"   ↓"); 
-	remove_avg_line()
+	
+	$('#pre_max_val').text(parseInt(max_val-Math.random()*10)+"   ↑");
+	$('#pre_time').text(max_val_time_str);
+	$('#pre_arv_val').text(parseInt(avg_val+Math.random()*10)+"  ↓");
+	$('#pre_total_val').text(parseInt(total_val+Math.random()*10)+"   ↓");
+	$('#pre_traf_stability').text(parseInt(total_val/180+Math.random()*10)+"   ↓");
+	
+	/*remove_avg_line()
 	add_avg_line()
 	remove_his_avg_line()
-	add_his_avg_line(4.5)  
-	$('#chart_container').highcharts().series[0].setData(chart_data);
+	add_his_avg_line(4.5)  */
+	$('#chart_container').highcharts().series[0].setData(chart_data,null,null,false);
+	$('#chart_container').highcharts().setTitle({text:road_name+'拥堵指数日变化情况'})
 	//$('#chart_container').highcharts().yAxis[0].setTitle({text:'交通流量(辆/'+t_itv+'分钟）'})
 	$('#pie_container').highcharts().series[0].setData(pie_data);
 	
-	remove_max_timeband()
-	add_max_timeband(max_val_time_l,max_val_time_r)
+	//remove_max_timeband()
+//	add_max_timeband(max_val_time_l,max_val_time_r)
 	 
+	}
+	function add_ctb_data(id,time,val) {
+	var ctbg = id%2==0?'ctbg1':'ctbg2';
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'</td></tr>';
+	$('#ctb').append(tr);
+	}
+function remote_ctb_data() {
+	$('#ctb').empty();
 	}
 function rtetime_data_update(data) {
 	$('#rtetime_max_val').text(data[1])
@@ -221,9 +233,9 @@ function rte_road_data_req(year,month,day,zone) {
 	rte_road_data_update(data)
 	}
 
-function data_req(year,month,day,zone) {
+function data_req(year,month,day,zone,road_name) {
 	data = generate_data()
-	data_update(data)
+	data_update(data,road_name)
 	}
 
 
@@ -239,7 +251,7 @@ function add_tfctl_line() {
 	chart.xAxis[0].addPlotLine({
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:7.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:7,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
 				id:pline_id_pref+'1'
             });
@@ -255,7 +267,7 @@ function add_tfctl_line() {
 	chart.xAxis[0].addPlotLine({
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:17.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:17,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
 				id:pline_id_pref+'3'
             });
@@ -351,7 +363,7 @@ function generate_data() {
 		t = i*t_itv/60;
 		v = Math.random()*10;
 		
-		data.push([t,v]);
+		data.push([t,Math.round(v*100)/100]);
 		}
 	return data;
 	}

@@ -64,8 +64,8 @@ $(function () {
 
         tooltip: {
             formatter: function () {
-                return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> sold <br><b>' +
-                    this.point.value + '</b> items on <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>';
+                return '时间：<b>' + this.point.y+'号'+this.point.x+'时' + '</b><br>交通状态值：<b>' +
+                    this.point.value + '</b>';
             }
         },
 
@@ -152,8 +152,8 @@ $(function () {
 
         tooltip: {
             formatter: function () {
-                return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> sold <br><b>' +
-                    this.point.value + '</b> items on <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>';
+               return '时间：<b>' + this.point.y+'月'+this.point.x+'时' + '</b><br>交通状态值：<b>' +
+                    this.point.value + '</b>';
             }
         },
 
@@ -183,6 +183,9 @@ $(function () {
         title: {
             text: '交通状态日趋势分析'
         },
+		credits:{
+			enabled:false
+			},
         xAxis: {
 			startOnTick: false,
             endOnTick: false,
@@ -197,7 +200,7 @@ $(function () {
             }
         },
         tooltip: {
-            pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br>',
+            pointFormat: '<span style="color:{series.color}">{series.name}</span>: {point.percentage:.0f}%<br>',
             shared: true
         },
         plotOptions: {
@@ -260,7 +263,7 @@ function setYCateg(month) {
 	}
 	
 	
-function update_data(data) {
+function update_data(data,road_name) {
 	
 	/*var max_val = -1;
 	var max_val_time=0;
@@ -270,6 +273,34 @@ function update_data(data) {
 	chart_day_data = data[0];
 	chart_month_data = data[1];
 	chart_year_data = data[2];
+	
+	remote_day_ctb_data()
+	remote_month_ctb_data()
+	remote_year_ctb_data()
+	
+	for (var i =0;i<chart_day_data[0].length;i++) {
+		var r = chart_day_data[0][i];
+		var y = chart_day_data[1][i];
+		var g = chart_day_data[2][i];
+		var a = g+y+r;
+		add_day_ctb_data(i,i+1,new Array(r/a,y/a,g/a));
+		}
+	
+	for (var i = 0;i<chart_month_data.length;i++) {
+		var time = chart_month_data[i][0];
+		var day = chart_month_data[i][1];
+		var val = chart_month_data[i][2];
+		add_month_ctb_data(i,time,day,val)
+		}
+		
+	for (var i = 0;i<chart_year_data.length;i++) {
+		var time = chart_year_data[i][0];
+		var month = chart_year_data[i][1];
+		var val = chart_year_data[i][2];
+		add_year_ctb_data(i,time,month,val)
+		}	
+		
+		
 	/*pie_data = new Array();
 	pie_data.push(new Array("状态为1",0));
 	pie_data.push(new Array("状态为2",0));
@@ -295,19 +326,57 @@ function update_data(data) {
 //	$('#max_val').text(String(max_val));
 //	$('#time').text(String(max_time));
 //	$('#arv_val').text(String(avg_val/24));
-	//$('#total_val').text(String(total_val)
+	//$('#total_val').text(String(total_val)$('#chart_container').highcharts().setTitle({text:road_name+'交通流量日变化情况'})
 	$('#chart_month_container').highcharts().series[0].setData(chart_month_data);
+	$('#chart_month_container').highcharts().setTitle({text:road_name+'交通状态月变化情况'});
 	$('#chart_year_container').highcharts().series[0].setData(chart_year_data);
-	
+	$('#chart_year_container').highcharts().setTitle({text:road_name+'交通状态年变化情况'});
 	$('#chart_day_container').highcharts().series[0].setData(chart_day_data[0]);
 	$('#chart_day_container').highcharts().series[1].setData(chart_day_data[1]);
 	$('#chart_day_container').highcharts().series[2].setData(chart_day_data[2]);
-	$('#pie_container').highcharts().series[0].setData(pie_data);
+	$('#chart_day_container').highcharts().setTitle({text:road_name+'交通状态日变化情况'});
+	//$('#pie_container').highcharts().series[0].setData(pie_data);
 	}
 	
-function data_req(year,month,data) {
+	
+function add_day_ctb_data(id,time,val) {
+	var ctbg = id%2==0?'ctbg1':'ctbg2';
+	val[0]=Math.round(val[0]*10000)/100
+	val[1]=Math.round(val[1]*10000)/100
+	val[2]=Math.round(val[2]*10000)/100
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">拥堵：'+val[0]+'%<br>一般：'+val[1]+'%<br>通常：'+val[2]+'%</td></tr>';
+	$('#day_ctb').append(tr);
+	}
+function remote_day_ctb_data() {
+	$('#day_ctb').empty();
+	}
+
+
+function add_month_ctb_data(id,time,day,val) {
+	var ctbg = id%2==0?'ctbg1':'ctbg2';
+	val=val>=2?'拥堵':(val>=1?'一般':'通常');
+	
+	var tr = '<tr class='+ctbg+'><td width="25%">'+id+'</td><td width="25%">'+day+'</td><td width="25%">'+time+'</td><td width="25%">'+val+'</td></tr>';
+	$('#month_ctb').append(tr);
+	}
+function remote_month_ctb_data() {
+	$('#month_ctb').empty();
+	}
+
+function add_year_ctb_data(id,time,month,val) {
+	var ctbg = id%2==0?'ctbg1':'ctbg2';
+	val=val>=2?'拥堵':(val>=1?'一般':'通常');
+	var tr = '<tr class='+ctbg+'><td width="25%">'+id+'</td><td width="25%">'+month+'</td><td width="25%">'+time+'</td><td width="25%">'+val+'</td></tr>';
+	$('#year_ctb').append(tr);
+	}
+function remote_year_ctb_data() {
+	$('#year_ctb').empty();
+	}
+	
+	
+function data_req(year,month,data,road_id,road_name) {
 	data = data_generate(year,month,data)
-	update_data(data)
+	update_data(data,road_name)
 	}
 	
 $(document).ready(function(e) {
@@ -317,8 +386,8 @@ $(document).ready(function(e) {
 	def_year = def_date.getYear();
 	def_month = def_date.getMonth();
 	def_day = def_date.getDay();
-	def_zone = 1;//默认的区域编号
-	data_req(def_year,def_month,def_day,def_zone); 
+	road_id = 1;//默认的区域编号
+	data_req(def_year,def_month,def_day,road_id,'文三路-教工路-学院路'); 
 //	history_req(def_year,def_month,def_day,def_zone)
 //	hot_data_req(def_year,def_month,def_day,def_zone)	
 });

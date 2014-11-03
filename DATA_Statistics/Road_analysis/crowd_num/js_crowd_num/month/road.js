@@ -2,12 +2,18 @@
 $(function () {
     $('#chart_container').highcharts({
 		chart: {
-			type:"spline"
+			type:"column"
 			},
         title: {
             text: '拥堵指数月趋势分析',
             x: -20 //center
         },
+		credits:{
+			enabled:false
+			},
+		xAxis: {
+			allowDecimals:false
+			},
         yAxis: {
             title: {
                 text: '拥堵指数'
@@ -18,13 +24,15 @@ $(function () {
                 color: '#808080'
             }]
         },
-        tooltip: {
-            valueSuffix: '°C'
+         tooltip: {
+			formatter:function() {
+				return '时间：'+this.x+'号'+'<br>拥堵指数：'+this.y;
+				}
         },
         legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle',
+            verticalAlign: 'top',
             borderWidth: 0
         },
         series: [{
@@ -87,7 +95,7 @@ $(document).ready(function(e) {
 	def_month = def_date.getMonth();
 	def_day = def_date.getDay();
 	def_zone = 1;//默认的区域编号
-	data_req(def_year,def_month,def_day,def_zone); 
+	data_req(def_year,def_month,def_day,def_zone,'文三路-教工路-学院路'); 
 	rtetime_data_req(def_year,def_month,def_day,def_zone);
 	
 	rte_road_data_req(def_year,def_month,def_day,def_zone);
@@ -97,10 +105,11 @@ var max_val_time_l = 0.5
 var max_val_time_r = 1.5;
 var avg_val = -1
 
-function data_update(data) {
+function data_update(data,road_name) {
 	var max_val = -1;
 	var max_val_time=0;
 	var total_val = 0;
+	var max_val_index=0;
 	
 	chart_data = data;
 	pie_data = new Array();
@@ -109,13 +118,17 @@ function data_update(data) {
 	pie_data.push(new Array("4-6",0));
 	pie_data.push(new Array("4-8",0));
 	pie_data.push(new Array("大于>8",0));
+	remote_ctb_data()//删除ctb表格中的内容
+	
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
 		t = tv[0];
 		v = tv[1];
+		add_ctb_data(i,t,v)
 		if(v>max_val){
 			max_val = v;
-			max_val_time = t; 
+			max_val_time = t;
+			max_val_index = i; 
 			}
 		total_val+=v;
 		if(v<2){pie_data[0][1]+=1/data.length;}
@@ -124,32 +137,48 @@ function data_update(data) {
 		if(v>=6&&v<8){pie_data[3][1]+=1/data.length;}
 		if(v>=8){pie_data[4][1]+=1/data.length;}
 		}
-	
+	data[max_val_index]={x:max_val_time,y:max_val,color:'#FF0000',marker:{radius:6}}
 	max_val_time_l = max_val_time-0.5;
 	max_val_time_r = max_val_time+0.5;
 	
 	
 	
-	$('#max_val').text(parseInt(max_val));
+	$('#max_val').text(parseInt(max_val)+"   ↑");
 	$('#time').text(String(max_val_time)+"号");
 	
 	avg_val = total_val/data.length
 	$('#arv_val').text(parseInt(avg_val)+"  ↓");
 	
-	remove_avg_line()
+	/*remove_avg_line()
 	add_avg_line()
 	remove_his_avg_line()
-	add_his_avg_line(4.5)
+	add_his_avg_line(4.5)*/
 	
-	$('#total_val').text(parseInt(total_val)*24*30)
+	$('#total_val').text(parseInt(total_val)*24*30+"   ↓")
 	$('#traf_stability').text(parseInt(total_val/2)+"   ↓"); 
 	
-	$('#chart_container').highcharts().series[0].setData(chart_data);
+	$('#pre_max_val').text(parseInt(max_val-Math.random()*10)+"   ↑");
+	$('#pre_time').text(max_val_time+'号');
+	$('#pre_arv_val').text(parseInt(avg_val+Math.random()*10)+"  ↓");
+	$('#pre_total_val').text(parseInt(total_val+Math.random()*10)+"   ↓");
+	$('#pre_traf_stability').text(parseInt(total_val/180+Math.random()*10)+"   ↓");
+	
+	$('#chart_container').highcharts().series[0].setData(chart_data,null,null,false);
+	$('#chart_container').highcharts().setTitle({text:road_name+'拥堵指数月变化情况'})
 	$('#pie_container').highcharts().series[0].setData(pie_data);
 	
 	
-	remove_max_timeband()
-	add_max_timeband(max_val_time_l,max_val_time_r)
+	//remove_max_timeband()
+//	add_max_timeband(max_val_time_l,max_val_time_r)
+	}
+	
+function add_ctb_data(id,time,val) {
+	var ctbg = id%2==0?'ctbg1':'ctbg2';
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'</td></tr>';
+	$('#ctb').append(tr);
+	}
+function remote_ctb_data() {
+	$('#ctb').empty();
 	}
 function rtetime_data_update(data) {
 	$('#rtetime_max_val').text(data[1])
@@ -179,9 +208,9 @@ function rte_road_data_req(year,month,day,zone) {
 	rte_road_data_update(data)
 	}
 
-function data_req(year,month,day,zone) {
-	data = generate_data()
-	data_update(data)
+function data_req(year,month,day,zone,road_name) {
+	data = generate_data({"year":year,"month":month,"day":day})
+	data_update(data,road_name)
 	}
 	
 
@@ -252,13 +281,16 @@ function remove_his_avg_line() {
 	}
 	
 //test funciton
-function generate_data() {
+function generate_data(date) {
+	
+	day_num = 31
+	if (date!=null)day_num=(Date.UTC(date.year,date.month+1,1)-Date.UTC(date.year,date.month,1))/(1000*60*60*24)
 	data = new Array()
-	for (var i = 0;i<31;i++) {
+	for (var i = 1;i<=day_num;i++) {
 		t = i;
 		v = Math.random()*10;
 		
-		data.push([t,v]);
+		data.push([t,Math.round(v*100)/100]);
 		}
 	return data;
 	}

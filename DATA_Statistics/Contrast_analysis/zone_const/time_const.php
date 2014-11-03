@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../../css/scollbar.css">
 <link rel="stylesheet" type="text/css" href="../../../DATA_Statistics/Contrast_analysis/css/contrast.css" />
 <script src="http://webapi.amap.com/maps?v=1.3&key=a1dbe1455fe51c2c903a6b9cd35af2fc"></script>
 <script src="../../../js/jquery.js"></script>
@@ -10,6 +11,7 @@
 <script src="../../../DATA_Statistics/Contrast_analysis/js/contrast.js"></script>
 <script src="../../../js/AMP_F.js"></script>
 <script src="../../../js/slider.js"></script>
+<script type="text/javascript" src="../../../js2/common4.js"></script>
 <style>
 #trf_container,#vhs_container,#coi_container,#cot_container,#rst_container{
 	width:100%;
@@ -225,17 +227,28 @@ function road_slec_change() {
 window.onload = function() {
 	var date =new Date()
 	tc_data_req('西湖区',date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate());
-	
+	get_now();
 	}
+	
+//时间选择器显示当前日期
+function get_now()
+{
+	var date=new Date();
+	today=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
+	document.getElementById("sub_date").value=today;
+}
 </script>
 </head>
 
 <body>
+ <div id="scroll">
+                       <div id="scroLeft" style="margin-top:10px">
+
     <div id="main" style="border:1px solid #000;margin:0 15px 0 15px;">
         <div>
               <form>
               <span style="margin:19px 0 0 40px;float:left;">
-              	选择对比区域：<select id="rs_slcer" onchange = "chart_data_remove()">
+              	选择区域：<select id="rs_slcer" onchange = "chart_data_remove()">
                 		<option value="1">西湖区</option>
                         <option value="2">上城区</option>
                         <option value="3">滨江区</option>
@@ -246,7 +259,7 @@ window.onload = function() {
               
         
                 <span style="margin:19px 0 0 40px;float:left;">
-                    选择对比时间:<input type="date"  onchange="tc_data_req($('#sroadid').val(),this.value)"/>
+                    选择对比时间:<input type="date" id="sub_date" onchange="tc_data_req($('#sroadid').val(),this.value)"/>
                 </span>
               <span style="margin:19px 0 0 40px;float:left;">
                     <input type="button"  onclick="chart_data_remove()" value="清空"/>
@@ -262,5 +275,11 @@ window.onload = function() {
             <div id="rst_container"></div>
         </div>
     </div>
+    </div>
+                           
+                       <div id="scroRight" >
+                             <div id="scroLine"></div>
+                       </div>
+                </div> 
 </body>
 </html>

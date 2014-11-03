@@ -123,7 +123,7 @@ $(function () {
 			type:"column"
 			},
         title: {
-            text: '最拥堵的路口',
+            text: '最繁忙路口',
             x: -20 //center
         },
 		credits:{
@@ -141,7 +141,15 @@ $(function () {
 				'古翠路文三路口',
 				'留和路小和山路口',
 				'建国北路文晖路口'
-				]
+				],
+				labels: {
+                rotation: -45,
+                align: 'right',
+                style: {
+                    fontSize: '10px',
+                    fontFamily: '微软雅黑'
+                }
+            }
 			},
 			
         yAxis: {

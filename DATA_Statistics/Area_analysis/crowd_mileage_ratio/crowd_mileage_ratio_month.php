@@ -5,44 +5,71 @@
 <title>无标题文档</title>
 <script src="../../../js/jquery.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
-<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>
+<!--<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>-->
 <script src="js_car_speed/month/road.js"></script>
+<link type="text/css" rel="stylesheet" href="css/crowd_mileage_ratio.css" />
 </head>
 
 <body>
     <form style="margin:10px 0 0 20px;">
-      路段选择：
+      区域选择：
       <span style="height:20px;margin:0 30px 0 -13px;">
-          <select id = "sroadid" >
-              <option value="1">文一路</option>
-              <option value="2">古墩路</option>
-              <option value="3">凤起路</option>
-              <option value="4">东坡路</option>
-              <option value="5">平海路</option>
+          <select id = "zone_slcer" >
+              <option value="1">西湖区</option>
+              <option value="2">拱墅区</option>
+              <option value="3">余杭区</option>
+              <option value="4">上城区</option>
+              <option value="5">下城区</option>
+              <option value="6">萧山区</option>
+              <option value="7">江干区</option>
+              <option value="8">滨江区</option>
           </select>
       </span>
-      时间选择：
-      <span style="height:20px;margin-left:-13px;">
-          <select id="sub_date">
-          	<option value="2013-10">2013-10</option>
-            <option value="2013-11">2013-11</option>
-            <option value="2013-12">2013-12</option>
-            <option value="2014-1">2014-1</option>
-            <option value="2014-2">2014-2</option>
-            <option value="2014-3">2014-3</option>
-            <option value="2014-4">2014-4</option>
-            <option value="2014-5">2014-5</option>
-            <option value="2014-6">2014-6</option>
-            <option value="2014-7">2014-7</option>
-            <option value="2014-8">2014-8</option>
-            <option value="2014-9">2014-9</option>
+     时间选择：
+      <span style="height:20px;margin-left:3px;">
+          <select id="year_selec">
+          	<option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
+            <option value="2009">2009</option>
+            <option value="2008">2008</option>
+            <option value="2007">2007</option>
+            <option value="2006">2006</option>
+            <option value="2005">2005</option>
+            
           </select>
-      </span>
-      <button type="button" onclick="tc_data_req($('#sroadid').val(),$('#sub_date').val())">确定</button>
+      </span>年
+      <span style="height:20px;margin-left:3px;">
+          <select id="month_selec">
+          	<option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9" selected="selected">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            
+          </select>
+      </span>月
+      <button type="button" onclick="data_req($('#year_selec').val(),$('#month_selec').val(),1,$('#zone_slcer').val())">确定</button>
     </form>
-<div> 
-    <div id="chart_container" style="width:96%;height:300px;border:1px solid #000;margin:20px 0 0 20px;float:left"></div>
-</div>
-<div style="clear:both"></div> 
+    <div> 
+        <div id="chart_container" style="width:96%;height:300px;border:1px solid #000;margin:20px 0 0 20px;float:left"></div>
+    </div>
+    <div style="clear:both"></div> 
+    <div>
+    	<table id="crowd_mileage_list" border="1" cellspacing="0" cellpadding="0" style="text-align:center;">
+        	<tr style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
+            	<th style="width:8%">时间</th><th>1  号</th><th>2  号</th><th>3  号</th><th>4  号</th><th>5  号</th><th>6  号</th><th>7  号</th><th>8  号</th><th>9  号</th><th>10号</th><th>11 号</th><th>12 号</th><th>13 号</th><th>14 号</th><th>15 号</th><th>16 号</th><th>17 号</th><th>18 号</th><th>19 号</th><th>20 号</th><th>21 号</th><th>22 号</th><th>23 号</th><th>24 号</th><th>25 号</th><th>26 号</th><th>27 号</th><th>28 号</th><th>29 号</th><th>30 号</th><th>31 号</th>
+            </tr>
+        </table>
+    </div> 
 </body>
 </html>

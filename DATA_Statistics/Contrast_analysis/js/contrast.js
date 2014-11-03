@@ -8,6 +8,9 @@ $(function () {
             text: '交通流量对比分析',
             x: -20 //center
         },
+		credits: {
+				enabled:false
+			},
 		xAxis: {
 			allowDecimals:false,
 			labels:{
@@ -15,10 +18,11 @@ $(function () {
 					return this.value+':00';
 					}
 				},
+			
 			plotLines:[{
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:7.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:7,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
             },{
 				color:'red',            //线的颜色，定义为红色
@@ -28,7 +32,7 @@ $(function () {
 				},{
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:17.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:17,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
             },{
 				color:'red',            //线的颜色，定义为红色
@@ -48,7 +52,15 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '辆'
+            formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>车流量：'+this.y+'辆';
+				}
         },
         legend: {
             layout: 'vertical',
@@ -73,6 +85,9 @@ $(function () {
             text: '行车速度对比分析',
             x: -20 //center
         },
+		credits: {
+				enabled:false
+			},
 		xAxis: {
 			allowDecimals:false,
 			labels:{
@@ -83,7 +98,7 @@ $(function () {
 			plotLines:[{
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:7.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:7,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
             },{
 				color:'red',            //线的颜色，定义为红色
@@ -93,7 +108,7 @@ $(function () {
 				},{
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:17.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:17,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
             },{
 				color:'red',            //线的颜色，定义为红色
@@ -113,7 +128,15 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '公里/小时'
+			 formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>行车速度：'+this.y+'公里/小时';
+				}
         },
         legend: {
             layout: 'vertical',
@@ -142,6 +165,9 @@ $(function () {
             text: '拥堵指数对比分析',
             x: -20 //center
         },
+		credits: {
+				enabled:false
+			},
 		xAxis: {
 			allowDecimals:false,
 			labels:{
@@ -152,7 +178,7 @@ $(function () {
 			plotLines:[{
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:7.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:7,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
             },{
 				color:'red',            //线的颜色，定义为红色
@@ -162,7 +188,7 @@ $(function () {
 				},{
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:17.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:17,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
             },{
 				color:'red',            //线的颜色，定义为红色
@@ -182,7 +208,15 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '###'//单位未知
+             formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>拥堵指数：'+this.y;
+				}
         },
         legend: {
             layout: 'vertical',
@@ -210,6 +244,9 @@ $(function () {
             text: '拥堵时间对比分析',
             x: -20 //center
         },
+		credits: {
+				enabled:false
+			},
 		xAxis: {
 			allowDecimals:false,
 			labels:{
@@ -220,7 +257,7 @@ $(function () {
 			plotLines:[{
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:7.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:7,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
             },{
 				color:'red',            //线的颜色，定义为红色
@@ -230,7 +267,7 @@ $(function () {
 				},{
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:17.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:17,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
             },{
 				color:'red',            //线的颜色，定义为红色
@@ -250,7 +287,15 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '分钟'
+             formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>拥堵时间：'+this.y+'分钟';
+				}
         },
         legend: {
             layout: 'vertical',
@@ -277,6 +322,9 @@ $(function () {
             text: '交通状态对比分析',
             x: -20 //center
         },
+		credits: {
+				enabled:false
+			},
 		xAxis: {
 			allowDecimals:false,
 			labels:{
@@ -287,7 +335,7 @@ $(function () {
 			plotLines:[{
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:7.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:7,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
             },{
 				color:'red',            //线的颜色，定义为红色
@@ -297,7 +345,7 @@ $(function () {
 				},{
                 color:'red',            //线的颜色，定义为红色
                 dashStyle:'longdashdot',//标示线的样式，默认是solid（实线），这里定义为长虚线
-                value:17.5,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                value:17,                //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
                 width:2,                //标示线的宽度，2px
             },{
 				color:'red',            //线的颜色，定义为红色
@@ -317,7 +365,15 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: ' '
+             formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+h_str+':'+m_str+'<br>交通状态：'+this.y;
+				}
         },
         legend: {
             layout: 'vertical',
@@ -342,7 +398,13 @@ function data_update(chart_obj,data) {
 		data_add(new Array(s_name,s_data))	
 		}
 	}
-
+function setTitle(name) {
+		$('#trf_container').highcharts().setTitle({text:name+'交通流量对比分析'})
+		$('#vhs_container').highcharts().setTitle({text:name+'行程车速对比分析'})
+		$('#coi_container').highcharts().setTitle({text:name+'拥堵指数对比分析'})
+		$('#cot_container').highcharts().setTitle({text:name+'拥堵时间对比分析'})
+		$('#rst_container').highcharts().setTitle({text:name+'交通状态对比分析'})
+	}
 function data_add(char_obj,data) {
 	
 	chart_obj.highcharts().addSeries(
@@ -384,8 +446,6 @@ function vhs_tc_data_req(road_id,args) {
 		chart_obj = $('#vhs_container')
 		data_add(chart_obj,data)
 		}
-	
-	
 	}
 
 
@@ -497,6 +557,7 @@ function rst_rc_data_req(date,args) {
 	}
 
 function tc_data_req(road_id,date) {
+	setTitle(date)
 	trf_tc_data_req(road_id,new Array(date));
 	vhs_tc_data_req(road_id,new Array(date));
 	cot_tc_data_req(road_id,new Array(date));
@@ -507,6 +568,7 @@ function tc_data_req(road_id,date) {
 	}
 
 function rc_data_req(date,road_id,road_name) {
+	setTitle(road_name)
 	trf_rc_data_req(date,new Array(road_name));
 	vhs_rc_data_req(date,new Array(road_name));
 	cot_rc_data_req(date,new Array(road_name));
@@ -557,8 +619,8 @@ function generate_vhs_data() {
 	var data = new Array()
 	for (var i = 0;i<48;i++) {
 		t = i*30/60;
-		v = Math.random()*100;
-		data.push([t,v]);
+		v = Math.random()*60;
+		data.push([t,Math.round(v*100)/100]);
 		}
 	return data;
 	}
@@ -569,8 +631,8 @@ function generate_coi_data() {
 	var data = new Array()
 	for (var i = 0;i<48;i++) {
 		t = i*30/60;
-		if (t<36)v = Math.random()*100;
-		data.push([t,v]);
+		if (t<36)v = Math.random()*10;
+		data.push([t,Math.round(v*100)/100]);
 		}
 	return data;
 	}
@@ -579,8 +641,8 @@ function generate_cot_data() {
 	var data = new Array()
 	for (var i = 0;i<48;i++) {
 		t = i*30/60;
-		if (t<36)v = Math.random()*100;
-		data.push([t,v]);
+		if (t<36)v = Math.random()*20;
+		data.push([t,Math.round(v*100)/100]);
 		}
 	return data;
 	}

@@ -3,8 +3,8 @@ var mapObj;
 $(function () {
     $('#chart_container').highcharts({
         chart: {
-            type: 'spline',
-            margin: [ 50, 50, 100, 80]
+           /* type: 'spline',
+            margin: [ 50, 50, 100, 80]*/
         },
 		credits:{
 			enabled:false
@@ -12,17 +12,37 @@ $(function () {
         title: {
             text: '预测与实际数据趋势图'
         },
-        yAxis: {
-            min: 0,
+        yAxis: [{
+            type: 'logarithmic',
+			max:100,
             title: {
                 text: '拥堵概率(%)'
             }
-        },
+        },{ // Secondary yAxis
+            //allowDecimals:false,
+//			type: 'logarithmic',
+			max:3,
+            title: {
+                text: '交通状态',
+                style: {
+                    color: '#4572A7'
+                }
+            },
+            labels: {
+                style: {
+                    color: '#4572A7'
+                }
+            },
+			opposite: true
+
+        }
+		
+		],
         legend: {
             enabled: false
         },
         tooltip: {
-            pointFormat: '拥堵概率: <b>{point.y:.1f} %</b>',
+            shared: true
         },
 		legend: {
             layout: 'horizontal',
@@ -30,23 +50,10 @@ $(function () {
             verticalAlign: 'bottom',
            // borderWidth: 0
         },
-        series: [{
+        series: [/*{
             name: '拥堵概率',
             data: [],
-            dataLabels: {
-                enabled: false,
-                rotation: -90,
-                color: '#f00',
-                align: 'right',
-                x: 100,
-                y: 10,
-                style: {
-                    fontSize: '16px',
-					fontWeight:'blod',
-                    fontFamily: 'Verdana, sans-serif'
-                }
-            }
-        }]
+        }*/]
     });
 });
 
@@ -92,11 +99,16 @@ function series_remove(chart_obj) {
 	chart_obj.highcharts().redraw();
 	}
 	
-function series_add(chart_obj,data) {
+function series_add(chart_obj,type,yaxis_id,data) {
 	chart_obj.highcharts().addSeries(
 		{
+		type:type,
+		yAxis:yaxis_id,
 		name:data[0],
-		data:data[1]
+		data:data[1],
+		tooltip: {
+                valueSuffix: yaxis_id==0?'%':''
+            }
 			}
 		)
 	}
@@ -105,10 +117,23 @@ function chart_data_update(datas) {
 		var chart_obj = $('#chart_container')
 		series_remove(chart_obj);
 		chart_obj.highcharts().setTitle({
-			text:datas[0]+"预测与实际数据趋势图"
+			text:datas[0]+"预测与实际数据对比"
 			})
-		series_add(chart_obj,datas[1]);
-		series_add(chart_obj,datas[2]);
+		var trf_state_data=new Array();
+		for (var i = 0;i<datas[2][1].length;i++) {
+			var val = datas[2][1][i];
+			var col = "#000000";
+			switch(val) {
+				case(1):col = "#08F62C";break;
+				case(2):col = "#F7F707";break;
+				case(3):col = "#FF1900";break;
+				default:col = "#000000";break;
+				}
+			trf_state_data.push({y:val,color:col});
+			}
+		datas[2][1]=trf_state_data;
+		series_add(chart_obj,"column",1,datas[2]);
+		series_add(chart_obj,"spline",0,datas[1]);
 		
 	}
 	
@@ -119,7 +144,7 @@ function chart_data_req(roadid) {
 		datas.push(roadname);
 		var data = generate_data();
 		datas.push(new Array("预测线",data[0]));
-		datas.push(new Array("实际线",data[1]));
+		datas.push(new Array("实际值",data[1]));
 		chart_data_update(datas);
 		})
 	}
@@ -132,10 +157,9 @@ function generate_data() {
 	var r_data = new Array()
 	for (var i = 0;i<25;i++) {
 		var data = Math.random()*100;
-		var f_r_dif = 10-Math.random()*20;
-		if (Math.random()>0.8) f_r_dif = 40;
-		f_data.push(data);
-		r_data.push(((data+f_r_dif)>100||(data+f_r_dif)<0)?87:(data+f_r_dif))
+		var tr_state = parseInt(Math.random()*3+1)
+		f_data.push(Math.round(data*100)/100);
+		r_data.push(tr_state)
 		}
 	datas.push(f_data);
 	datas.push(r_data);
@@ -178,13 +202,8 @@ $(function () {
         legend: {                                                          
             layout: 'vertical',                                            
             align: 'right',                                                
-            verticalAlign: 'top',                                          
-            x: -40,                                                        
-            y: 100,                                                        
-            floating: true,                                                
-            borderWidth: 1,                                                
-            backgroundColor: '#FFFFFF',                                    
-            shadow: true                                                   
+            verticalAlign: 'top',                                                       
+            floating: true                                               
         },                                                                 
         credits: {                                                         
             enabled: false                                                 

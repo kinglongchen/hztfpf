@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
 <link rel="stylesheet" type="text/css" href="../../../css/tab3.css">
+<script src="../../../js/util.js"></script>
 <script src="../../../js/jquery.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
 <!--<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>-->
@@ -33,35 +34,79 @@ a:hover{
 </style>
 </head>
 
-<body style=" font-size:14px; color:#414141;font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;">
-<div class="tabs"> 
-    <div id="chart_container" style="width:96%;height:300px;border:1px solid #000;margin:10px 0 0 20px;float:left"></div>
-<div style="clear:both"></div> 
-<div style="width:96.2%;margin:10px 0 0 20px;">
-     <table class="tab1">
-          <tr>
-          <th scope="col">
-              <div>最高值:<span id='max_val' class="red">Loading...</span><span style="margin-left:20px">对应时段:<span id='time' class="red">Loading...</span></div>
-          </th>
-          <th scope="col">
-              <div>平均值:<span id='arv_val' class="green">Loading...</span></div>
-          </th>
-          <th scope="col">
-              <div>总流量:<span id='total_val' class="orange">Loading...</span></div>
-          
-          </th>
-          <th scope="col">
-              <div>交通稳定度:<span id='traf_stability' class="green">Loading...</span></div>
-          </th>
-        </tr>
-    </table>
-</div>
-</div>
-<div style="float:left;width:300px;margin:10px 0 0 0;">
+<body style=" font-size:14px; color:#414141;margin:0px;overflow-y:hidden;font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;">
+<div style="float:left;height:100%;width:98%;overflow:hidden;">
+<div class="tabs"  style="background:#f0f8fe;">
+     <div id="chart_container" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
+           <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
+              <div style="margin-right:17px;">          
+                    <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">
+  						<tr>
+    						<th width="33%">编号</th>
+    						<th width="33%">日期(号)</th>
+                            <th	width="33%">行程车速(公里/小时)</th>
+ 				 		</tr>
+                    </table>
+               </div>     
+                    <div style="float:left;overflow-x: hidden; width: 99.9%;margin:0px 0 0 0px;height: 229px">
+                    	<table id ='ctb' border="1" style="width:100%;border-collapse:collapse; text-align:center;">
+  							<tr>
+    							<td>Loading</td>
+    							<td>Loading</td>
+                            	<td>Loading</td>
+ 				 			</tr> 
+                    	</table>
+					</div>
+                    
+					</div>
+                    
+                    <div style="clear:both"></div>
+                    <div style="width:98%;margin:10px 0 0 10px; ">
+                    	<div class="tb2" >统计数据</div>
+                    	<div class="glfx2">
+                        	<table  class="tqjz2" border="0">
+                            	<th class="h2" align="left">当前统计数据:</th>
+                              	<tr class="t1">
+                              		<th scope="col">
+                                 	 	<div>最高值:<span id='max_val' class="red">Loading...</span></div>
+                                  		<div>时段:<span id='time' class="red">Loading...</span></div>
+                              		</th>
+                             		<th scope="col">
+                                  		<div>平均值:<span id='arv_val' class="green">Loading...</span></div>
+                              		</th>
+                              		<th scope="col">
+                                  		<div>总流量:<span id='total_val' class="green">Loading...</span></div>
+                              		</th>
+                              		<th scope="col">
+                                  		<div>交通稳定度:<span id='traf_stability' class="green">Loading...</span></div>
+                              		</th>
+                           		</tr>
+                                <th class="h2" align="left">前一天统计数据:</th>
+                                <tr class="t1">
+                              		<th scope="col">
+                                 	 	<div>最高值:<span id='pre_max_val' class="red">Loading...</span></div>
+                                  		<div>时段:<span id='pre_time' class="red">Loading...</span></div>
+                              		</th>
+                             		<th scope="col">
+                                  		<div>平均值:<span id='pre_arv_val' class="green">Loading...</span></div>
+                              		</th>
+                              		<th scope="col">
+                                  		<div>总流量:<span id='pre_total_val' class="green">Loading...</span></div>
+                              		</th>
+                              		<th scope="col">
+                                  		<div>交通稳定度:<span id='pre_traf_stability' class="green">Loading...</span></div>
+                              		</th>
+                           		</tr>
+                                <th class="h2"></th>
+                        	</table>
+                     	</div> 
+                    </div>                 
+			</div>                    
+<div style="float:left;width:300px;margin:10px 0 0 10px;">
     <div class="tb1">关联时段分析</div>
     <div class="glfx">
      <table class="tqjz">
-          <th class="h">注意：本数据是近一年内相关数据对比结果</th>
+          <th class="h">注：本数据是近一年内相关数据对比结果</th>
           <tr class="t1">
             <th scope="col">
                 历史同期均值
@@ -71,7 +116,7 @@ a:hover{
                 <div>最低:<span id='rtetime_min_val' class="green">Loading...</span></div>
             </th>
           </tr>
-          <th class="h">注意：本数据是近一月内相关数据对比结果</th>
+          <th class="h">注：本数据是近一月内相关数据对比结果</th>
           <tr class="t1">
             <th>近一个月均值</th>
             <th>
@@ -83,10 +128,11 @@ a:hover{
       </table>
     </div>
   </div>  
-<div style="float:left;width:540px;margin:10px 0 0 10px;">        
+<div style="float:left;width:357px;margin:10px 0 0 10px;">        
     <div class="tb2">关联路段分析</div>
-    <div class="ldfx">
-        <table id = "rte_roads" style="border-collapse:collapse;width:550px;margin:auto;table-layout:fixed;text-align:center;">
+    <div class="glfx">
+          <table id = "rte_roads" border="1" bordercolor="#70c3e9"
+                     style=" background:#FFF;margin-top:3px;border-collapse:collapse;width:347px;margin-left:3.5px;table-layout:fixed;text-align:center;font-size:13px;">
           <tr class="t2">
             <th scope="col">路段名</th>
             <th scope="col">最高值</th>
@@ -139,7 +185,7 @@ a:hover{
     </div>
 </div>
 <div style="float:left;width:500px;margin-right:50px;margin:10px 0 0 10px;">
-    <div class="tb2">行程车速日分布</div>
+    <div class="tb2">行程车速月分布</div>
     <div class="glfx">
     <div id="pie_container"></div>
     </div>	

@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+
+#crowd_mileage_list{
+	width:96%;
+	table-layout:fixed;
+	margin:15px 20px 0 20px;}
+#crowd_mileage_list_head{
+	margin:15px 20px 0 20px;}
+#crowd_mileage_list_head,#crowd_mileage_list_body{
+	width:96%;
+	table-layout:fixed;}

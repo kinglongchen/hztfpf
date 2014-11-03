@@ -8,6 +8,12 @@ $(function () {
             text: '行程车速月趋势分析',
             x: -20 //center
         },
+		credits:{
+			enabled:false
+			},
+		xAxis: {
+			allowDecimals:false
+			},
         yAxis: {
             title: {
                 text: '行程车速'
@@ -19,12 +25,20 @@ $(function () {
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
+			formatter:function() {
+				var h = parseInt(this.x);
+				var h_str = h.toString();
+				if (h<10) h_str='0'+h_str
+				var m = Math.round((this.x%1)*60);
+				var m_str = m.toString()
+				if (m<10) m_str = '0'+m_str;
+				return '时间：'+this.x+'号'+'<br>车流量：'+this.y+'公里/小时';
+				}
         },
         legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle',
+            verticalAlign: 'top',
             borderWidth: 0
         },
         series: [{
@@ -87,7 +101,7 @@ $(document).ready(function(e) {
 	def_month = def_date.getMonth();
 	def_day = def_date.getDay();
 	def_zone = 1;//默认的区域编号
-	data_req(def_year,def_month,def_day,def_zone); 
+	data_req(def_year,def_month,def_day,def_zone,'文三路-教工路-学院路'); 
 	rtetime_data_req(def_year,def_month,def_day,def_zone);
 	
 	rte_road_data_req(def_year,def_month,def_day,def_zone);
@@ -97,60 +111,84 @@ var max_val_time_l = 0.5
 var max_val_time_r = 1.5;
 var avg_val = -1
 
-function data_update(data) {
+function data_update(data,road_name) {
 	var max_val = -1;
 	var max_val_time=0;
 	var total_val = 0;
+	var max_val_index=0;
 	
 	chart_data = data;
 	pie_data = new Array();
-	pie_data.push(new Array("小于20公里",0));
-	pie_data.push(new Array("20—40公里",0));
-	pie_data.push(new Array("40-60公里",0));
-	pie_data.push(new Array("40-80公里",0));
-	pie_data.push(new Array("大于>80公里",0));
+	pie_data.push(new Array("小于12公里/小时",0));
+	pie_data.push(new Array("12—24公里/小时",0));
+	pie_data.push(new Array("24-36公里/小时",0));
+	pie_data.push(new Array("36-48公里/小时",0));
+	pie_data.push(new Array("大于48公里/小时",0));
+	
+	remote_ctb_data()//删除ctb表格中的内容
+	
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
 		t = tv[0];
 		v = tv[1];
+		add_ctb_data(i,t,v)
 		if(v>max_val){
 			max_val = v;
 			max_val_time = t; 
+			max_val_index = i;
 			}
 		total_val+=v;
-		if(v<20){pie_data[0][1]+=1/data.length;}
-		if(v>=20&&v<40){pie_data[1][1]+=1/data.length;}
-		if(v>=40&&v<60){pie_data[2][1]+=1/data.length;}
-		if(v>=60&&v<80){pie_data[3][1]+=1/data.length;}
-		if(v>=80){pie_data[4][1]+=1/data.length;}
+		if(v<12){pie_data[0][1]+=1/data.length;}
+		if(v>=12&&v<24){pie_data[1][1]+=1/data.length;}
+		if(v>=24&&v<36){pie_data[2][1]+=1/data.length;}
+		if(v>=36&&v<48){pie_data[3][1]+=1/data.length;}
+		if(v>=48){pie_data[4][1]+=1/data.length;}
 		}
 	
+	data[max_val_index]={x:max_val_time,y:max_val,color:'#FF0000',marker:{radius:6}}
 	max_val_time_l = max_val_time-0.5;
 	max_val_time_r = max_val_time+0.5;
 	
 	
 	
-	$('#max_val').text(parseInt(max_val));
+	$('#max_val').text(parseInt(max_val)+"   ↑");
 	$('#time').text(String(max_val_time)+"号");
 	
 	avg_val = total_val/data.length
 	$('#arv_val').text(parseInt(avg_val)+"  ↓");
 	
-	remove_avg_line()
+	/*remove_avg_line()
 	add_avg_line()
 	remove_his_avg_line()
-	add_his_avg_line(49)
+	add_his_avg_line(40)*/
 	
-	$('#total_val').text(parseInt(total_val)*24*30)
+	$('#total_val').text(parseInt(total_val)*24*30+"   ↓")
 	$('#traf_stability').text(parseInt(total_val/180)+"   ↓"); 
 	
-	$('#chart_container').highcharts().series[0].setData(chart_data);
+	$('#pre_max_val').text(parseInt(max_val-Math.random()*10)+"   ↑");
+	$('#pre_time').text(max_val_time+'号');
+	$('#pre_arv_val').text(parseInt(avg_val+Math.random()*10)+"  ↓");
+	$('#pre_total_val').text(parseInt(total_val+Math.random()*10)+"   ↓");
+	$('#pre_traf_stability').text(parseInt(total_val/180+Math.random()*10)+"   ↓");
+	
+	$('#chart_container').highcharts().series[0].setData(chart_data,null,null,false);
+	$('#chart_container').highcharts().setTitle({text:road_name+'行程车速月变化情况'})
 	$('#pie_container').highcharts().series[0].setData(pie_data);
 	
 	
-	remove_max_timeband()
-	add_max_timeband(max_val_time_l,max_val_time_r)
+	//remove_max_timeband()
+//	add_max_timeband(max_val_time_l,max_val_time_r)
 	}
+
+function add_ctb_data(id,time,val) {
+	var ctbg = id%2==0?'ctbg1':'ctbg2';
+	var tr = '<tr class='+ctbg+'><td width="33%">'+id+'</td><td width="33%">'+time+'</td><td width="33%">'+val+'</td></tr>';
+	$('#ctb').append(tr);
+	}
+function remote_ctb_data() {
+	$('#ctb').empty();
+	}
+
 function rtetime_data_update(data) {
 	$('#rtetime_max_val').text(data[1])
 	$('#rtetime_min_val').text(data[0])
@@ -179,9 +217,9 @@ function rte_road_data_req(year,month,day,zone) {
 	rte_road_data_update(data)
 	}
 
-function data_req(year,month,day,zone) {
-	data = generate_data()
-	data_update(data)
+function data_req(year,month,day,zone,road_name) {
+	data = generate_data({"year":year,"month":month,"day":day})
+	data_update(data,road_name)
 	}
 	
 
@@ -252,13 +290,15 @@ function remove_his_avg_line() {
 	}
 	
 //test funciton
-function generate_data() {
+function generate_data(date) {
+	day_num = 31
+	if (date!=null)day_num=(Date.UTC(date.year,date.month+1,1)-Date.UTC(date.year,date.month,1))/(1000*60*60*24)
 	data = new Array()
-	for (var i = 0;i<31;i++) {
+	for (var i = 1;i<=day_num;i++) {
 		t = i;
-		v = Math.random()*100;
+		v = Math.random()*60;
 		
-		data.push([t,v]);
+		data.push([t,Math.round(v*100)/100]);
 		}
 	return data;
 	}

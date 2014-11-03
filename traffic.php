@@ -267,14 +267,14 @@ function initialize(){
 
 	//draw_via_rnxml_Request(map.getBounds());
 	//document.getElementById("btn4").className="fBton2";	
-	 incr();
+	// incr();
      scroll();
 	 clievent();   
  };
 //初始化结束
 function incr() {
 	draw_via_rnxml_Request(map.getBounds());
-	setTimeout("incr()",2000);
+	setTimeout("incr()",20000);
 	}
 	
 	var win = document.documentElement;
@@ -310,9 +310,44 @@ function incr() {
 </head>   
 
 <body>    
-<?php
-include("comment/title_column.php");
-?>
+<!---------------标题栏----------------->
+    <div id="header" style="height:70px;width:100%;background-size:100% 100%;float:left;overflow:hidden;background:url(./img/barbg.png);" >
+
+         <div style="width:320px;height:50px;float:left;background: url(./img/logo.png) no-repeat;; margin:10px 0 0 20px;">
+         </div>
+         
+          <div id="conPad" style="width:365px;height:100%;overflow:hidden;float:right;">
+           
+            <div style="width:400px;height:100%;float:left;overflow:hidden;">
+               <div  class="topbtn" style="background:url(./img/barbg2.png);margin:0 4px 0 4px;">
+                   <a  style="margin-left:1.5px;" > 
+                    <img src=img/jiaotong2.png  height="45" width="45" alt="" border="0">
+                    </a>
+                    <h style="float:left;color:#0150a2;font-size:8px;padding-left:12px;">路况显示</h>
+                </div>
+                <div class="topbtn" >
+                    <a  href="chart.php"  style="margin-left:1.5px;">
+                    <img src=img/tongjis.png   height="45" width="45" alt="" border="0" >
+                    </a>
+                    <h style="float:left;color:#0150a2;font-size:8px;padding-left:12px;">数据统计</h>
+                </div>
+                <div class="topbtn">
+                    <a  href="dataManage.html" style="margin-left:1.5px;">
+                    <img src=img/guanlis.png  height="45" width="45"  alt="" border="0" >
+                    </a>
+                    <h style="float:left;color:#0150a2;font-size:8px;padding-left:12px;">信息管理</h>
+                </div>    
+                <div class="topbtn">
+                   <a  href="induceRelease.php" style="margin-left:1.5px;">
+                    <img src=img/youdaos.png   height="45" width="45"  alt="" border="0" >
+                    </a>
+                    <h style="float:left;color:#0150a2;font-size:8px;padding-left:12px;">诱导发布</h>
+                </div>
+            </div> 
+                          
+	    </div> 
+         
+     </div>
      
      <div id="inforbar" > 
         	<marquee id="marquee" onMouseOver="this.stop()" onMouseOut="this.start();" style="height:30px;margin-top:2px; font:10px;"> 

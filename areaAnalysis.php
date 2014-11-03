@@ -5,7 +5,6 @@
 <title>无标题文档</title>
 <style>
 .choose{
-	margin:0 0 0 20px;
 	padding:5px 0 5px 0;
 	background-color:#eee;
 	color:#000;}
@@ -83,11 +82,23 @@ a{
 //	this.style.backgroundColor="#fff";
 //})
 window.onload=window.onresize=function(){
-var De=document.documentElement;
-//var Wh=self.innerHeight||(De && De.clientHeight)||document.body.clientHeight;
-var Ww=self.innerWidth ||(De && De.clientWidth) ||document.body.clientWidth;
-document.getElementById("Ana_iframe").style.width =(Ww-40)+"px";
-//document.getElementById("Ana_iframe").style.height=(Wh-5)+"px";
+	var iframeid=document.getElementById("Ana_iframe");
+	var De=document.documentElement;
+	//var Wh=self.innerHeight||(De && De.clientHeight)||document.body.clientHeight;
+	var Ww=self.innerWidth ||(De && De.clientWidth) ||document.body.clientWidth;
+	iframeid.style.width =(Ww-40)+"px";
+	//iframeid.style.height=(Wh-5)+"px";
+//	if(document.getElementById)
+//	{
+//		if (iframeid.contentDocument && iframeid.contentDocument.body.offsetHeight)
+//		{
+//			iframeid.height = iframeid.contentDocument.body.offsetHeight;
+//		}
+//		else if(iframeid.Document && iframeid.Document.body.scrollHeight)
+//		{
+//			iframeid.height = iframeid.Document.body.scrollHeight;
+//		}	
+//	}
 };
 
 //给Ana_iframe一个标识，在点击年月日分析得时候识别这属于哪一个板块
@@ -139,7 +150,7 @@ function day_month_year(obj)
 
 <body>
 <div style="margin:0 -8px 0 -8px">
-	<div id="second_top_bar" style="height:38px;line-height:38px;padding-right:10px;margin:0 10px 0 0;">
+	<div id="second_top_bar" style="height:38px;line-height:38px;padding-right:10px;margin:0 10px 0 20px;">
     	<span class="choose"><a href="DATA_Statistics/Area_analysis/traf_state/traf_state_day.php" class="font" target="anaframe" onclick="get_num(this,'traf_state')">交通状态</a></span>
         <span class="chooseoff"><a href="DATA_Statistics/Area_analysis/crowd_mileage_ratio/crowd_mileage_ratio_day.php" class="font2" target="anaframe" style="padding:10px 21px 10px 21px;" onclick="get_num(this,'crowd_mileage_ratio')">拥堵里程比例</a></span>
         <span class="chooseoff"><a href="DATA_Statistics/Area_analysis/crowd_road/crowd_road_day.php" class="font2" target="anaframe" onclick="get_num(this,'crowd_road')">拥堵路段</a></span>
@@ -158,7 +169,7 @@ function day_month_year(obj)
         </div>
         <div style="clear:both"></div> 
         -->
-        <iframe id="Ana_iframe" class="7" src="DATA_Statistics/Area_analysis/traf_state/traf_state_day.php" name="anaframe" height="810" style="border:0;margin:0 0 0 0;"></iframe>
+        <iframe id="Ana_iframe" class="7" src="DATA_Statistics/Area_analysis/traf_state/traf_state_day.php" name="anaframe" height="465" style="border:0;margin:0 0 0 0;"></iframe>
     </div>   <!--到这里为止是下面最大框框的结束-->
 </div>
 </body>

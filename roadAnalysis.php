@@ -107,6 +107,7 @@ var De=document.documentElement;
 var Ww=self.innerWidth ||(De && De.clientWidth) ||document.body.clientWidth;
 document.getElementById("Ana_iframe").style.width =(Ww-40)+"px";
 //document.getElementById("Ana_iframe").style.height=(Wh-5)+"px";
+get_now();
 };
 
 //给Ana_iframe一个标识，在点击年月日分析得时候识别这属于哪一个板块
@@ -214,22 +215,23 @@ function query_road_sec() {
 	}
 function road_analysis() {
 	road_sec_id = $("#rs_slcer").val()
+	road_sec_name = $("#rs_slcer").find("option:selected").text();
 	if (road_sec_id==null) road_sec_id=1
 	date = $("#date").val()
 	if (date==''){
 		nowdate = new Date()
 		year = nowdate.getFullYear()
-		month = nowdate.getMonth()+1
+		month = nowdate.getMonth()
 		day = nowdate.getDate()
 		}
 	else {
 		date = date.split('-')
 		year = parseInt(date[0])
-		month = parseInt(date[1])
+		month = parseInt(date[1])-1
 		day = parseInt(date[2])
 		}
 		
-	document.getElementById('Ana_iframe').contentWindow.data_req(year,month,day,road_sec_id)	
+	document.getElementById('Ana_iframe').contentWindow.data_req(year,month,day,road_sec_id,road_sec_name)	
 		
 	
 	}
@@ -382,7 +384,13 @@ $autocomplete.css({'position':'relative','left':xpos + "px",'top':ypos +"px"});
 }); 
 }); 
 
-
+//时间选择器显示当前日期
+function get_now()
+{
+	var date=new Date();
+	today=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
+	document.getElementById("date").value=today;
+}
 
 </script>
 
@@ -440,7 +448,7 @@ $autocomplete.css({'position':'relative','left':xpos + "px",'top':ypos +"px"});
         </div>
         <div style="clear:both"></div> 
         
-        <iframe id="Ana_iframe" class="1" src="DATA_Statistics/Road_analysis/traf_flow/traf_flow_day.php" name="anaframe" height="1000" style="border:0;margin:0 0 0 0;"></iframe>
+        <iframe id="Ana_iframe" class="1" src="DATA_Statistics/Road_analysis/traf_flow/traf_flow_day.php" name="anaframe" height="880" style="border:0;margin:0 0 0 0;"></iframe>
     </div>   <!--到这里为止是下面最大框框的结束-->
 </div>
 </body>

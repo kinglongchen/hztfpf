@@ -9,7 +9,6 @@ ul{-webkit-padding-start: 0; -webkit-margin-after: 0;-webkit-margin-before: 0;}
 <script type="text/javascript" src="js/menu_min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/menu-css.css">
 <link rel="stylesheet" type="text/css" href="css/choose.css">
-
 <script type="text/javascript">
 $(document).ready(function (){ 
 
@@ -27,7 +26,7 @@ var de=document.documentElement;
 var wh=self.innerHeight||(de && de.clientHeight)||document.body.clientHeight;
 var ww=self.innerWidth ||(de && de.clientWidth) ||document.body.clientWidth;
 document.getElementById("ifra").style.width =(ww-101)+"px";
-document.getElementById("ifra").style.height=(wh-100)+"px";
+document.getElementById("ifra").style.height=(wh-102)+"px";
 };
 
 //增加一个对sidebar改变背景色的函数
@@ -80,7 +79,7 @@ function sidebar_bcolor(obj)
                     <h style="float:left;color:#0150a2;font-size:8px;padding:4px 0 0 12px;">信息管理</h>
                 </div>    
                 <div class="topbtn">
-                   <a  href="#" style="margin-left:1.5px;">
+                   <a  href="induceRelease.php" style="margin-left:1.5px;">
                     <img src=img/youdaos.png   height="45" width="45"  alt="" border="0" >
                     </a>
                     <h style="float:left;color:#0150a2;font-size:8px;padding:4px 0 0 12px;">诱导发布</h>
@@ -101,7 +100,7 @@ function sidebar_bcolor(obj)
 
 
     
-    <div id="sideMenu" style="width:100px;height:826px; overflow:hidden;border-right:#CCC 1px solid;float:left;background:#1e62a9;">
+    <div id="sideMenu" style="width:100px;border-right:#CCC 1px solid;float:left;background:#1e62a9;">
         <div class="menu" style="width:100%;">
         	<div style="height:20px;"></div>
                  <ul>
@@ -115,17 +114,32 @@ function sidebar_bcolor(obj)
                     	<a href="contrastAnalysis.php" target="showframe" id="Contrast_A" onclick="sidebar_bcolor(this)"><img src="./img/dbfx.png" /><div class="menufont">对比分析</div></a>
                     </li>
                     <li>
-                    	<a href="overallAnalysis.php" target="showframe" id="Overall_A" onclick="sidebar_bcolor(this)"><img src="./img/ztfx.png" /><div class="menufont">总体分析</div></a>
-                    </li>
-                    <li>
                     	<a href="forecastAnalysis.php" target="showframe" id="Forecast_A" onclick="sidebar_bcolor(this)"><img src="./img/ycfx.png" /><div class="menufont">预测分析</div></a>
-                    </li>   
+                    </li> 
+                    <li>
+                    	<a href="overallAnalysis.php" target="showframe" id="Overall_A" onclick="sidebar_bcolor(this)"><img src="./img/ztfx.png" /><div class="menufont">总体分析</div></a>
+                    </li>  
                  </ul>
   	    </div>
     </div>
     
      
       <iframe id="ifra" src="roadAnalysis.php" name="showframe" style="border:0;margin:0 0 0 0;"></iframe>
-
+<script type="text/javascript">
+function autoHeight(){	
+	if (window.innerHeight){//FF
+		nowHeight = window.innerHeight;
+	}else{
+		nowHeight = document.documentElement.clientHeight;
+	}
+		var jianHeight = 60;
+	if(nowHeight > jianHeight){
+		document.getElementById('sideMenu').style.height = nowHeight - 102 + 'px';
+	}else{
+		document.getElementById('sideMenu').style.height = jianHeight + 'px';
+	}
+	}
+    autoHeight();
+</script>
 </body>
 </html>

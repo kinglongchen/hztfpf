@@ -1,0 +1,149 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+body{
+	background:url(images/light.PNG);
+}
+/* Mozilla based browsers */
+::-moz-selection {
+       background-color:none;
+       color: #000;
+}
+
+/* Works in Safari */
+::selection {
+       background-color:none;
+       color: #000;
+}
+.main{
+	position:absolute;
+	width:1007px;
+	height:auto;
+}
+
+.book{
+	background:url(images/book-bg1.png);
+	width:988px;
+	height:633px;
+	margin:0 auto;
+}
+
+/*主窗*/
+#scroll{	
+	width:100%;
+	height:92%;
+	position:absolute;
+	margin-right:40px;
+}
+
+/*左边内容区*/
+#scroLeft{
+	float:left;
+	height:100%;
+	width:98%;
+	overflow:hidden;
+}
+
+/*右边滚动条轨道*/
+#scroRight{
+    background:#999;
+	background:#f5f5f8;
+	position:absolute;
+	right:17px;
+	float:left;
+	height:100%;
+	width:10px;
+	border-radius:10px;
+	overflow:hidden;
+}
+
+/*滚动条*/
+#scroLine{
+	margin-top:20px;
+	position:absolute;
+	z-index:1;
+	top:0;
+	right:0;
+	width:8px;
+	background:url(images/opacity_70.png);
+	background:#c5d0e3;
+	opacity:0.7;
+	border:1px solid #a9bad2;
+	border-radius:10px;
+	cursor:pointer;
+}
+
+
+#scroLeft img{
+	margin:30px 60px;
+	cursor:pointer;
+}
+
+.absolute{
+	display:block;
+	width:370px;
+	height:300px;
+}
+
+.R_Page{
+	width:380px;
+	height:525px;
+	position:absolute;
+	left:500px;
+	top:30px;
+	padding:20px;
+}
+
+.title{
+	font:64px 'Bickham Script Pro', 'Edwardian Script ITC', 'Palace Script MT', Zapfino, cursive;
+	text-align:center;
+	line-height:70px;
+	color:#333;	
+	text-shadow:1px 1px 2px rgba(0,0,0,0.3); 
+}
+
+.sub_title{
+	width:320px;
+	display:block;
+	font:24px Tahoma, Geneva, sans-serif;
+	text-align:center;
+	line-height:24px;
+	color:#333;
+	margin:10px auto;
+	text-shadow:1px 1px 2px rgba(0,0,0,0.1); 
+}
+
+.wheat{
+	background:url(images/produzione.png);
+	display:block;
+	width:200px;
+	height:300px;
+	margin:0px auto;
+}
+
+ul.rate{
+	display:block;
+	width:175px;
+	height:35px;
+	margin:20px auto;
+	padding:0;
+}
+
+.rate li{
+	background:url(images/icon_heart.png);
+	float:left;
+	display:inline;
+	width:35px;
+	height:35px;
+	cursor:pointer;
+}
+
+li.select{
+	background-position:0 -35px;
+}
+
+li.hover{
+	background-position:0 -35px;
+}

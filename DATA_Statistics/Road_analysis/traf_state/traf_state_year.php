@@ -32,7 +32,7 @@ a:hover{
 </style>
 </head>
 
-<body>
+<body style=" font-size:14px; color:#414141;margin:0; overflow-y:hidden;font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;">
 <div> 
     <div id="chart_container" style="width:96%;height:300px;border:1px solid #000;margin:20px 0 0 20px;float:left"></div>
 </div>
