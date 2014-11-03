@@ -338,7 +338,7 @@ function incr() {
                     <h style="float:left;color:#0150a2;font-size:8px;padding-left:12px;">信息管理</h>
                 </div>    
                 <div class="topbtn">
-                   <a  href="#" style="margin-left:1.5px;">
+                   <a  href="induceRelease.php" style="margin-left:1.5px;">
                     <img src=img/youdaos.png   height="45" width="45"  alt="" border="0" >
                     </a>
                     <h style="float:left;color:#0150a2;font-size:8px;padding-left:12px;">诱导发布</h>
