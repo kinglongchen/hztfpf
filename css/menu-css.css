@@ -126,3 +126,52 @@ a:hover {text-decoration: underline;}
 	font-family: "Arial", Microsoft YaHei,"微软雅黑",Arial,Helvetica,Geneva,sans-serif;
 	text-decoration: none;
 	}
+	
+	
+	
+/*诱导发布模块的sidebar#######################################################################*/
+.inre_menu ul li {
+	display:block;
+	width:100%;
+	list-style:none;
+	float:left;
+	overflow:visibale; 
+}
+
+.inre_menu ul li:hover  {
+	display:block;
+	width:100%;
+	background-color:#6CC;
+	list-style:none;
+	float:left;
+	overflow:visibale; 
+	text-decoration: none;
+
+}
+
+.inre_menu ul li a {
+	text-align:center;
+	letter-spacing:3px;
+	display:block;
+	height:90px; width:100%;
+	font-size:1em;
+	color:#555555;;
+	line-height:90px;
+	outline:none;
+	text-decoration:none;
+}
+
+.inre_menu ul li a img{
+	margin-top:3px;
+	width:65%;
+	}
+
+.inre_menu ul li .active {
+	background-image:url(../img/menu_bar2.png);
+	float:left;
+}
+
+.inre_menu ul li .inactive {
+	background-image:url(../img/menu_bar.png);
+	float:left;
+}
