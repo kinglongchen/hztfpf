@@ -10,7 +10,9 @@ ul{-webkit-padding-start: 0; -webkit-margin-after: 0;-webkit-margin-before: 0;}
 <link rel="stylesheet" type="text/css" href="css/menu-css.css">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/choose.css"><!--头部选项的样式链接-->
+
 <script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src=" Variable message signs.js"></script>
 <script src="http://webapi.amap.com/maps?v=1.2&key=yourkey" type="text/javascript"></script>
 <script type="text/javascript"  src="js/drawGuide.js"> </script> 
 <script type="text/javascript">
@@ -67,28 +69,26 @@ function initialize(){
 	 clievent();   
  };
 //初始化结束
-function incr() {
-	draw_via_rnxml_Request(map.getBounds());
-	setTimeout("incr()",20000);
-	}
-	
-	var win = document.documentElement;
-	window.onload=function()
-	{	
-	var win_hei=self.innerHeight||(win && win.clientHeight)||document.body.clientHeight;
-	var win_wid=self.innerWidth ||(win && win.clientWidth) ||document.body.clientWidth;
-	document.getElementById("bMap").style.width=(win_wid-520-17)+"px";
-	initialize();//高德api	
-	}
-	
-	window.onresize=function()
-	{
-	var win_hei=self.innerHeight||(win && win.clientHeight)||document.body.clientHeight;
-	var win_wid=self.innerWidth ||(win && win.clientWidth) ||document.body.clientWidth;
- 	document.getElementById("bMap").style.width=(win_wid-520-17)+"px";
-	}
+function mapInit(){
+  mapObj = new AMap.Map("iCenter",{
+  center:new AMap.LngLat(120.150023,30.270743), //地图中心点
+  level:13  //地图显示的比例尺级别
+  }); 
+}
 
-	
+function addMarker(){
+	//在地图上添加点
+  marker=new AMap.Marker({ icon:"ico/vled_marker.png" , position:new AMap.LngLat(120.150023,30.270743)});marker.setMap(mapObj);
+  
+}
+function addMarker2(){
+  marker.setMap(null);
+  marker=new AMap.Marker({          
+  icon:"ico/bus_maker.png",
+  position:new AMap.LngLat(120.150023,30.270743)
+  });
+  marker.setMap(mapObj);  //在地图上添加点
+}
 	
 	function stop(){ 
 			return false; 
@@ -97,7 +97,7 @@ function incr() {
 	
 	</script>
 </head>
-<body style="overflow-y:hidden;overflow-x:hidden; background-color:#ddcf8f">
+<body style="overflow-y:hidden;overflow-x:hidden; background-color:#ddcf8f" onload="mapInit()">
   <!----------------------topbar------------------------------------>
   <div id="header" style="height:70px;width:100%;background-size:100% 100%;float:left;overflow:hidden;background:url(./img/barbg.png);" >
     <div style="width:320px;height:50px;float:left;background: url(./img/logo.png) no-repeat;; margin:10px 0 0 20px;"></div>
@@ -140,10 +140,9 @@ function incr() {
        <div style="height:20px;"></div>
        <ul>
           <li >
-              <a href="#"><img src="ico/the_first_ico/screen1.png" /><div  class="menufont">诱导屏</div></a>
-          </li>
+               <a href="#"  onClick="javascript:addMarker()"> <img src="ico/the_first_ico/screen1.png" /><div class="menufont" >诱导屏</div></a>
           <li>
-              <a href="#"><img src="ico/the_first_ico/bus_station1.png" /><div  class="menufont">公交站牌</div></a>
+              <a href="#" onClick="javascript:addMarker2()"><img src="ico/the_first_ico/bus_station1.png" /><div  class="menufont">公交站牌</div></a>
           </li>
           <li>
               <a href="#"><img src="ico/the_first_ico/web_publish1.png" /><div  class="menufont">网页发布</div></a>
