@@ -78,22 +78,37 @@ function mapInit(){
 
 function addMarker(){
 	//在地图上添加点
-  marker=new AMap.Marker({ icon:"ico/vled_marker.png" , position:new AMap.LngLat(120.150023,30.270743)});marker.setMap(mapObj);
-  
-}
-function addMarker2(){
-  marker.setMap(null);
-  marker=new AMap.Marker({          
-  icon:"ico/bus_maker.png",
-  position:new AMap.LngLat(120.150023,30.270743)
-  });
-  marker.setMap(mapObj);  //在地图上添加点
-}
+  marker=new AMap.Marker
+  ({ icon:"ico/vled_marker.png" , 
+  position:new AMap.LngLat(120.128496,30.271225)});
+  marker.setMap(mapObj);
+  //点击图标右边出现对应信息
+AMap.event.addListener(marker, 'click', function(event) {
+		$("#Text").fadeIn("slow");
+		$("#bus").fadeOut("slow");
+		 }); 
 	
 	function stop(){ 
 			return false; 
 			} 
 	document.oncontextmenu=stop; 
+  
+}
+
+function addMarker2(){
+  marker=new AMap.Marker({          
+  icon:"ico/bus_maker.png",
+  position:new AMap.LngLat(120.150023,30.270743)
+  });
+  marker.setMap(mapObj);  //在地图上添加点
+  
+  AMap.event.addListener(marker, 'click', function(event) {
+	  $("#Text").fadeOut("slow");
+		$("#bus").fadeIn("slow");
+		 }); 
+}
+
+
 	
 	</script>
 </head>
@@ -140,7 +155,7 @@ function addMarker2(){
        <div style="height:20px;"></div>
        <ul>
           <li >
-               <a href="#"  onClick="javascript:addMarker()"> <img src="ico/the_first_ico/screen1.png" /><div class="menufont" >诱导屏</div></a>
+               <a href="#" onClick="javascript:addMarker()"> <img src="ico/the_first_ico/screen1.png" /><div class="menufont" >诱导屏</div></a>
           <li>
               <a href="#" onClick="javascript:addMarker2()"><img src="ico/the_first_ico/bus_station1.png" /><div  class="menufont">公交站牌</div></a>
           </li>
@@ -159,15 +174,33 @@ function addMarker2(){
   <div style="width:22%;height:595px;border:1px solid #CCC;float:left;background-color:#6CC">
   对应信息显示
   </div>-->
-        
-        <div id="TextViewPanel" style="background-color:#fff;" >
+   
+            
+         
+        <div id="TextViewPanel" style="background:#FFF;" >
+        <!---------------------------------------公交站牌---------------------------------------------->   
+            <div id="bus" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
+            <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/20141107101508.png "  width="390" height="260" /></div>
+            <div id="busname">八字桥站</div>
+            <div id="stationname">24路(蒋村公交中心站-杭州高级中学)</div>
+            <div id="stationname">900路(三墩-城站火车站 )</div>
+            <div id="stationname">b1路(黄龙公交站-下沙高教东区)</div>
+            <div id="stationname">b4路(闲林埠-火车东站西)</div>
+            <div id="stationname">起点站首末班时间 06:00 - 22:00 </div>
+
+            
+            </div>
+            <!-------------------------------------虚拟屏---------------------------------------------->
+        <div id="Text" style="display:none;">
           <div style="width:100%;height:28px; border-bottom:#f0f0f0 1px solid;background:#f8f8f8;">
+          
             <div id="guidename" class="guidename">虚拟诱导屏</div>
           </div>
+          
         <!-------------------------------------虚拟诱导屏---------------------------------------------->
           <div id="guide" style="width:100%;height:230px;font:'微软雅黑';background:#f8f8f8;padding:8px 0 0 0;">
               <div id="youdao">          
-                  <canvas id="myCanvas"  style=" width:100%;height:210px;margin-bottom:5px;"> 
+                  <canvas id="myCanvas"  style=" width:100%;height:210px;margin-bottom:3px;"> 
                   </canvas> 
               </div>                             
           </div>
@@ -231,8 +264,10 @@ function addMarker2(){
                 </div>
               </div>
             </div> 
+            </div>
    </div>  
-	
+  
+
 <!---------------------------------------js---------------------------------------------->   
 <script>
 function autoHeight(){	
