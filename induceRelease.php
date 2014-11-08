@@ -85,10 +85,9 @@ function mapInit(){
   var  marker_bus3=new AMap.Marker({ icon:"ico/bus_maker.png", position:gPos3})
   var  marker_bus4=new AMap.Marker({ icon:"ico/bus_maker.png", position:gPos5})
   var trafficLayer = new AMap.TileLayer.Traffic({zIndex:10}); //实时路况图层
+ 
+  //诱导屏显示
 function addMarker(){
-<<<<<<< HEAD
-	
-
   marker1.setMap(mapObj);//在地图上添加点
   marker2.setMap(mapObj);
   marker3.setMap(mapObj);
@@ -98,7 +97,43 @@ function addMarker(){
   marker_bus3.setMap(null); 
   marker_bus4.setMap(null); 
   trafficLayer.setMap(null); //隐藏实时路况图层
+  mapObj.setZoom(15);
+  
+	AMap.event.addListener(marker1, 'click', function(event) {//点击图标，网页右侧出现信息
+	$("#Text").fadeOut("slow");
+	$("#Text").fadeIn("slow");
+	$("#bus1").fadeOut("slow");
+	$("#bus2").fadeOut("slow");
+	$("#bus3").fadeOut("slow");
+	$("#bus4").fadeOut("slow");});
+	
+	AMap.event.addListener(marker2, 'click', function(event) {//点击图标，网页右侧出现信息
+	$("#Text").fadeOut("slow");
+	$("#Text").fadeIn("slow");
+	$("#bus1").fadeOut("slow");
+	$("#bus2").fadeOut("slow");
+	$("#bus3").fadeOut("slow");
+	$("#bus4").fadeOut("slow");});
+	
+	AMap.event.addListener(marker3, 'click', function(event) {//点击图标，网页右侧出现信息
+	$("#Text").fadeOut("slow");
+	$("#Text").fadeIn("slow");
+	$("#bus1").fadeOut("slow");
+	$("#bus2").fadeOut("slow");
+	$("#bus3").fadeOut("slow");
+	$("#bus4").fadeOut("slow");}); 
+	
+	AMap.event.addListener(marker4, 'click', function(event) {//点击图标，网页右侧出现信息
+	$("#Text").fadeOut("slow");
+	$("#Text").fadeIn("slow");
+	$("#bus1").fadeOut("slow");
+	$("#bus2").fadeOut("slow");
+	$("#bus3").fadeOut("slow");
+	$("#bus4").fadeOut("slow");});
+  
 }
+
+//	公交车站牌显示
 function addMarker_bus(){
   
   marker_bus1.setMap(mapObj);//在地图上添加点
@@ -110,7 +145,37 @@ function addMarker_bus(){
   marker3.setMap(null); 
   marker4.setMap(null); 
   trafficLayer.setMap(null); //隐藏实时路况图层
+   mapObj.setZoom(15);
+  AMap.event.addListener(marker_bus1, 'click', function(event) {
+     $("#Text").fadeOut("slow");
+   	 $("#bus1").fadeIn("slow");
+	 $("#bus2").fadeOut("slow");
+	 $("#bus3").fadeOut("slow");
+	 $("#bus4").fadeOut("slow");
+		 }); 
+		 
+  AMap.event.addListener(marker_bus2,'click', function(event) {
+	 $("#Text").fadeOut("slow");
+     $("#bus1").fadeOut("slow");
+	 $("#bus2").fadeIn("slow");
+	 $("#bus3").fadeOut("slow");
+	 $("#bus4").fadeOut("slow");
+		 }); 	
+   AMap.event.addListener(marker_bus3,'click', function(event) {
+     $("#Text").fadeOut("slow");
+	 $("#bus1").fadeOut("slow");		
+	 $("#bus3").fadeIn("slow");
+	 $("#bus2").fadeOut("slow");
+		 });
+  AMap.event.addListener(marker_bus4,'click', function(event) {
+     $("#Text").fadeOut("slow");
+	 $("#bus1").fadeOut("slow");		
+	 $("#bus4").fadeIn("slow");
+	 $("#bus2").fadeOut("slow");
+	 $("#bus3").fadeOut("slow");
+		 }); 		 
 }
+
 //网页分布
 
 function addRoad(){
@@ -125,48 +190,14 @@ function addRoad(){
   	marker3.setMap(null); 
  	marker4.setMap(null); 
 	//cloudDataLayer.setMap(null);
-	mapObj.setZoom(15);
-} 
+	
+}
+
 	
 	function stop(){ 
 			return false; 
 			} 
-	document.oncontextmenu=stop; 
-=======
-	//在地图上添加点
-  marker=new AMap.Marker
-  ({ icon:"ico/vled_marker.png" , 
-  position:new AMap.LngLat(120.128496,30.271225)});
-  marker.setMap(mapObj);
-  //点击图标右边出现对应信息
-AMap.event.addListener(marker, 'click', function(event) {
-		$("#Text").fadeIn("slow");
-		$("#bus").fadeOut("slow");
-		 }); 
-	
-	function stop(){ 
-			return false; 
-			} 
-	document.oncontextmenu=stop; 
-  
-}
-
-function addMarker2(){
-  marker=new AMap.Marker({          
-  icon:"ico/bus_maker.png",
-  position:new AMap.LngLat(120.150023,30.270743)
-  });
-  marker.setMap(mapObj);  //在地图上添加点
-  
-  AMap.event.addListener(marker, 'click', function(event) {
-	  $("#Text").fadeOut("slow");
-		$("#bus").fadeIn("slow");
-		 }); 
-}
-
-
->>>>>>> 7b5bace1c4ea39e539af1f8e2ff86dec91f58a02
-	
+	document.oncontextmenu=stop; 	
 	</script>
 </head>
 <body style="overflow-y:hidden;overflow-x:hidden; background-color:#ddcf8f" onload="mapInit()">
@@ -231,22 +262,52 @@ function addMarker2(){
   <div style="width:22%;height:595px;border:1px solid #CCC;float:left;background-color:#6CC">
   对应信息显示
   </div>-->
-   
-            
-         
+    <!---------------------------------------公交站牌---------------------------------------------->  
+        <script> var myArray = new Array('八字桥站','松木场站','市府大楼','天目山站');</script>
+        
         <div id="TextViewPanel" style="background:#FFF;" >
-        <!---------------------------------------公交站牌---------------------------------------------->   
-            <div id="bus" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
-            <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/20141107101508.png "  width="390" height="260" /></div>
-            <div id="busname">八字桥站</div>
-            <div id="stationname">24路(蒋村公交中心站-杭州高级中学)</div>
-            <div id="stationname">900路(三墩-城站火车站 )</div>
-            <div id="stationname">b1路(黄龙公交站-下沙高教东区)</div>
-            <div id="stationname">b4路(闲林埠-火车东站西)</div>
-            <div id="stationname">起点站首末班时间 06:00 - 22:00 </div>
-
+         <div id="bus3" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
+            <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus3.png"  width="390" height="260" /></div>
+            <div id="busname" ><script>document.write(myArray[2])</script></div> 
+              <div id="stationname">6路(少年宫-长城机电)</div>
+              <div id="stationname">21路(城站火车站-西湖体育馆)</div>
+              <div id="stationname">24路(杭州高级中学-蒋村公交中心站)</div>
+              <div id="stationname">57路(大关小区-大关小区)</div> 
+              
+            <div style="border-bottom::#fff 1px solid;text-align:center;font-size:15px;" >起点站首末班时间 06:00 - 22:00 </div></div>
             
-            </div>
+            <div id="bus2" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
+            <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus2.png"  width="390" height="260" /></div>
+            <div id="busname" ><script>document.write(myArray[1])</script></div>
+              <div id="stationname">16路(岳王路-浙大)</div>
+              <div id="stationname">17路(西湖科技园-松木场河西)</div>
+              <div id="stationname">28路(火车东站西-植物园)</div>
+              <div id="stationname">49路(城站火车站-汽车西站)</div>
+              
+            <div style="border-bottom::#fff 1px solid;text-align:center;font-size:15px;" >起点站首末班时间 06:00 - 22:00 </div></div>
+            
+            <div id="bus1" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
+            <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus1.png "  width="390" height="260" /></div>
+            <div id="busname" ><script>document.write(myArray[0])</script></div> 
+              <div id="stationname">24路(蒋村公交中心站-杭州高级中学)</div>
+              <div id="stationname">900路(三墩-城站火车站 )</div>
+              <div id="stationname">b1路(黄龙公交站-下沙高教东区)</div>
+              <div id="stationname">b4路(闲林埠-火车东站西)</div>
+            <div style="border-bottom::#fff 1px solid;text-align:center;font-size:15px;" >起点站首末班时间 06:00 - 22:00 </div></div>
+           
+            
+            <div id="bus4" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
+            <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus4.png"  width="390" height="260" /></div>
+            <div id="busname" ><script>document.write(myArray[3])</script></div> 
+              <div id="stationname">15路(汽车北站-植物园)</div>
+              <div id="stationname">17路(西湖科技园-松木场河西)</div>
+              <div id="stationname">49路(城站火车站-汽车西站 )</div>
+              <div id="stationname">53路(蒋村公交中心站-蒋村公交中心站 )</div>
+            <div style="border-bottom::#fff 1px solid;text-align:center;font-size:15px;" >起点站首末班时间 06:00 - 22:00 </div></div>
+            
+           
+           
+       
             <!-------------------------------------虚拟屏---------------------------------------------->
         <div id="Text" style="display:none;">
           <div style="width:100%;height:28px; border-bottom:#f0f0f0 1px solid;background:#f8f8f8;">
@@ -607,8 +668,6 @@ function pub_change()                        	    //发布状态修改
 
 	//静态标记  路段名 行驶方向 当前位置 
 	
-	
-
 </script>
 
 </body>
