@@ -10,7 +10,7 @@ ul{-webkit-padding-start: 0; -webkit-margin-after: 0;-webkit-margin-before: 0;}
 <link rel="stylesheet" type="text/css" href="css/menu-css.css">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/choose.css"><!--头部选项的样式链接-->
-
+<script type="text/javascript" src="map.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src=" Variable message signs.js"></script>
 <script src="http://webapi.amap.com/maps?v=1.2&key=yourkey" type="text/javascript"></script>
@@ -75,20 +75,57 @@ function mapInit(){
   level:13  //地图显示的比例尺级别
   }); 
 }
+  var  marker1=new AMap.Marker({ icon:"ico/vled_marker.png" , position:gPos1});
+  var  marker2=new AMap.Marker({ icon:"ico/vled_marker.png" , position:gPos2});
+  var  marker3=new AMap.Marker({ icon:"ico/vled_marker.png" , position:gPos3});
+  var  marker4=new AMap.Marker({ icon:"ico/vled_marker.png" , position:gPos4});
 
+  var  marker_bus1=new AMap.Marker({ icon:"ico/bus_maker.png", position:gPos1});
+  var  marker_bus2=new AMap.Marker({ icon:"ico/bus_maker.png", position:gPos2})
+  var  marker_bus3=new AMap.Marker({ icon:"ico/bus_maker.png", position:gPos3})
+  var  marker_bus4=new AMap.Marker({ icon:"ico/bus_maker.png", position:gPos5})
+  var trafficLayer = new AMap.TileLayer.Traffic({zIndex:10}); //实时路况图层
 function addMarker(){
-	//在地图上添加点
-  marker=new AMap.Marker({ icon:"ico/vled_marker.png" , position:new AMap.LngLat(120.150023,30.270743)});marker.setMap(mapObj);
+	
+
+  marker1.setMap(mapObj);//在地图上添加点
+  marker2.setMap(mapObj);
+  marker3.setMap(mapObj);
+  marker4.setMap(mapObj);
+  marker_bus1.setMap(null);  //在地图上隐藏公车站牌
+  marker_bus2.setMap(null); 
+  marker_bus3.setMap(null); 
+  marker_bus4.setMap(null); 
+  trafficLayer.setMap(null); //隐藏实时路况图层
+}
+function addMarker_bus(){
   
+  marker_bus1.setMap(mapObj);//在地图上添加点
+  marker_bus2.setMap(mapObj);
+  marker_bus3.setMap(mapObj);
+  marker_bus4.setMap(mapObj);
+  marker1.setMap(null);//在地图上隐藏诱导屏
+  marker2.setMap(null); 
+  marker3.setMap(null); 
+  marker4.setMap(null); 
+  trafficLayer.setMap(null); //隐藏实时路况图层
 }
-function addMarker2(){
-  marker.setMap(null);
-  marker=new AMap.Marker({          
-  icon:"ico/bus_maker.png",
-  position:new AMap.LngLat(120.150023,30.270743)
-  });
-  marker.setMap(mapObj);  //在地图上添加点
-}
+//网页分布
+
+function addRoad(){
+
+	trafficLayer.setMap(mapObj); //添加实时路况图层
+	marker_bus1.setMap(null);  //在地图上隐藏公车站牌
+ 	marker_bus2.setMap(null); 
+  	marker_bus3.setMap(null); 
+  	marker_bus4.setMap(null); 
+	marker1.setMap(null);//在地图上隐藏诱导屏
+  	marker2.setMap(null); 
+  	marker3.setMap(null); 
+ 	marker4.setMap(null); 
+	//cloudDataLayer.setMap(null);
+	mapObj.setZoom(15);
+} 
 	
 	function stop(){ 
 			return false; 
@@ -142,10 +179,10 @@ function addMarker2(){
           <li >
                <a href="#"  onClick="javascript:addMarker()"> <img src="ico/the_first_ico/screen1.png" /><div class="menufont" >诱导屏</div></a>
           <li>
-              <a href="#" onClick="javascript:addMarker2()"><img src="ico/the_first_ico/bus_station1.png" /><div  class="menufont">公交站牌</div></a>
+              <a href="#" onClick="javascript:addMarker_bus()"><img src="ico/the_first_ico/bus_station1.png" /><div  class="menufont">公交站牌</div></a>
           </li>
           <li>
-              <a href="#"><img src="ico/the_first_ico/web_publish1.png" /><div  class="menufont">网页发布</div></a>
+              <a href="#" onClick="javascript:addRoad()"><img src="ico/the_first_ico/web_publish1.png" /><div  class="menufont">网页发布</div></a>
           </li>   
        </ul>
     </div>
