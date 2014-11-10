@@ -10,7 +10,7 @@ ul{-webkit-padding-start: 0; -webkit-margin-after: 0;-webkit-margin-before: 0;}
 <link rel="stylesheet" type="text/css" href="css/menu-css.css">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/choose.css"><!--头部选项的样式链接-->
-<script type="text/javascript" src="map.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src=" Variable message signs.js"></script>
 <script src="http://webapi.amap.com/maps?v=1.2&key=yourkey" type="text/javascript"></script>
@@ -52,6 +52,7 @@ ul{-webkit-padding-start: 0; -webkit-margin-after: 0;-webkit-margin-before: 0;}
 			
 			}	
 function initialize(){
+	
     map = new AMap.Map("iCenter",{   
     center:new AMap.LngLat(120.150023,30.270743), //地图中心点   
     level:15,  //地图显示的比例尺级别	
@@ -70,10 +71,12 @@ function initialize(){
  };
 //初始化结束
 function mapInit(){
-  mapObj = new AMap.Map("iCenter",{
+	induce_map = new Map("iCenter",0);
+	induce_map.open_display();
+  mapObj = induce_map.get_MapObj();/*new AMap.Map("iCenter",{
   center:new AMap.LngLat(120.150023,30.270743), //地图中心点
   level:13  //地图显示的比例尺级别
-  }); 
+  }); */
 }
   var  marker1=new AMap.Marker({ icon:"ico/vled_marker.png" , position:gPos1});
   var  marker2=new AMap.Marker({ icon:"ico/vled_marker.png" , position:gPos2});
@@ -96,7 +99,9 @@ function addMarker(){
   marker_bus2.setMap(null); 
   marker_bus3.setMap(null); 
   marker_bus4.setMap(null); 
-  trafficLayer.setMap(null); //隐藏实时路况图层
+  //trafficLayer.setMap(null); //隐藏实时路况图层
+  
+  induce_map.remove_tfinfo_fun();
   mapObj.setZoom(15);
   
 	AMap.event.addListener(marker1, 'click', function(event) {//点击图标，网页右侧出现信息
@@ -144,7 +149,8 @@ function addMarker_bus(){
   marker2.setMap(null); 
   marker3.setMap(null); 
   marker4.setMap(null); 
-  trafficLayer.setMap(null); //隐藏实时路况图层
+  //trafficLayer.setMap(null); //隐藏实时路况图层
+  induce_map.remove_tfinfo_fun();
    mapObj.setZoom(15);
   AMap.event.addListener(marker_bus1, 'click', function(event) {
      $("#Text").fadeOut("slow");
@@ -179,8 +185,10 @@ function addMarker_bus(){
 //网页分布
 
 function addRoad(){
-
-	trafficLayer.setMap(mapObj); //添加实时路况图层
+	induce_map.add_tfinfo_fun();
+	
+	
+	//trafficLayer.setMap(mapObj); //添加实时路况图层
 	marker_bus1.setMap(null);  //在地图上隐藏公车站牌
  	marker_bus2.setMap(null); 
   	marker_bus3.setMap(null); 
