@@ -88,6 +88,13 @@ function mapInit(){
  
   //诱导屏显示
 function addMarker(){
+	
+	$("#Text").fadeIn("slow");//显示诱导屏
+	$("#bus1").fadeOut("slow");
+	$("#bus2").fadeOut("slow");
+	$("#bus3").fadeOut("slow");
+	$("#bus4").fadeOut("slow");
+	
   marker1.setMap(mapObj);//在地图上添加点
   marker2.setMap(mapObj);
   marker3.setMap(mapObj);
@@ -135,6 +142,9 @@ function addMarker(){
 
 //	公交车站牌显示
 function addMarker_bus(){
+	
+  $("#Text").fadeOut("slow");
+  $("#bus1").fadeIn("slow");//显示公交站牌
   
   marker_bus1.setMap(mapObj);//在地图上添加点
   marker_bus2.setMap(mapObj);
@@ -166,6 +176,7 @@ function addMarker_bus(){
 	 $("#bus1").fadeOut("slow");		
 	 $("#bus3").fadeIn("slow");
 	 $("#bus2").fadeOut("slow");
+	 $("#bus4").fadeOut("slow");
 		 });
   AMap.event.addListener(marker_bus4,'click', function(event) {
      $("#Text").fadeOut("slow");
@@ -179,6 +190,12 @@ function addMarker_bus(){
 //网页分布
 
 function addRoad(){
+	
+	$("#Text").fadeOut("slow");//右侧内容都消失
+	$("#bus1").fadeOut("slow");
+	$("#bus2").fadeOut("slow");
+	$("#bus3").fadeOut("slow");
+	$("#bus4").fadeOut("slow");
 
 	trafficLayer.setMap(mapObj); //添加实时路况图层
 	marker_bus1.setMap(null);  //在地图上隐藏公车站牌
@@ -238,7 +255,7 @@ function addRoad(){
     </marquee>
   </div> 
   <!----------------------侧边栏------------------------------------>
-  <div id="sideMenu" style="width:7.8%;float:left;background:#ddcf8f;float:left;">
+  <div id="sideMenu" style="width:7.8%;float:left;background:#7fba50;float:left;height:768px;">
     <div class="inre_menu" style="width:100%;">
        <div style="height:20px;"></div>
        <ul>
@@ -262,11 +279,12 @@ function addRoad(){
   <div style="width:22%;height:595px;border:1px solid #CCC;float:left;background-color:#6CC">
   对应信息显示
   </div>-->
+
     <!---------------------------------------公交站牌---------------------------------------------->  
         <script> var myArray = new Array('八字桥站','松木场站','市府大楼','天目山站');</script>
         
         <div id="TextViewPanel" style="background:#FFF;" >
-         <div id="bus3" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
+         <div id="bus3" style="background-color:#FFF;display:none;width:100%;height:560px; border-bottom:#fff 1px solid;"> 
             <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus3.png"  width="390" height="260" /></div>
             <div id="busname" ><script>document.write(myArray[2])</script></div> 
               <div id="stationname">6路(少年宫-长城机电)</div>
@@ -276,7 +294,7 @@ function addRoad(){
               
             <div style="border-bottom::#fff 1px solid;text-align:center;font-size:15px;" >起点站首末班时间 06:00 - 22:00 </div></div>
             
-            <div id="bus2" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
+            <div id="bus2" style="background-color:#FFF;display:none;width:100%;height:560px; border-bottom:#fff 1px solid;"> 
             <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus2.png"  width="390" height="260" /></div>
             <div id="busname" ><script>document.write(myArray[1])</script></div>
               <div id="stationname">16路(岳王路-浙大)</div>
@@ -286,7 +304,7 @@ function addRoad(){
               
             <div style="border-bottom::#fff 1px solid;text-align:center;font-size:15px;" >起点站首末班时间 06:00 - 22:00 </div></div>
             
-            <div id="bus1" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
+            <div id="bus1" style="background-color:#FFF;display:none;width:100%;height:560px; border-bottom:#fff 1px solid;"> 
             <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus1.png "  width="390" height="260" /></div>
             <div id="busname" ><script>document.write(myArray[0])</script></div> 
               <div id="stationname">24路(蒋村公交中心站-杭州高级中学)</div>
@@ -296,7 +314,7 @@ function addRoad(){
             <div style="border-bottom::#fff 1px solid;text-align:center;font-size:15px;" >起点站首末班时间 06:00 - 22:00 </div></div>
            
             
-            <div id="bus4" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
+            <div id="bus4" style="background-color:#FFF;display:none;width:100%;height:560px; border-bottom:#fff 1px solid;"> 
             <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus4.png"  width="390" height="260" /></div>
             <div id="busname" ><script>document.write(myArray[3])</script></div> 
               <div id="stationname">15路(汽车北站-植物园)</div>
@@ -309,7 +327,7 @@ function addRoad(){
            
        
             <!-------------------------------------虚拟屏---------------------------------------------->
-        <div id="Text" style="display:none;">
+        <div id="Text" >
           <div style="width:100%;height:28px; border-bottom:#f0f0f0 1px solid;background:#f8f8f8;">
           
             <div id="guidename" class="guidename">虚拟诱导屏</div>
