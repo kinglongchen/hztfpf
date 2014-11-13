@@ -249,6 +249,8 @@ function addRoad(){
   marker_information3.setMap(null); 
   marker_information4.setMap(null); 
 	//cloudDataLayer.setMap(null);
+  //document.getElementById('TextViewPanel').style.display="none"；
+  document.getElementById('bMap').style.width = innerWidth - 122 + 'px';
 	
 }
 
@@ -344,7 +346,7 @@ function display_sidebar(){
     <!---------------------------------------公交站牌---------------------------------------------->  
         <script> var myArray = new Array('八字桥站','松木场站','市府大楼','天目山站');</script>
         
-       <div id="TextViewPanel" style="background:#FFF;" >
+       <div id="TextViewPanel" style="background:#FFF;display:block;" >
          <div id="bus3" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
             <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus3.png"  width="390" height="260" /></div>
             <div id="busname" ><script>document.write(myArray[2])</script></div> 
