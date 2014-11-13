@@ -88,7 +88,7 @@ function mapInit(){
  
   //诱导屏显示
 function addMarker(){
-	
+   
 	$("#Text").fadeIn("slow");//显示诱导屏
 	$("#bus1").fadeOut("slow");
 	$("#bus2").fadeOut("slow");
@@ -190,13 +190,13 @@ function addMarker_bus(){
 //网页分布
 
 function addRoad(){
-	
 	$("#Text").fadeOut("slow");//右侧内容都消失
 	$("#bus1").fadeOut("slow");
 	$("#bus2").fadeOut("slow");
 	$("#bus3").fadeOut("slow");
 	$("#bus4").fadeOut("slow");
-
+   
+	
 	trafficLayer.setMap(mapObj); //添加实时路况图层
 	marker_bus1.setMap(null);  //在地图上隐藏公车站牌
  	marker_bus2.setMap(null); 
@@ -215,7 +215,14 @@ function addRoad(){
 			return false; 
 			} 
 	document.oncontextmenu=stop; 	
-	</script>
+//显示、隐藏侧边栏
+function display_sidebar(){
+	if(document.getElementById("sideMenu").style.display == "none")
+	document.getElementById("sideMenu").style.display = "block"
+	else
+	document.getElementById("sideMenu").style.display = "none"	
+}	
+</script>
 </head>
 <body style="overflow-y:hidden;overflow-x:hidden; background-color:#ddcf8f" onload="mapInit()">
   <!----------------------topbar------------------------------------>
@@ -255,21 +262,28 @@ function addRoad(){
     </marquee>
   </div> 
   <!----------------------侧边栏------------------------------------>
-  <div id="sideMenu" style="width:7.8%;float:left;background:#7fba50;float:left;height:768px;">
+  <div id="sideMenu" style="width:7.8%;float:left;background:#ddcf8f;float:left;display:block;">
     <div class="inre_menu" style="width:100%;">
        <div style="height:20px;"></div>
        <ul>
-          <li >
+          <li>
                <a href="#" onClick="javascript:addMarker()"> <img src="ico/the_first_ico/screen1.png" /><div class="menufont" >诱导屏</div></a>
           <li>
               <a href="#" onClick="javascript:addMarker_bus()"><img src="ico/the_first_ico/bus_station1.png" /><div  class="menufont">公交站牌</div></a>
           </li>
           <li>
               <a href="#" onClick="javascript:addRoad()"><img src="ico/the_first_ico/web_publish1.png" /><div  class="menufont">网页发布</div></a>
+          </li> 
+          <li>
+              <a href="#" onClick="javascript:addRoad()"><img src="ico/the_first_ico/phone1.png" /><div  class="menufont">手机发布</div></a>
+          </li> 
+          <li>
+              <a href="#" onClick="javascript:addRoad()"><img src="ico/the_first_ico/information_board1.png" /><div  class="menufont">信息板</div></a>
           </li>   
        </ul>
     </div>
   </div>
+  <div style="width:9px;height:700px;border-right:1px #999 solid;float:left;"><a href="#" onclick="display_sidebar()">></a></div>
   <!----------------------中央地图------------------------------------>
   <!--<div id="map_container" style="width:70%;height:597px;float:left;"></div>-->
   <div id="bMap"  style=" position:relative;float:left; overflow:hidden; margin:0;">
@@ -279,12 +293,11 @@ function addRoad(){
   <div style="width:22%;height:595px;border:1px solid #CCC;float:left;background-color:#6CC">
   对应信息显示
   </div>-->
-
     <!---------------------------------------公交站牌---------------------------------------------->  
         <script> var myArray = new Array('八字桥站','松木场站','市府大楼','天目山站');</script>
         
-        <div id="TextViewPanel" style="background:#FFF;" >
-         <div id="bus3" style="background-color:#FFF;display:none;width:100%;height:560px; border-bottom:#fff 1px solid;"> 
+       <div id="TextViewPanel" style="background:#FFF;" >
+         <div id="bus3" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
             <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus3.png"  width="390" height="260" /></div>
             <div id="busname" ><script>document.write(myArray[2])</script></div> 
               <div id="stationname">6路(少年宫-长城机电)</div>
@@ -294,7 +307,7 @@ function addRoad(){
               
             <div style="border-bottom::#fff 1px solid;text-align:center;font-size:15px;" >起点站首末班时间 06:00 - 22:00 </div></div>
             
-            <div id="bus2" style="background-color:#FFF;display:none;width:100%;height:560px; border-bottom:#fff 1px solid;"> 
+            <div id="bus2" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
             <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus2.png"  width="390" height="260" /></div>
             <div id="busname" ><script>document.write(myArray[1])</script></div>
               <div id="stationname">16路(岳王路-浙大)</div>
@@ -304,7 +317,7 @@ function addRoad(){
               
             <div style="border-bottom::#fff 1px solid;text-align:center;font-size:15px;" >起点站首末班时间 06:00 - 22:00 </div></div>
             
-            <div id="bus1" style="background-color:#FFF;display:none;width:100%;height:560px; border-bottom:#fff 1px solid;"> 
+            <div id="bus1" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
             <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus1.png "  width="390" height="260" /></div>
             <div id="busname" ><script>document.write(myArray[0])</script></div> 
               <div id="stationname">24路(蒋村公交中心站-杭州高级中学)</div>
@@ -314,7 +327,7 @@ function addRoad(){
             <div style="border-bottom::#fff 1px solid;text-align:center;font-size:15px;" >起点站首末班时间 06:00 - 22:00 </div></div>
            
             
-            <div id="bus4" style="background-color:#FFF;display:none;width:100%;height:560px; border-bottom:#fff 1px solid;"> 
+            <div id="bus4" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
             <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus4.png"  width="390" height="260" /></div>
             <div id="busname" ><script>document.write(myArray[3])</script></div> 
               <div id="stationname">15路(汽车北站-植物园)</div>
@@ -420,7 +433,7 @@ function autoHeight(){
 		document.getElementById('bMap').style.height = jianHeight + 'px';
 		document.getElementById('TextViewPanel').style.height = jianHeight + 'px';
 	}
-		document.getElementById('bMap').style.width = innerWidth - 517 + 'px';
+		document.getElementById('bMap').style.width = innerWidth - 527 + 'px';
 	}
     autoHeight();
     window.onresize = autoHeight;
