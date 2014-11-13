@@ -259,10 +259,16 @@ function addRoad(){
 	document.oncontextmenu=stop; 	
 //显示、隐藏侧边栏
 function display_sidebar(){
-	if(document.getElementById("sideMenu").style.display == "none")
+	if(document.getElementById("sideMenu").style.display == "none"){
 	document.getElementById("sideMenu").style.display = "block"
-	else
+	document.getElementById('bMap').style.width = innerWidth - 527 + 'px';
+	document.getElementById("sidebar_up_a").innerHTML="<"
+	}
+	else{
 	document.getElementById("sideMenu").style.display = "none"	
+	document.getElementById('bMap').style.width = innerWidth - 420 + 'px';
+	document.getElementById("sidebar_up_a").innerHTML=">"
+	}
 }	
 </script>
 </head>
@@ -325,7 +331,7 @@ function display_sidebar(){
        </ul>
     </div>
   </div>
-  <div style="width:9px;height:700px;border-right:1px #999 solid;float:left;"><a href="#" onclick="display_sidebar()">></a></div>
+  <div  id="sidebar_up" style="width:9px;border-right:1px #999 solid;float:left;display:table;"><a href="#" id="sidebar_up_a" id="sidebar_up" style="color:#fff;display:table-cell; vertical-align:middle;" onclick="display_sidebar()"><</a></div>
   <!----------------------中央地图------------------------------------>
   <!--<div id="map_container" style="width:70%;height:597px;float:left;"></div>-->
   <div id="bMap"  style=" position:relative;float:left; overflow:hidden; margin:0;">
@@ -471,6 +477,8 @@ function autoHeight(){
 	if(nowHeight > jianHeight){
 		document.getElementById('bMap').style.height = nowHeight - 102 + 'px';
 		document.getElementById('TextViewPanel').style.height = nowHeight - 102 + 'px';
+		document.getElementById('sideMenu').style.height = nowHeight - 102 + 'px';
+		document.getElementById('sidebar_up').style.height = nowHeight - 102 + 'px';
 	}else{
 		document.getElementById('bMap').style.height = jianHeight + 'px';
 		document.getElementById('TextViewPanel').style.height = jianHeight + 'px';
