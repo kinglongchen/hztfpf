@@ -81,12 +81,16 @@ function mapInit(){
   var  marker4=new AMap.Marker({ icon:"ico/vled_marker.png" , position:gPos4});
 
   var  marker_bus1=new AMap.Marker({ icon:"ico/bus_maker.png", position:gPos1});
-  var  marker_bus2=new AMap.Marker({ icon:"ico/bus_maker.png", position:gPos2})
-  var  marker_bus3=new AMap.Marker({ icon:"ico/bus_maker.png", position:gPos3})
-  var  marker_bus4=new AMap.Marker({ icon:"ico/bus_maker.png", position:gPos5})
+  var  marker_bus2=new AMap.Marker({ icon:"ico/bus_maker.png", position:gPos2});
+  var  marker_bus3=new AMap.Marker({ icon:"ico/bus_maker.png", position:gPos3});
+  var  marker_bus4=new AMap.Marker({ icon:"ico/bus_maker.png", position:gPos5});
   var trafficLayer = new AMap.TileLayer.Traffic({zIndex:10}); //实时路况图层
  
-  //诱导屏显示
+  var  marker_information1=new AMap.Marker({ icon:"ico/information_board.png", position:gPos1});
+  var  marker_information2=new AMap.Marker({ icon:"ico/information_board.png", position:gPos2});
+  var  marker_information3=new AMap.Marker({ icon:"ico/information_board.png", position:gPos3});
+  var  marker_information4=new AMap.Marker({ icon:"ico/information_board.png", position:gPos5});
+  //诱导屏显示;
 function addMarker(){
    
 	$("#Text").fadeIn("slow");//显示诱导屏
@@ -103,6 +107,12 @@ function addMarker(){
   marker_bus2.setMap(null); 
   marker_bus3.setMap(null); 
   marker_bus4.setMap(null); 
+
+  marker_information1.setMap(null);  //在地图上隐藏信息牌
+  marker_information2.setMap(null); 
+  marker_information3.setMap(null); 
+  marker_information4.setMap(null); 
+
   trafficLayer.setMap(null); //隐藏实时路况图层
   mapObj.setZoom(15);
   
@@ -154,6 +164,10 @@ function addMarker_bus(){
   marker2.setMap(null); 
   marker3.setMap(null); 
   marker4.setMap(null); 
+  marker_information1.setMap(null);  //在地图上隐藏信息牌
+  marker_information2.setMap(null); 
+  marker_information3.setMap(null); 
+  marker_information4.setMap(null); 
   trafficLayer.setMap(null); //隐藏实时路况图层
    mapObj.setZoom(15);
   AMap.event.addListener(marker_bus1, 'click', function(event) {
@@ -187,6 +201,30 @@ function addMarker_bus(){
 		 }); 		 
 }
 
+//  信息牌显示
+function addMarker_information(){
+  
+  marker_information1.setMap(mapObj);//在地图上添加点
+  marker_information2.setMap(mapObj);
+  marker_information3.setMap(mapObj);
+  marker_information4.setMap(mapObj);
+
+  marker1.setMap(null);//在地图上隐藏诱导屏
+  marker2.setMap(null); 
+  marker3.setMap(null); 
+  marker4.setMap(null); 
+
+  marker_bus1.setMap(null);  //在地图上隐藏公车站牌
+  marker_bus2.setMap(null); 
+  marker_bus3.setMap(null); 
+  marker_bus4.setMap(null); 
+
+  trafficLayer.setMap(null); //隐藏实时路况图层
+  mapObj.setZoom(15);
+  
+}
+
+
 //网页分布
 
 function addRoad(){
@@ -200,12 +238,16 @@ function addRoad(){
 	trafficLayer.setMap(mapObj); //添加实时路况图层
 	marker_bus1.setMap(null);  //在地图上隐藏公车站牌
  	marker_bus2.setMap(null); 
-  	marker_bus3.setMap(null); 
-  	marker_bus4.setMap(null); 
+  marker_bus3.setMap(null); 
+  marker_bus4.setMap(null); 
 	marker1.setMap(null);//在地图上隐藏诱导屏
-  	marker2.setMap(null); 
-  	marker3.setMap(null); 
+  marker2.setMap(null); 
+  marker3.setMap(null); 
  	marker4.setMap(null); 
+  marker_information1.setMap(null);  //在地图上隐藏信息牌
+  marker_information2.setMap(null); 
+  marker_information3.setMap(null); 
+  marker_information4.setMap(null); 
 	//cloudDataLayer.setMap(null);
 	
 }
@@ -278,7 +320,7 @@ function display_sidebar(){
               <a href="#" onClick="javascript:addRoad()"><img src="ico/the_first_ico/phone1.png" /><div  class="menufont">手机发布</div></a>
           </li> 
           <li>
-              <a href="#" onClick="javascript:addRoad()"><img src="ico/the_first_ico/information_board1.png" /><div  class="menufont">信息板</div></a>
+              <a href="#" onClick="javascript:addMarker_information()"><img src="ico/the_first_ico/information_board1.png" /><div  class="menufont">信息板</div></a>
           </li>   
        </ul>
     </div>
