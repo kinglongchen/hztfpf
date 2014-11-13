@@ -194,11 +194,19 @@ function addRoad(){
 }
 
 	
-	function stop(){ 
-			return false; 
-			} 
-	document.oncontextmenu=stop; 	
-	</script>
+function stop(){ 
+		return false; 
+		} 
+document.oncontextmenu=stop; 
+
+//显示、隐藏侧边栏
+function display_sidebar(){
+	if(document.getElementById("sideMenu").style.display == "none")
+	document.getElementById("sideMenu").style.display = "block"
+	else
+	document.getElementById("sideMenu").style.display = "none"	
+}	
+</script>
 </head>
 <body style="overflow-y:hidden;overflow-x:hidden; background-color:#ddcf8f" onload="mapInit()">
   <!----------------------topbar------------------------------------>
@@ -238,7 +246,7 @@ function addRoad(){
     </marquee>
   </div> 
   <!----------------------侧边栏------------------------------------>
-  <div id="sideMenu" style="width:7.8%;float:left;background:#ddcf8f;float:left;">
+  <div id="sideMenu" style="width:7.8%;float:left;background:#ddcf8f;float:left;display:block; visibility:hidden;">
     <div class="inre_menu" style="width:100%;">
        <div style="height:20px;"></div>
        <ul>
@@ -249,10 +257,17 @@ function addRoad(){
           </li>
           <li>
               <a href="#" onClick="javascript:addRoad()"><img src="ico/the_first_ico/web_publish1.png" /><div  class="menufont">网页发布</div></a>
+          </li> 
+          <li>
+              <a href="#" onClick="javascript:addRoad()"><img src="ico/the_first_ico/phone1.png" /><div  class="menufont">手机发布</div></a>
+          </li> 
+          <li>
+              <a href="#" onClick="javascript:addRoad()"><img src="ico/the_first_ico/information_board1.png" /><div  class="menufont">信息板</div></a>
           </li>   
        </ul>
     </div>
   </div>
+  <div style="width:9px;height:700px;border-right:1px #999 solid;float:left;"><a href="#" onclick="display_sidebar()">></a></div>
   <!----------------------中央地图------------------------------------>
   <!--<div id="map_container" style="width:70%;height:597px;float:left;"></div>-->
   <div id="bMap"  style=" position:relative;float:left; overflow:hidden; margin:0;">
@@ -402,7 +417,7 @@ function autoHeight(){
 		document.getElementById('bMap').style.height = jianHeight + 'px';
 		document.getElementById('TextViewPanel').style.height = jianHeight + 'px';
 	}
-		document.getElementById('bMap').style.width = innerWidth - 517 + 'px';
+		document.getElementById('bMap').style.width = innerWidth - 527 + 'px';
 	}
     autoHeight();
     window.onresize = autoHeight;
