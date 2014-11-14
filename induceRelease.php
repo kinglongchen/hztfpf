@@ -16,6 +16,7 @@ ul{-webkit-padding-start: 0; -webkit-margin-after: 0;-webkit-margin-before: 0;}
 <script src="http://webapi.amap.com/maps?v=1.2&key=yourkey" type="text/javascript"></script>
 <script type="text/javascript"  src="js/drawGuide.js"> </script> 
 <script type="text/javascript">
+
 <!----------------高德api----------------->
   $.ajaxSetup({  
 	  async:false,
@@ -52,7 +53,13 @@ ul{-webkit-padding-start: 0; -webkit-margin-after: 0;-webkit-margin-before: 0;}
 			
 			}	
 function initialize(){
+   
     map = new AMap.Map("iCenter",{   
+    center:new AMap.LngLat(120.150023,30.270743), //地图中心点   
+    level:15,  //地图显示的比例尺级别	
+    });
+	
+	 map2 = new AMap.Map("phonemap",{   
     center:new AMap.LngLat(120.150023,30.270743), //地图中心点   
     level:15,  //地图显示的比例尺级别	
     });
@@ -66,7 +73,9 @@ function initialize(){
 	//document.getElementById("btn4").className="fBton2";	
 	// incr();
      scroll();
-	 clievent();   
+	 clievent(); 
+	
+
  };
 //初始化结束
 function mapInit(){
@@ -74,7 +83,15 @@ function mapInit(){
   center:new AMap.LngLat(120.150023,30.270743), //地图中心点
   level:13  //地图显示的比例尺级别
   }); 
+  
+    mapObj2 = new AMap.Map("phonemap",{
+  center:new AMap.LngLat(120.150023,30.270743), //地图中心点
+  level:13  //地图显示的比例尺级别
+  }); 
+  
+  
 }
+
   var  marker1=new AMap.Marker({ icon:"ico/vled_marker.png" , position:gPos1});
   var  marker2=new AMap.Marker({ icon:"ico/vled_marker.png" , position:gPos2});
   var  marker3=new AMap.Marker({ icon:"ico/vled_marker.png" , position:gPos3});
@@ -88,7 +105,8 @@ function mapInit(){
  
   //诱导屏显示
 function addMarker(){
-   
+	$("#phone").fadeOut("slow");
+    $("#bMap").fadeIn("slow");
 	$("#Text").fadeIn("slow");//显示诱导屏
 	$("#bus1").fadeOut("slow");
 	$("#bus2").fadeOut("slow");
@@ -142,9 +160,10 @@ function addMarker(){
 
 //	公交车站牌显示
 function addMarker_bus(){
-	
+  $("#phone").fadeOut("slow");
   $("#Text").fadeOut("slow");
   $("#bus1").fadeIn("slow");//显示公交站牌
+  $("#bMap").fadeIn("slow");
   
   marker_bus1.setMap(mapObj);//在地图上添加点
   marker_bus2.setMap(mapObj);
@@ -190,12 +209,35 @@ function addMarker_bus(){
 //网页分布
 
 function addRoad(){
+    	$("#phone").fadeOut("slow");
 	$("#Text").fadeOut("slow");//右侧内容都消失
 	$("#bus1").fadeOut("slow");
 	$("#bus2").fadeOut("slow");
 	$("#bus3").fadeOut("slow");
 	$("#bus4").fadeOut("slow");
-   
+    $("#bMap").fadeIn("slow");
+	
+	trafficLayer.setMap(mapObj); //添加实时路况图层
+	marker_bus1.setMap(null);  //在地图上隐藏公车站牌
+ 	marker_bus2.setMap(null); 
+  	marker_bus3.setMap(null); 
+  	marker_bus4.setMap(null); 
+	marker1.setMap(null);//在地图上隐藏诱导屏
+  	marker2.setMap(null); 
+  	marker3.setMap(null); 
+ 	marker4.setMap(null); 
+	//cloudDataLayer.setMap(null);
+	
+}
+//手机发布
+function addphone(){
+	$("#Text").fadeOut("slow");//右侧内容都消失
+	$("#bus1").fadeOut("slow");
+	$("#bus2").fadeOut("slow");
+	$("#bus3").fadeOut("slow");
+	$("#bus4").fadeOut("slow");
+	$("#bMap").fadeOut("slow");
+    $("#phone").fadeIn("slow");
 	
 	trafficLayer.setMap(mapObj); //添加实时路况图层
 	marker_bus1.setMap(null);  //在地图上隐藏公车站牌
@@ -223,6 +265,7 @@ function display_sidebar(){
 	document.getElementById("sideMenu").style.display = "none"	
 }	
 </script>
+
 </head>
 <body style="overflow-y:hidden;overflow-x:hidden; background-color:#ddcf8f" onload="mapInit()">
   <!----------------------topbar------------------------------------>
@@ -275,7 +318,7 @@ function display_sidebar(){
               <a href="#" onClick="javascript:addRoad()"><img src="ico/the_first_ico/web_publish1.png" /><div  class="menufont">网页发布</div></a>
           </li> 
           <li>
-              <a href="#" onClick="javascript:addRoad()"><img src="ico/the_first_ico/phone1.png" /><div  class="menufont">手机发布</div></a>
+              <a href="#" onClick="javascript:addphone()"><img src="ico/the_first_ico/phone1.png" /><div  class="menufont">手机发布</div></a>
           </li> 
           <li>
               <a href="#" onClick="javascript:addRoad()"><img src="ico/the_first_ico/information_board1.png" /><div  class="menufont">信息板</div></a>
@@ -293,10 +336,17 @@ function display_sidebar(){
   <div style="width:22%;height:595px;border:1px solid #CCC;float:left;background-color:#6CC">
   对应信息显示
   </div>-->
+   <div id="TextViewPanel" style="background:#FFF;" >
+    <!---------------------------------------手机发布---------------------------------------------->  
+    <div id="phone" style="display:none;background:url(ico/the_first_ico/phone_app.png);width:280px;height:530px;"> 
+    <div id="phonemap" style="width:210px;height:380px;position:absolute;left:30px;top:70px;"></div>
+    </div>
+    
+    
     <!---------------------------------------公交站牌---------------------------------------------->  
         <script> var myArray = new Array('八字桥站','松木场站','市府大楼','天目山站');</script>
         
-       <div id="TextViewPanel" style="background:#FFF;" >
+      
          <div id="bus3" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
             <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus3.png"  width="390" height="260" /></div>
             <div id="busname" ><script>document.write(myArray[2])</script></div> 
@@ -418,7 +468,11 @@ function display_sidebar(){
   
 
 <!---------------------------------------js---------------------------------------------->   
+
+
 <script>
+
+
 function autoHeight(){	
 	if (window.innerHeight){//FF
 		nowHeight = window.innerHeight;
