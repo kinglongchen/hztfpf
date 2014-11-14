@@ -222,6 +222,35 @@ function addMarker_information(){
   trafficLayer.setMap(null); //隐藏实时路况图层
   mapObj.setZoom(15);
   
+    AMap.event.addListener(marker_information1, 'click', function(event) {
+     $("#Text").fadeOut("slow");
+     $("#information1").fadeIn("slow");
+   $("#information2").fadeOut("slow");
+   $("#information3").fadeOut("slow");
+   $("#information4").fadeOut("slow");
+     }); 
+     
+  AMap.event.addListener(marker_information2,'click', function(event) {
+   $("#Text").fadeOut("slow");
+     $("#information1").fadeOut("slow");
+   $("#information2").fadeIn("slow");
+   $("#information3").fadeOut("slow");
+   $("#information4").fadeOut("slow");
+     });  
+   AMap.event.addListener(marker_information3,'click', function(event) {
+     $("#Text").fadeOut("slow");
+   $("#information1").fadeOut("slow");    
+   $("#information3").fadeIn("slow");
+   $("#information2").fadeOut("slow");
+   $("#information4").fadeOut("slow");
+     });
+  AMap.event.addListener(marker_information4,'click', function(event) {
+     $("#Text").fadeOut("slow");
+   $("#information1").fadeOut("slow");    
+   $("#information4").fadeIn("slow");
+   $("#information2").fadeOut("slow");
+   $("#information3").fadeOut("slow");
+     });  
 }
 
 
@@ -343,10 +372,52 @@ function display_sidebar(){
   <div style="width:22%;height:595px;border:1px solid #CCC;float:left;background-color:#6CC">
   对应信息显示
   </div>-->
-    <!---------------------------------------公交站牌---------------------------------------------->  
-        <script> var myArray = new Array('八字桥站','松木场站','市府大楼','天目山站');</script>
+    <!---------------------------------------可变信息牌---------------------------------------------->  
+        
         
        <div id="TextViewPanel" style="background:#FFF;display:block;" >
+         <div id="information1" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
+            <div style="border:10px solid #fff ;border-radius:15px;"> <iframe src="informationCard/information1.html" id="frame1" name="link" width="390" height="260"> </iframe></div>
+          
+              <div id="stationname"> <a href="informationCard/information1.html" target="link">平稳驾驶，注意安全！</a></div>
+              <div id="stationname"><a href="informationCard/information2.html" target="link">欢迎进入淮海高速</a> </div>
+              <div id="stationname"><a href="informationCard/information3.html" target="link">阴有阵雨，27-31度</a></div>
+              <div id="stationname"><a href="informationCard/information4.html" target="link">前方路段拥堵，绕行</a></div> 
+              
+            </div>
+            
+            <div id="information2" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
+            <div style="border:10px solid #fff ;border-radius:15px;"><iframe src="informationCard/information5.html"  id="frame2" name="link2" width="390" height="260"> </iframe></div>
+           
+              <div id="stationname"><a href="informationCard/information3.html" target="link2">阴有阵雨，27-31度</a></div>
+              <div id="stationname"> <a href="informationCard/information5.html" target="link2">欢迎进入沈大高速</a></div>
+              <div id="stationname"> <a href="informationCard/information1.html" target="link2">平稳驾驶，注意安全！</a></div>
+              <div id="stationname"> <a href="informationCard/information4.html" target="link2">前方路段拥堵，绕行</a></div> 
+              
+            </div>
+            
+            <div id="information3" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
+            <div style="border:10px solid #fff ;border-radius:15px;"> <iframe src="informationCard/information6.html" id="frame3" name="link3" width="390" height="260"> </iframe></div>
+       
+              <div id="stationname"><a href="informationCard/information3.html" target="link3">阴有阵雨，27-31度</a></div>
+              <div id="stationname"> <a href="informationCard/information6.html" target="link3">欢迎进入京哈高速</a></div>
+              <div id="stationname"> <a href="informationCard/information1.html" target="link3">平稳驾驶，注意安全！</a></div>
+              <div id="stationname"><a href="informationCard/information4.html" target="link3">前方路段拥堵，绕行</a></div>      
+              </div>
+           
+            
+            <div id="information4" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
+            <div style="border:10px solid #fff ;border-radius:15px;"> <iframe src="informationCard/information7.html" id="frame4" name="link4" width="390" height="260"> </iframe></div>
+          
+              <div id="stationname"><a href="informationCard/information3.html" target="link4">阴有阵雨，27-31度</a></div>
+              <div id="stationname"> <a href="informationCard/information7.html" target="link4">欢迎进入成南高速</a></div>
+              <div id="stationname"> <a href="informationCard/information1.html" target="link4">平稳驾驶，注意安全！</a></div>
+              <div id="stationname"><a href="informationCard/information4.html" target="link4">前方路段拥堵，绕行</a></div> 
+            </div>
+           
+            <!---------------------------------------公交站牌---------------------------------------------->  
+            <script> var myArray = new Array('八字桥站','松木场站','市府大楼','天目山站');</script>
+            <div id="TextViewPanel" style="background:#FFF;display:block;" >
          <div id="bus3" style="background-color:#FFF;display:none;width:100%;height:550px; border-bottom:#fff 1px solid;"> 
             <div style="border:10px solid #fff ;border-radius:15px;"> <img src="images/bus3.png"  width="390" height="260" /></div>
             <div id="busname" ><script>document.write(myArray[2])</script></div> 
@@ -385,8 +456,6 @@ function display_sidebar(){
               <div id="stationname">49路(城站火车站-汽车西站 )</div>
               <div id="stationname">53路(蒋村公交中心站-蒋村公交中心站 )</div>
             <div style="border-bottom::#fff 1px solid;text-align:center;font-size:15px;" >起点站首末班时间 06:00 - 22:00 </div></div>
-            
-           
            
        
             <!-------------------------------------虚拟屏---------------------------------------------->
