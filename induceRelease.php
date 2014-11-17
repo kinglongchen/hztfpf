@@ -14,8 +14,9 @@ ul{-webkit-padding-start: 0; -webkit-margin-after: 0;-webkit-margin-before: 0;}
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src=" Variable message signs.js"></script>
 <script src="http://webapi.amap.com/maps?v=1.2&key=yourkey" type="text/javascript"></script>
-<script type="text/javascript"  src="js/drawGuide.js"> </script> 
+<script type="text/javascript"  src="js/draw_map.js"> </script> 
 <script type="text/javascript">
+
 <!----------------高德api----------------->
   $.ajaxSetup({  
 	  async:false,
@@ -52,12 +53,23 @@ ul{-webkit-padding-start: 0; -webkit-margin-after: 0;-webkit-margin-before: 0;}
 			
 			}	
 function initialize(){
-	
+
     map = new AMap.Map("iCenter",{   
     center:new AMap.LngLat(120.150023,30.270743), //地图中心点   
     level:15,  //地图显示的比例尺级别	
     });
+	
+	 map2 = new AMap.Map("phonemap",{   
+    center:new AMap.LngLat(120.150023,30.270743), //手机地图中心点   
+    level:15,  //地图显示的比例尺级别	
+    });
      
+	  map3 = new AMap.Map("submitWebmap",{   
+    center:new AMap.LngLat(120.150023,30.270743), //网页发布地图中心点   
+    level:15,  //地图显示的比例尺级别	
+    });
+     
+	 
 	map.plugin(["AMap.ToolBar"],function(){     
         toolBar = new AMap.ToolBar();
         map.addControl(toolBar);    
@@ -67,17 +79,48 @@ function initialize(){
 	//document.getElementById("btn4").className="fBton2";	
 	// incr();
      scroll();
-	 clievent();   
+	 clievent(); 
+	
+
  };
 //初始化结束
 function mapInit(){
-	induce_map = new Map("iCenter",0);
-	induce_map.open_display();
-  mapObj = induce_map.get_MapObj();/*new AMap.Map("iCenter",{
+	 mapObj = new AMap.Map("iCenter",{
   center:new AMap.LngLat(120.150023,30.270743), //地图中心点
   level:13  //地图显示的比例尺级别
+  }); 
+  
+  
+   
+    mapObj2 = new AMap.Map("phonemap",{
+  center:new AMap.LngLat(120.150023,30.270743), //地图中心点
+  level:13  //地图显示的比例尺级别
+  
+  }); 
+  
+   mapObj3 = new AMap.Map("submitWebmap",{
+  center:new AMap.LngLat(120.150023,30.270743), //地图中心点
+  level:13  //地图显示的比例尺级别
+  
+  }); 
+  
+  
+  new AMap.Map("iCenter",{
+  center:new AMap.LngLat(120.150023,30.270743), //地图中心点
+  level:13  //地图显示的比例尺级别
+
+  }); 
+  /*
+    mapObj2 = new AMap.Map("phonemap",{
+  center:new AMap.LngLat(120.150023,30.270743), //地图中心点
+  level:13  //地图显示的比例尺级别
+  }); 
+  
+
   }); */
+
 }
+
   var  marker1=new AMap.Marker({ icon:"ico/vled_marker.png" , position:gPos1});
   var  marker2=new AMap.Marker({ icon:"ico/vled_marker.png" , position:gPos2});
   var  marker3=new AMap.Marker({ icon:"ico/vled_marker.png" , position:gPos3});
@@ -93,15 +136,22 @@ function mapInit(){
   var  marker_information2=new AMap.Marker({ icon:"ico/information_board.png", position:gPos2});
   var  marker_information3=new AMap.Marker({ icon:"ico/information_board.png", position:gPos3});
   var  marker_information4=new AMap.Marker({ icon:"ico/information_board.png", position:gPos5});
-  //诱导屏显示;
+   //诱导屏显示
 function addMarker(){
-   
+	$("#submitWeb").fadeOut("slow");
+	$("#phone").fadeOut("slow");
+    $("#bMap").fadeIn("slow");
 	$("#Text").fadeIn("slow");//显示诱导屏
 	$("#bus1").fadeOut("slow");
 	$("#bus2").fadeOut("slow");
 	$("#bus3").fadeOut("slow");
 	$("#bus4").fadeOut("slow");
-	
+	$("#information1").fadeOut("slow");
+    $("#information2").fadeOut("slow");
+    $("#information3").fadeOut("slow");
+    $("#information4").fadeOut("slow");
+  
+	 
   marker1.setMap(mapObj);//在地图上添加点
   marker2.setMap(mapObj);
   marker3.setMap(mapObj);
@@ -110,19 +160,11 @@ function addMarker(){
   marker_bus2.setMap(null); 
   marker_bus3.setMap(null); 
   marker_bus4.setMap(null); 
-<<<<<<< HEAD
-  //trafficLayer.setMap(null); //隐藏实时路况图层
-  
-  induce_map.remove_tfinfo_fun();
-=======
-
-  marker_information1.setMap(null);  //在地图上隐藏信息牌
-  marker_information2.setMap(null); 
-  marker_information3.setMap(null); 
-  marker_information4.setMap(null); 
-
   trafficLayer.setMap(null); //隐藏实时路况图层
->>>>>>> c41aaa269ad4c907d46a47781006ef800550fac8
+   marker_information1.setMap(null);//隐藏信息版图标
+  marker_information2.setMap(null);
+  marker_information3.setMap(null);
+  marker_information4.setMap(null);
   mapObj.setZoom(15);
   
 	AMap.event.addListener(marker1, 'click', function(event) {//点击图标，网页右侧出现信息
@@ -161,9 +203,20 @@ function addMarker(){
 
 //	公交车站牌显示
 function addMarker_bus(){
-	
+  $("#submitWeb").fadeOut("slow");
+  $("#phone").fadeOut("slow");
   $("#Text").fadeOut("slow");
   $("#bus1").fadeIn("slow");//显示公交站牌
+  $("#bMap").fadeIn("slow");
+   $("#information1").fadeOut("slow");
+   $("#information2").fadeOut("slow");
+   $("#information3").fadeOut("slow");
+   $("#information4").fadeOut("slow");
+   
+    marker_information1.setMap(null);//隐藏信息版图标
+  marker_information2.setMap(null);
+  marker_information3.setMap(null);
+  marker_information4.setMap(null);
   
   marker_bus1.setMap(mapObj);//在地图上添加点
   marker_bus2.setMap(mapObj);
@@ -173,16 +226,7 @@ function addMarker_bus(){
   marker2.setMap(null); 
   marker3.setMap(null); 
   marker4.setMap(null); 
-<<<<<<< HEAD
-  //trafficLayer.setMap(null); //隐藏实时路况图层
-  induce_map.remove_tfinfo_fun();
-=======
-  marker_information1.setMap(null);  //在地图上隐藏信息牌
-  marker_information2.setMap(null); 
-  marker_information3.setMap(null); 
-  marker_information4.setMap(null); 
   trafficLayer.setMap(null); //隐藏实时路况图层
->>>>>>> c41aaa269ad4c907d46a47781006ef800550fac8
    mapObj.setZoom(15);
   AMap.event.addListener(marker_bus1, 'click', function(event) {
      $("#Text").fadeOut("slow");
@@ -215,9 +259,9 @@ function addMarker_bus(){
 		 }); 		 
 }
 
-//  信息牌显示
+// 信息牌显示
 function addMarker_information(){
-  
+ 
   marker_information1.setMap(mapObj);//在地图上添加点
   marker_information2.setMap(mapObj);
   marker_information3.setMap(mapObj);
@@ -235,13 +279,19 @@ function addMarker_information(){
 
   trafficLayer.setMap(null); //隐藏实时路况图层
   mapObj.setZoom(15);
-  
+  $("#Text").fadeOut("slow");
+    $("#submitWeb").fadeOut("slow");
+  $("#phone").fadeOut("slow");
+  $("#Text").fadeOut("slow");
+  $("#bus1").fadeOut("slow");//显示公交站牌
+  $("#bMap").fadeIn("slow");
+  $("#information1").fadeIn("slow");
     AMap.event.addListener(marker_information1, 'click', function(event) {
      $("#Text").fadeOut("slow");
      $("#information1").fadeIn("slow");
-   $("#information2").fadeOut("slow");
-   $("#information3").fadeOut("slow");
-   $("#information4").fadeOut("slow");
+     $("#information2").fadeOut("slow");
+     $("#information3").fadeOut("slow");
+     $("#information4").fadeOut("slow");
      }); 
      
   AMap.event.addListener(marker_information2,'click', function(event) {
@@ -267,40 +317,66 @@ function addMarker_information(){
      });  
 }
 
-
 //网页分布
 
 function addRoad(){
-<<<<<<< HEAD
-	induce_map.add_tfinfo_fun();
-	
-	
-	//trafficLayer.setMap(mapObj); //添加实时路况图层
-=======
+     trafficLayer.setMap(mapObj3); //添加实时路况图层
+    $("#phone").fadeOut("slow");
+	//induce_map.add_tfinfo_fun();
+   $("#information1").fadeOut("slow");
+   $("#information2").fadeOut("slow");
+   $("#information3").fadeOut("slow");
+   $("#information4").fadeOut("slow");
+  
 	$("#Text").fadeOut("slow");//右侧内容都消失
 	$("#bus1").fadeOut("slow");
 	$("#bus2").fadeOut("slow");
 	$("#bus3").fadeOut("slow");
 	$("#bus4").fadeOut("slow");
-   
+	$("#bMap").fadeOut("slow");
+    $("#submitWeb").fadeIn("slow");
 	
-	trafficLayer.setMap(mapObj); //添加实时路况图层
->>>>>>> c41aaa269ad4c907d46a47781006ef800550fac8
+	//trafficLayer.setMap(mapObj); //添加实时路况图层
 	marker_bus1.setMap(null);  //在地图上隐藏公车站牌
  	marker_bus2.setMap(null); 
-  marker_bus3.setMap(null); 
-  marker_bus4.setMap(null); 
+  	marker_bus3.setMap(null); 
+  	marker_bus4.setMap(null); 
 	marker1.setMap(null);//在地图上隐藏诱导屏
-  marker2.setMap(null); 
-  marker3.setMap(null); 
+  	marker2.setMap(null); 
+  	marker3.setMap(null); 
  	marker4.setMap(null); 
-  marker_information1.setMap(null);  //在地图上隐藏信息牌
-  marker_information2.setMap(null); 
-  marker_information3.setMap(null); 
-  marker_information4.setMap(null); 
+	//cloudDataLayer.setMap(null);
+	//  document.getElementById('bMap').style.width = innerWidth - 122 + 'px';
+}
+//手机发布
+function addphone(){
+	
+	trafficLayer.setMap(mapObj2); //添加实时路况图层
+	$("#Text").fadeOut("slow");//右侧内容都消失
+	$("#bus1").fadeOut("slow");
+	$("#bus2").fadeOut("slow");
+	$("#bus3").fadeOut("slow");
+	$("#bus4").fadeOut("slow");
+	$("#bMap").fadeOut("slow");
+    $("#phone").fadeIn("slow");
+    $("#submitWeb").fadeOut("slow");
+	
+	
+	marker_bus1.setMap(null);  //在地图上隐藏公车站牌
+ 	marker_bus2.setMap(null); 
+    marker_bus3.setMap(null); 
+    marker_bus4.setMap(null); 
+	marker1.setMap(null);//在地图上隐藏诱导屏
+    marker2.setMap(null); 
+    marker3.setMap(null); 
+ 	marker4.setMap(null); 
+    marker_information1.setMap(null);  //在地图上隐藏信息牌
+    marker_information2.setMap(null); 
+    marker_information3.setMap(null); 
+    marker_information4.setMap(null); 
 	//cloudDataLayer.setMap(null);
   //document.getElementById('TextViewPanel').style.display="none"；
-  document.getElementById('bMap').style.width = innerWidth - 122 + 'px';
+
 	
 }
 
@@ -323,6 +399,7 @@ function display_sidebar(){
 	}
 }	
 </script>
+
 </head>
 <body style="overflow-y:hidden;overflow-x:hidden; background-color:#ddcf8f" onload="mapInit()">
   <!----------------------topbar------------------------------------>
@@ -375,7 +452,7 @@ function display_sidebar(){
               <a href="#" onClick="javascript:addRoad()"><img src="ico/the_first_ico/web_publish1.png" /><div  class="menufont">网页发布</div></a>
           </li> 
           <li>
-              <a href="#" onClick="javascript:addRoad()"><img src="ico/the_first_ico/phone1.png" /><div  class="menufont">手机发布</div></a>
+              <a href="#" onClick="javascript:addphone()"><img src="ico/the_first_ico/phone1.png" /><div  class="menufont">手机发布</div></a>
           </li> 
           <li>
               <a href="#" onClick="javascript:addMarker_information()"><img src="ico/the_first_ico/information_board1.png" /><div  class="menufont">信息板</div></a>
@@ -393,7 +470,16 @@ function display_sidebar(){
   <div style="width:22%;height:595px;border:1px solid #CCC;float:left;background-color:#6CC">
   对应信息显示
   </div>-->
-    <!---------------------------------------可变信息牌---------------------------------------------->  
+   <div id="TextViewPanel" style="background:#FFF;" >
+    <!---------------------------------------手机发布---------------------------------------------->  
+    <div id="phone" style="display:none;background:url(ico/the_first_ico/phone_app.png);width:280px;height:530px;"> 
+    <div id="phonemap" style="width:210px;height:380px;position:absolute;left:30px;top:70px;"></div>
+    </div>
+     <!---------------------------------------网页发布---------------------------------------------->  
+     <div id="submitWeb" style="display:none;width:2000px;height:2000px;"> 
+    <div id="submitWebmap" style="width:100%;height:100%;"></div>
+    </div>
+        <!---------------------------------------可变信息牌---------------------------------------------->  
         
         
        <div id="TextViewPanel" style="background:#FFF;display:block;" >
@@ -435,6 +521,8 @@ function display_sidebar(){
               <div id="stationname"> <a href="informationCard/information1.html" target="link4">平稳驾驶，注意安全！</a></div>
               <div id="stationname"><a href="informationCard/information4.html" target="link4">前方路段拥堵，绕行</a></div> 
             </div>
+            <!---------------------------------------公交站牌---------------------------------------------->  
+        <script> var myArray = new Array('八字桥站','松木场站','市府大楼','天目山站');</script>
            
             <!---------------------------------------公交站牌---------------------------------------------->  
             <script> var myArray = new Array('八字桥站','松木场站','市府大楼','天目山站');</script>
@@ -558,7 +646,11 @@ function display_sidebar(){
   
 
 <!---------------------------------------js---------------------------------------------->   
+
+
 <script>
+
+
 function autoHeight(){	
 	if (window.innerHeight){//FF
 		nowHeight = window.innerHeight;
@@ -587,6 +679,8 @@ function autoHeight(){
 		var tmp,bcd;
 		var c=document.getElementById("myCanvas"); 
 		var cxt=c.getContext("2d");	
+		 drawGuide2();
+		
 
 		
 	function iconCh(){
@@ -775,7 +869,7 @@ function pub_change()                        	    //发布状态修改
 	 
 	 sta[id]=Number(pubSta[id]);
 	 
-	 drawGuide1(); 	//立即重新画一次路
+	  drawGuide2();	//立即重新画一次路
 	 }
 
 	function timeJudge()
@@ -825,7 +919,7 @@ function pub_change()                        	    //发布状态修改
 	    //roadline();  //根据上述状态设置道路性
 		timeJudge();		
     	iconCh();
-	    drawGuide1();
+	    drawGuide2();
 }
 
 		   //这边要执行一次 不然打开网页的时候不会读取一次数据库 也就看不到路况了
