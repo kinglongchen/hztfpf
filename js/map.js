@@ -7,6 +7,11 @@ function Map(map_container,m) {
 		var roadinfo_data = null;
 		var pl_clk_fun = null;
 		var polyLineArray=new Array();
+		var map_move_redraw_listener = null;
+		var tfinfo_redraw_listener = null;
+		
+		var is_for_display = false;
+		
 		var addRoadInfo = function() {
 			var roadinfo_list = roadinfo_data;
 			var zoomLevel = mapobj.getZoom();
@@ -18,10 +23,14 @@ function Map(map_container,m) {
   			var roadinfo_Path;
   			var roadid;
   			var stroke_col;
+			
   			if(roadinfo_list!=null)
   			for(var i=0;i<roadinfo_list.length;i++) {
 	    		var roadinfo=roadinfo_list[i];
-				var col=parseInt(roadinfo[0]);//路段状态  
+				var col=parseInt(roadinfo[0]);//路段状态
+				
+				if (is_for_display) col = Math.floor(10*Math.random()%3)+1;
+				  
 				roadid=roadinfo[1];
 				roadinfo_Path=new Array();
 				for(var j=2;j<roadinfo.length;j+=2) {		
@@ -55,7 +64,14 @@ function Map(map_container,m) {
 	  	}//for
 			
 	}
-			
+	
+	this.open_display = function() {
+		is_for_display = true;
+		}
+	this.close_display = function() {
+		is_for_display = false;
+		}
+	this.get_MapObj = function() {return mapobj}
 	this.set_pl_clk_fun = function(fun) {
 		pl_clk_fun = fun;
 		}		
@@ -106,26 +122,53 @@ function Map(map_container,m) {
 			roadinfo_data=roadinfo_list;
 			addRoadInfo();//显示路径信息
 		}
-		
-	this.request_span = function(url) {
+	
+	var request_rs_span = function(url) {
+			url = url?url:"../../../HZ/netQRY_STA.php";
 			var bounds = mapobj.getBounds();
 			var botlat=bounds.southwest.lat;
 			var rlng=bounds.northeast.lng;
 			var uplat=bounds.northeast.lat;
 			var llng=bounds.southwest.lng;
 			//var url="netQRY_STA.php";
-			$.get(url,{botlat:botlat,rlng:rlng,uplat:uplat,llng:llng},drawroadinfo_via_rnxml)
+			$.get(url,{botlat:botlat,rlng:rlng,uplat:uplat,llng:llng},drawroadinfo_via_rnxml);
+		}
+		
+	this.request_span = function(url) {
+			request_rs_span(url);
+			map_move_redraw_listener =  AMap.event.addListener(mapobj,"moveend",function(e) {
+																addRoadInfo();
+																}
+															);
 			}
+	
+	this.add_tfinfo_fun = function() {
+		request_rs_span();
+		tfinfo_redraw_listener = AMap.event.addListener(mapobj,"moveend",function(e) {
+																request_rs_span();
+																}
+															);
+		}
+	
+	
+	
+	this.remove_tfinfo_fun = function() {
+			deleteRoadInfo();
+			AMap.event.removeListener(tfinfo_redraw_listener);
+		}
+	
+	this.remove_rsinfo= function() {
+			deleteRoadInfo();
+			AMap.event.removeListener(map_move_redraw_listener);
+		}
+	
 	this.request_rid = function(rids,url) {
 			//var url = "netQRY_rnet.php"
 			//var req_arges
 			$.get(url,{roadids:rids},drawroadinfo_via_rnxml)
 		}
 		
-	AMap.event.addListener(mapobj,"moveend",function(e) {
-			addRoadInfo();
-		}
-			);
+	
 	}
 	
 /*window.onload  = function() {
