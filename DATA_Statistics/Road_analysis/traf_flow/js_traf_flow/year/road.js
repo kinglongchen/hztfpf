@@ -11,6 +11,9 @@ $(function () {
 		credits:{
 			enabled:false
 			},
+		xAxis: {
+			allowDecimals:false
+			},
         yAxis: {
             title: {
                 text: '交通流量'
@@ -112,11 +115,11 @@ function data_update(data,road_name) {
 	
 	chart_data = data;
 	pie_data = new Array();
-	pie_data.push(new Array("小于52万辆/月",0));
-	pie_data.push(new Array("52-103万辆/月",0));
-	pie_data.push(new Array("103-156万辆/月",0));
-	pie_data.push(new Array("156-207万辆/月",0));
-	pie_data.push(new Array("大于207万辆/月",0));
+	pie_data.push(new Array("小于25.5万辆/月",0));
+	pie_data.push(new Array("25.5-26万辆/月",0));
+	pie_data.push(new Array("26-26.5万辆/月",0));
+	pie_data.push(new Array("26.5-27万辆/月",0));
+	pie_data.push(new Array("大于27万辆/月",0));
 	
 	
 	remote_ctb_data()//删除ctb表格中的内
@@ -131,11 +134,11 @@ function data_update(data,road_name) {
 			max_val_index = i; 
 			}
 		total_val+=v;
-		if(v<520000){pie_data[0][1]+=1/data.length;}
-		if(v>=520000&&v<1030000){pie_data[1][1]+=1/data.length;}
-		if(v>=1030000&&v<1560000){pie_data[2][1]+=1/data.length;}
-		if(v>=1560000&&v<2070000){pie_data[3][1]+=1/data.length;}
-		if(v>=2070000){pie_data[4][1]+=1/data.length;}
+		if(v<255000){pie_data[0][1]+=1/data.length;}
+		if(v>=255000&&v<260000){pie_data[1][1]+=1/data.length;}
+		if(v>=260000&&v<265000){pie_data[2][1]+=1/data.length;}
+		if(v>=265000&&v<270000){pie_data[3][1]+=1/data.length;}
+		if(v>=270000){pie_data[4][1]+=1/data.length;}
 		}
 	data[max_val_index]={x:max_val_time,y:max_val,color:'#FF0000',marker:{radius:6}}	
 	max_val_time_l = max_val_time-0.5;
@@ -213,9 +216,19 @@ function rte_road_data_req(year,month,day,zone) {
 	rte_road_data_update(data)
 	}
 
-function data_req(year,month,day,zone,road_name) {
-	data = generate_data()
-	data_update(data,road_name)
+function data_req(year,month,day,road_id,road_name) {
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,id:road_id,din:'tf',qrytype:'road',timetype:'year'};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = MonthToInt(ret_data[i].create_time);
+				var v = ret_data[i].value;
+				data_array.push([t,parseInt(v)]);
+				}
+				data_update(data_array,road_name);
+		}
+	);
 	}
 
 band_id_pref = 'timeband'	

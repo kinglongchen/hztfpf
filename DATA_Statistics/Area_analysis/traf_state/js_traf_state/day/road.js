@@ -407,23 +407,89 @@ function remove_cspeed_ctb_data() {
 	}
 
 
-function state_data_req(year,month,day,zoneid,zone_name) {
-	var data = generate_state_data({year:year,month:month,day:day})
-	state_data_update(data,zone_name)
+function state_data_req(year,month,day,zone_id,zone_name) {
+	/*var data = generate_state_data({year:year,month:month,day:day})
+	state_data_update(data,zone_name)*/
+	
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,month:month,day:day,id:zone_id,din:'ts',qrytype:'zone',timetype:'day'};
+	$.get(url,req_data,function(ret_data) {
+			var day_data = ret_data;
+			
+			var data = new Array()
+			for (var i=0;i<day_data.length;i++) {
+				var stadata = new Array();
+				for (var k = 0 ;k< 24;k++) {
+						stadata[k] = 0;
+					}
+					
+				var state_hour_data = day_data[i];
+				
+				for (var j = 0;j<state_hour_data.length;j++) {
+						var hour = GetHourInfo(state_hour_data[j].create_time);
+						stadata[hour] = parseInt(state_hour_data[j].value)
+					}
+				data.push(stadata)
+				}
+				state_data_update(data,zone_name)
+			}
+	);
+	
+	
 	}
 
-function ct_data_req(year,month,day,zoneid,zone_name) {
-	var data = generate_ct_data({year:year,month:month,day:day})
-	ct_data_update(data,zone_name);
+function ct_data_req(year,month,day,zone_id,zone_name) {
+	/*var data = generate_ct_data({year:year,month:month,day:day})
+	ct_data_update(data,zone_name);*/
+	
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,month:month,day:day,id:zone_id,din:'ct',qrytype:'zone',timetype:'day',t_itv:t_itv};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = SpanTimeToFloat(ret_data[i].from_time,ret_data[i].to_time)
+				var v = ret_data[i].value;
+				data_array.push([t,v]);
+				}
+				ct_data_update(data_array,zone_name);
+		}
+	);
+	
 	}
 
-function ci_data_req(year,month,day,zoneid,zone_name) {
-	var data = generate_ci_data({year:year,month:month,day:day})
-	ci_data_update(data,zone_name);
+function ci_data_req(year,month,day,zone_id,zone_name) {
+	/*var data = generate_ci_data({year:year,month:month,day:day})
+	ci_data_update(data,zone_name);*/
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,month:month,day:day,id:zone_id,din:'ci',qrytype:'zone',timetype:'day',t_itv:t_itv};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = SpanTimeToFloat(ret_data[i].from_time,ret_data[i].to_time)
+				var v = ret_data[i].value;
+				data_array.push([t,v]);
+				}
+				ci_data_update(data_array,zone_name);
+		}
+	);
 	}
-function speed_data_req(year,month,day,zoneid,zone_name) {
-	var data = generate_speed_data({year:year,month:month,day:day})
-	speed_data_update(data,zone_name);
+function speed_data_req(year,month,day,zone_id,zone_name) {
+	/*var data = generate_speed_data({year:year,month:month,day:day})
+	speed_data_update(data,zone_name);*/
+	
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,month:month,day:day,id:zone_id,din:'cs',qrytype:'zone',timetype:'day',t_itv:t_itv};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = SpanTimeToFloat(ret_data[i].from_time,ret_data[i].to_time)
+				var v = ret_data[i].value;
+				data_array.push([t,v]);
+				}
+				speed_data_update(data_array,zone_name);
+		}
+	);
+	
 	}
 
 function data_req(year,month,day,zoneid,zone_name) {

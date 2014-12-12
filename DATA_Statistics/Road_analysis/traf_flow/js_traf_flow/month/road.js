@@ -115,11 +115,11 @@ function data_update(data,road_name) {
 	
 	chart_data = data;
 	pie_data = new Array();
-	pie_data.push(new Array("小于17000辆/天",0));
-	pie_data.push(new Array("17000-35000辆/天",0));
-	pie_data.push(new Array("35000-52000辆/天",0));
-	pie_data.push(new Array("52000-70000辆/天",0));
-	pie_data.push(new Array("大于70000辆/天",0));
+	pie_data.push(new Array("小于7000辆/天",0));
+	pie_data.push(new Array("7000-7500辆/天",0));
+	pie_data.push(new Array("7500-8000辆/天",0));
+	pie_data.push(new Array("8000-8500辆/天",0));
+	pie_data.push(new Array("大于8500辆/天",0));
 	
 	
 	remote_ctb_data()//删除ctb表格中的内
@@ -134,11 +134,11 @@ function data_update(data,road_name) {
 			max_val_index = i; 
 			}
 		total_val+=v;
-		if(v<17000){pie_data[0][1]+=1/data.length;}
-		if(v>=17000&&v<35000){pie_data[1][1]+=1/data.length;}
-		if(v>=35000&&v<52000){pie_data[2][1]+=1/data.length;}
-		if(v>=52000&&v<70000){pie_data[3][1]+=1/data.length;}
-		if(v>=70000){pie_data[4][1]+=1/data.length;}
+		if(v<7000){pie_data[0][1]+=1/data.length;}
+		if(v>=7000&&v<7500){pie_data[1][1]+=1/data.length;}
+		if(v>=7500&&v<8000){pie_data[2][1]+=1/data.length;}
+		if(v>=8000&&v<8500){pie_data[3][1]+=1/data.length;}
+		if(v>=8500){pie_data[4][1]+=1/data.length;}
 		}
 	data[max_val_index]={x:max_val_time,y:max_val,color:'#FF0000',marker:{radius:6}}
 	max_val_time_l = max_val_time-0.5;
@@ -214,9 +214,20 @@ function rte_road_data_req(year,month,day,zone) {
 	rte_road_data_update(data)
 	}
 
-function data_req(year,month,day,zone,road_name) {
-	data = generate_data({"year":year,"month":month,"day":day})
-	data_update(data,road_name)
+function data_req(year,month,day,road_id,road_name) {
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,month:month,id:road_id,din:'tf',qrytype:'road',timetype:'month'};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = DayToInt(ret_data[i].create_time);
+				var v = ret_data[i].value;
+				data_array.push([t,parseInt(v)]);
+				}
+				data_update(data_array,road_name);
+		}
+	);
+	
 	}
 	
 

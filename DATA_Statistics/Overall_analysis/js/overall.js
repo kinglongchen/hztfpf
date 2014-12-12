@@ -76,7 +76,6 @@ $(function () {
     });                                                                    
 });
 
-
 $(function () {                                                                
     $('#zone_container').highcharts({                                           
         chart: {                                                           
@@ -139,7 +138,6 @@ $(function () {
     });                                                                    
 });
 
-
 $(function () {
     $('#pie_container').highcharts({
         chart: {
@@ -172,8 +170,6 @@ $(function () {
         }]
     });
 });
-
-
 
 $(function () {                                                                
     $('#day_cons_bar').highcharts({                                           
@@ -228,7 +224,6 @@ $(function () {
     });                                                                    
 });
 
-
 $(function () {                                                                
     $('#month_cons_bar').highcharts({                                           
         chart: {                                                           
@@ -282,7 +277,6 @@ $(function () {
     });                                                                    
 });
 
-
 $(function () {                                                                
     $('#year_cons_bar').highcharts({                                           
         chart: {                                                           
@@ -331,12 +325,9 @@ $(function () {
 				enabled:true,
                 symbol: 'triangle'
             }                              
-        }] 
-		                                                                
+        }]                                                                
     });                                                                    
 });
-
-
 
 $(document).ready(function(e) {
 	var def_date = new Date();
@@ -349,7 +340,9 @@ $(document).ready(function(e) {
 	//constime_data_req()
 	//map_init();
 	var map = new Map("map_container",1);
-	map.request_rid(generate_roadids(),"../../../HZ/netQRY_rnet.php");	
+	
+	conRoad_req(-1,2013,3,12,map);
+	//map.request_rid(generate_roadids(),"../../../HZ/netQRY_rnet.php");	
 });
 
 function road_data_update(data) {
@@ -424,8 +417,23 @@ function cons_road_data_update(data) {
 	}
 	
 function road_data_req() {
-	data = road_generate_data()
-	road_data_update(data);
+	/*data = road_generate_data()
+	road_data_update(data);*/
+	url = '../../../php/indexRank.php';
+	req_data = {din:'tf',qrytype:'road',timetype:$("#time_choose").val()};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = SpanTimeToFloat(ret_data[i].from_time,ret_data[i].to_time);
+				var v = ret_data[i].value;
+				data_array.push([t,parseInt(v)]);
+				}
+				data_update(data_array,road_name);
+		}
+	);
+	
+	
+	
 	}
 
 function zone_data_req() {
@@ -446,9 +454,8 @@ function alt_data_upate() {
 	charts.setTitle({ text: '路段'+titles[alt_type]+'排名'});
 	charts.series[0].name=serie_names[alt_type];
 	
-	charts = $('#zone_container').highcharts()
+	charts = $('#zone_container').highcharts();
 	charts.setTitle({ text: '路段'+titles[alt_type]+'排名'});
-	
 	
 	charts.series[0].name=serie_names[alt_type];
 	

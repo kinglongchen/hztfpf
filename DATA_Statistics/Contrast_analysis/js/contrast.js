@@ -398,6 +398,7 @@ function data_update(chart_obj,data) {
 		data_add(new Array(s_name,s_data))	
 		}
 	}
+	
 function setTitle(name) {
 		$('#trf_container').highcharts().setTitle({text:name+'交通流量对比分析'})
 		$('#vhs_container').highcharts().setTitle({text:name+'行程车速对比分析'})
@@ -405,6 +406,7 @@ function setTitle(name) {
 		$('#cot_container').highcharts().setTitle({text:name+'拥堵时间对比分析'})
 		$('#rst_container').highcharts().setTitle({text:name+'交通状态对比分析'})
 	}
+	
 function data_add(char_obj,data) {
 	
 	chart_obj.highcharts().addSeries(
@@ -423,157 +425,279 @@ function series_remove(chart_obj) {
 		}
 	chart_obj.highcharts().redraw();
 	}
-//时间对比的方法
-function trf_tc_data_req(road_id,args) {
 	
+//时间对比的方法
+function trf_tc_data_req(id,road_name,args,qrytype) {
 	for(var i = 0;i <args.length;i++) {
 		var data = new Array()
+		/*data.push(args[i]);
+		data.push(generate_trf_data());
+		chart_obj = $('#trf_container');
+		data_add(chart_obj,data)*/
 		data.push(args[i]);
-		data.push(generate_trf_data())
-		chart_obj = $('#trf_container')
-		data_add(chart_obj,data)
+		var ymd = args[i].split('-');
+		url = '../../../php/constDataReq.php';
+		req_data = {year:ymd[0],month:ymd[1],day:ymd[2],id:id,din:'tf',qrytype:qrytype};
+		$.get(url,req_data,function(ret_data) {
+			var data_array = Array();
+				for (var i = 0;i<ret_data.length;i++) {
+					var t = parseInt(ret_data[i][0])*30/60;
+					var v = ret_data[i][1];
+					data_array.push([t,parseInt(v)]);
+					}
+				data.push(data_array);
+				chart_obj = $('#trf_container');
+				data_add(chart_obj,data);
+			}
+		);
 		}
-	
-	
 	}
 
-function vhs_tc_data_req(road_id,args) {
-	
+function vhs_tc_data_req(id,road_name,args,qrytype) {
 	for(var i = 0;i <args.length;i++) {
 		var data = new Array()
-		data.push(args[i]);
+		/*data.push(args[i]);
 		data.push(generate_vhs_data())
 		chart_obj = $('#vhs_container')
-		data_add(chart_obj,data)
+		data_add(chart_obj,data)*/
+		data.push(args[i]);
+		var ymd = args[i].split('-');
+		url = '../../../php/constDataReq.php';
+		req_data = {year:ymd[0],month:ymd[1],day:ymd[2],id:id,din:'cs',qrytype:qrytype};
+		$.get(url,req_data,function(ret_data) {
+			var data_array = Array();
+				for (var i = 0;i<ret_data.length;i++) {
+					var t = parseInt(ret_data[i][0])*30/60;
+					var v = ret_data[i][1];
+					data_array.push([t,Math.round(parseFloat(v)*100)/100]);
+					}
+				data.push(data_array);
+				chart_obj = $('#vhs_container');
+				data_add(chart_obj,data);
+			}
+		);
 		}
 	}
 
 
-function coi_tc_data_req(road_id,args) {
-	
+function coi_tc_data_req(id,road_name,args,qrytype) {
 	for(var i = 0;i <args.length;i++) {
 		var data = new Array()
-		data.push(args[i]);
+		/*data.push(args[i]);
 		data.push(generate_coi_data())
 		chart_obj = $('#coi_container')
-		data_add(chart_obj,data)
+		data_add(chart_obj,data)*/
+		data.push(args[i]);
+		var ymd = args[i].split('-');
+		url = '../../../php/constDataReq.php';
+		req_data = {year:ymd[0],month:ymd[1],day:ymd[2],id:id,din:'ci',qrytype:qrytype};
+		$.get(url,req_data,function(ret_data) {
+			var data_array = Array();
+				for (var i = 0;i<ret_data.length;i++) {
+					var t = parseInt(ret_data[i][0])*30/60;
+					var v = ret_data[i][1];
+					data_array.push([t,Math.round(parseFloat(v)*100)/100]);
+					}
+				data.push(data_array);
+				chart_obj = $('#coi_container');
+				data_add(chart_obj,data);
+				}
+			);
 		}
-	
-	
 	}
 	
-function cot_tc_data_req(road_id,args) {
+function cot_tc_data_req(id,road_name,args,qrytype) {
 	
 	for(var i = 0;i <args.length;i++) {
 		var data = new Array()
-		data.push(args[i]);
+		/*data.push(args[i]);
 		data.push(generate_cot_data())
 		chart_obj = $('#cot_container')
-		data_add(chart_obj,data)
+		data_add(chart_obj,data)*/
+		
+		data.push(args[i]);
+		var ymd = args[i].split('-');
+		url = '../../../php/constDataReq.php';
+		req_data = {year:ymd[0],month:ymd[1],day:ymd[2],id:id,din:'ct',qrytype:qrytype};
+		$.get(url,req_data,function(ret_data) {
+			var data_array = Array();
+				for (var i = 0;i<ret_data.length;i++) {
+					var t = parseInt(ret_data[i][0])*30/60;
+					var v = ret_data[i][1];
+					data_array.push([t,Math.round(parseFloat(v)*100)/100]);
+					}
+				data.push(data_array);
+				chart_obj = $('#cot_container');
+				data_add(chart_obj,data);
+				}
+			);
 		}
-	
-	
 	}
 
-function rst_tc_data_req(road_id,args) {
-	
+function rst_tc_data_req(id,road_name,args,qrytype) {
 	for(var i = 0;i <args.length;i++) {
 		var data = new Array()
-		data.push(args[i]);
+		/*data.push(args[i]);
 		data.push(generate_rst_data())
 		chart_obj = $('#rst_container')
-		data_add(chart_obj,data)
+		data_add(chart_obj,data)*/
+		data.push(args[i]);
+		var ymd = args[i].split('-');
+		url = '../../../php/constDataReq.php';
+		req_data = {year:ymd[0],month:ymd[1],day:ymd[2],id:id,din:'ts',qrytype:qrytype};
+		$.get(url,req_data,function(ret_data) {
+			var data_array = Array();
+				for (var i = 0;i<ret_data.length;i++) {
+					var t = parseInt(ret_data[i][0])*30/60;
+					var v = ret_data[i][1];
+					data_array.push([t,Math.round(parseFloat(v)*100)/100]);
+					}
+				data.push(data_array);
+				chart_obj = $('#rst_container');
+				data_add(chart_obj,data);
+			}
+		);
 		}
-	
-	
 	}
 
 
 //路段对比的方法
-function trf_rc_data_req(date,args) {
-	
-	for(var i = 0;i <args.length;i++) {
-		var data = new Array()
-		data.push(args[i]);
-		data.push(generate_trf_data())
-		chart_obj = $('#trf_container')
-		data_add(chart_obj,data)
+function trf_rc_data_req(date,id,road_name,qrytype) {
+			/*data.push(args[i]);
+			data.push(generate_trf_data())
+			chart_obj = $('#trf_container')
+			data_add(chart_obj,data)*/	
+	var ymd = date.split('-');
+	var data = new Array();
+	data.push(road_name);
+	url = '../../../php/constDataReq.php';
+	req_data = {year:ymd[0],month:ymd[1],day:ymd[2],id:id,din:'tf',qrytype:qrytype};
+	$.get(url,req_data,function(ret_data) {
+			var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = parseInt(ret_data[i][0])*30/60;
+				var v = ret_data[i][1];
+				data_array.push([t,parseInt(v)]);
 		}
+		data.push(data_array);
+		chart_obj = $('#trf_container');
+		data_add(chart_obj,data);
+		}
+		);	
+	}
+
+function vhs_rc_data_req(date,id,road_name,qrytype) {
+		
+	var ymd = date.split('-');
+	var data = new Array();
+	data.push(road_name);
+	url = '../../../php/constDataReq.php';
+	req_data = {year:ymd[0],month:ymd[1],day:ymd[2],id:id,din:'ct',qrytype:qrytype};
+	$.get(url,req_data,function(ret_data) {
+			var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = parseInt(ret_data[i][0])*30/60;
+				var v = ret_data[i][1];
+				data_array.push([t,Math.round(parseFloat(v)*100)/100]);
+		}
+		data.push(data_array);
+		chart_obj = $('#vhs_container');
+		data_add(chart_obj,data);
+		}
+		);	
+		
+	}
+
+
+function coi_rc_data_req(date,id,road_name,qrytype) {
+	
+	var ymd = date.split('-');
+	var data = new Array();
+	data.push(road_name);
+	url = '../../../php/constDataReq.php';
+	req_data = {year:ymd[0],month:ymd[1],day:ymd[2],id:id,din:'ci',qrytype:qrytype};
+	$.get(url,req_data,function(ret_data) {
+			var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = parseInt(ret_data[i][0])*30/60;
+				var v = ret_data[i][1];
+				data_array.push([t,Math.round(parseFloat(v)*100)/100]);
+		}
+		data.push(data_array);
+		chart_obj = $('#coi_container');
+		data_add(chart_obj,data);
+		}
+		);	
 	
 	
 	}
-
-function vhs_rc_data_req(date,args) {
 	
-	for(var i = 0;i <args.length;i++) {
-		var data = new Array()
-		data.push(args[i]);
-		data.push(generate_vhs_data())
-		chart_obj = $('#vhs_container')
-		data_add(chart_obj,data)
-		}
-	
-	
-	}
-
-
-function coi_rc_data_req(date,args) {
-	
-	for(var i = 0;i <args.length;i++) {
-		var data = new Array()
-		data.push(args[i]);
-		data.push(generate_coi_data())
-		chart_obj = $('#coi_container')
-		data_add(chart_obj,data)
-		}
-	
-	
-	}
-	
-function cot_rc_data_req(date,args) {
-	
-	for(var i = 0;i <args.length;i++) {
+function cot_rc_data_req(date,id,road_name,qrytype) {
+	/*for(var i = 0;i <args.length;i++) {
 		var data = new Array()
 		data.push(args[i]);
 		data.push(generate_cot_data())
 		chart_obj = $('#cot_container')
 		data_add(chart_obj,data)
 		}
-	
-	
-	}
-
-function rst_rc_data_req(date,args) {
-	
-	for(var i = 0;i <args.length;i++) {
-		var data = new Array()
-		data.push(args[i]);
-		data.push(generate_rst_data())
-		chart_obj = $('#rst_container')
-		data_add(chart_obj,data)
+		*/
+	var ymd = date.split('-');
+	var data = new Array();
+	data.push(road_name);
+	url = '../../../php/constDataReq.php';
+	req_data = {year:ymd[0],month:ymd[1],day:ymd[2],id:id,din:'ct',qrytype:qrytype};
+	$.get(url,req_data,function(ret_data) {
+			var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = parseInt(ret_data[i][0])*30/60;
+				var v = ret_data[i][1];
+				data_array.push([t,Math.round(parseFloat(v)*100)/100]);
 		}
-	
-	
+		data.push(data_array);
+		chart_obj = $('#cot_container');
+		data_add(chart_obj,data);
+		}
+		);	
 	}
 
-function tc_data_req(road_id,date) {
-	setTitle(date)
-	trf_tc_data_req(road_id,new Array(date));
-	vhs_tc_data_req(road_id,new Array(date));
-	cot_tc_data_req(road_id,new Array(date));
-	coi_tc_data_req(road_id,new Array(date));
-	rst_tc_data_req(road_id,new Array(date));
-	
-	
+function rst_rc_data_req(date,id,road_name,qrytype) {
+		
+	var ymd = date.split('-');
+	var data = new Array();
+	data.push(road_name);
+	url = '../../../php/constDataReq.php';
+	req_data = {year:ymd[0],month:ymd[1],day:ymd[2],id:id,din:'ts',qrytype:qrytype};
+	$.get(url,req_data,function(ret_data) {
+			var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = parseInt(ret_data[i][0])*30/60;
+				var v = ret_data[i][1];
+				data_array.push([t,Math.round(parseFloat(v)*100)/100]);
+		}
+		data.push(data_array);
+		chart_obj = $('#rst_container');
+		data_add(chart_obj,data);
+		}
+		);	
 	}
 
-function rc_data_req(date,road_id,road_name) {
-	setTitle(road_name)
-	trf_rc_data_req(date,new Array(road_name));
-	vhs_rc_data_req(date,new Array(road_name));
-	cot_rc_data_req(date,new Array(road_name));
-	coi_rc_data_req(date,new Array(road_name));
-	rst_rc_data_req(date,new Array(road_name));
+function tc_data_req(id,roadname,date,qrytype) {
+	
+		setTitle(date);
+		trf_tc_data_req(id,roadname,new Array(date),qrytype);
+		vhs_tc_data_req(id,roadname,new Array(date),qrytype);
+		cot_tc_data_req(id,roadname,new Array(date),qrytype);
+		coi_tc_data_req(id,roadname,new Array(date),qrytype);
+		rst_tc_data_req(id,roadname,new Array(date),qrytype);
+	}
+
+function rc_data_req(date,id,road_name,qrytype) {
+		setTitle(road_name);
+		trf_rc_data_req(date,id,road_name,qrytype);
+		vhs_rc_data_req(date,id,road_name,qrytype);
+		cot_rc_data_req(date,id,road_name,qrytype);
+		coi_rc_data_req(date,id,road_name,qrytype);
+		rst_rc_data_req(date,id,road_name,qrytype);
 	}
 	
 function chart_data_remove() {

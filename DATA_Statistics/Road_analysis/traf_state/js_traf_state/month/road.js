@@ -44,8 +44,8 @@ $(function () {
                 [0.5, '#F7F707'],
                 [1, '#FF1900']
             ],
-            min: 0,
-            max: 2,
+            min: 1,
+            max: 3,
             startOnTick: false,
             endOnTick: false,
             labels: {
@@ -132,8 +132,8 @@ $(function () {
                 [0.5, '#F7F707'],
                 [1, '#FF1900']
             ],
-            min: 0,
-            max: 2,
+            min: 1,
+            max: 3,
             startOnTick: false,
             endOnTick: false,
             labels: {
@@ -374,13 +374,72 @@ function remote_year_ctb_data() {
 	}
 	
 	
-function data_req(year,month,data,road_id,road_name) {
-	data = data_generate(year,month,data)
-	update_data(data,road_name)
+function data_req(year,month,day,road_id,road_name) {
+	/*data = data_generate(year,month,data)
+	update_data(data,road_name)*/
+	
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,month:month,day:day,id:road_id,din:'ts',qrytype:'road',timetype:'all'};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			/*for (var i = 0;i<ret_data.length;i++) {
+				var t = MonthToInt(ret_data[i].create_time);
+				var v = ret_data[i].value;
+				data_array.push([t,Math.round(v*100)/100]);
+				}*/
+				//data_update(data_array,road_name);
+			var day_data = ret_data.day;
+			
+			var data = new Array()
+			for (var i=0;i<day_data.length;i++) {
+				var stadata = new Array();
+				for (var k = 0 ;k< 24;k++) {
+						stadata[k] = 0;
+					}
+					
+				var state_hour_data = day_data[i];
+				
+				for (var j = 0;j<state_hour_data.length;j++) {
+					var hour = GetHourInfo(state_hour_data[j].create_time);
+					stadata[hour] = parseInt(state_hour_data[j].value)
+				}
+				data.push(stadata)
+				}
+			data_array.push(data)
+			
+			
+			var month_data = ret_data.month;
+			
+			var data = new Array()
+			
+			for (var i = 0;i<month_data.length;i++) {
+					var hour = GetHourInfo(month_data[i].hour);
+					var day = GetDayInfo(month_data[i].day);
+					var v = month_data[i].value;
+					data.push(new Array(hour+1,day,Math.round(v*100)/100))
+				}
+			data_array.push(data)
+			
+			
+			var year_data = ret_data.year;
+			
+			var data = new Array()
+			
+			for (var i = 0;i<year_data.length;i++) {
+					var hour = parseInt(year_data[i].hour);
+					var month = GetMonthInfo(year_data[i].month);
+					var v = year_data[i].value;
+					data.push(new Array(hour+1,month,Math.round(v*100)/100))
+				}
+			data_array.push(data)
+			update_data(data_array,road_name)
+		}
+	);
+	
+	
 	}
 	
 $(document).ready(function(e) {
-	
 	
 	var def_date = new Date();
 	def_year = def_date.getYear();

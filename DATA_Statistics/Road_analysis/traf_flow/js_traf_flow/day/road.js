@@ -130,7 +130,7 @@ function data_update(data,road_name) {
 	var max_val_index=0;
 	var total_val = 0;
 	var chart_data = data
-	var val_pie = t_itv*60/5;
+	var val_pie = t_itv*12/5;
 	pie_data = new Array();
 	pie_data.push(new Array("小于"+val_pie+"辆/"+t_itv+"分钟",0));
 	pie_data.push(new Array(val_pie+"-"+val_pie*2+"辆/"+t_itv+"分钟",0));
@@ -195,6 +195,7 @@ function data_update(data,road_name) {
 	$('#chart_container').highcharts().series[0].setData(chart_data,null,null,false);
 	$('#chart_container').highcharts().yAxis[0].setTitle({text:'交通流量(辆/'+t_itv+'分钟）'})
 	$('#chart_container').highcharts().setTitle({text:road_name+'交通流量日变化情况'})
+	
 	$('#pie_container').highcharts().series[0].setData(pie_data);
 	
 	//remove_max_timeband()
@@ -240,8 +241,19 @@ function rte_road_data_req(year,month,day,zone) {
 	}
 
 function data_req(year,month,day,road_id,road_name) {
-	var data = generate_data()
-	data_update(data,road_name)
+	
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,month:month,day:day,id:road_id,din:'tf',qrytype:'road',timetype:'day',t_itv:t_itv};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = SpanTimeToFloat(ret_data[i].from_time,ret_data[i].to_time)
+				var v = ret_data[i].value;
+				data_array.push([t,parseInt(v)]);
+				}
+				data_update(data_array,road_name);
+		}
+	);
 	}
 
 

@@ -76,13 +76,13 @@ function get_now()
       区域选择： 
       <span style="height:20px;margin:0 30px 0 -13px;">
           <select id = "zone_slcer" >
-              <option value="1">西湖区</option>
-              <option value="2">拱墅区</option>
-              <option value="3">余杭区</option>
-              <option value="4">上城区</option>
-              <option value="5">下城区</option>
-              <option value="6">萧山区</option>
-              <option value="7">江干区</option>
+              <option value="0">西湖区</option>
+              <option value="1">拱墅区</option>
+              <option value="2">余杭区</option>
+              <option value="3">上城区</option>
+              <option value="4">下城区</option>
+              <option value="5">萧山区</option>
+              <option value="6">江干区</option>
           </select>
       </span>
       时间选择：

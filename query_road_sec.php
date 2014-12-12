@@ -1,8 +1,8 @@
 <?php
-//header("content-type:application/json; charset=utf-8");
+header("content-type:application/json; charset=utf-8");
 include("conn.php"); 
-//$roadname = $_GET['search-text'];
-$roadname = "文一路";
+$roadname = $_GET['search-text'];
+//$roadname = "文一路";
 $encode = mb_detect_encoding($roadname);
 $roadname = iconv($encode,"GBK",$roadname);
 $sql = "select id,name from hz_roads where name='$roadname'";

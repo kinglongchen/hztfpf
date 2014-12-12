@@ -24,14 +24,16 @@
             <form>
                 选择时段
                 <select id="time_choose" onchange="day_month_year()">
-                    <option value="day">最近三天</option>
-                    <option value="week">最近三周</option>
-                    <option value="month">最近三个月</option>
+                    <option value="day">最近一天</option>
+                    <option value="month">最近一月</option>
                     <option value="year">最近一年</option>
                 </select>
             </form>
         </div>
     </div>
+   <span style="margin:8px 0 0 14px;float:left;">
+    拥堵路段：
+    </span>
     <div id="map_container" style="border:1px solid #000"></div>
     <div>
         <div id="road_container" style="margin-left:20px;width:30%"></div>
@@ -58,7 +60,7 @@
       </tr>
     </table>
     </div>
-    <div style="clear:both"></div>  
+    <div style="clear:both"></div>
 </div>
 </body>
 </html>

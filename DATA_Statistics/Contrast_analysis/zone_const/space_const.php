@@ -223,7 +223,8 @@ function query_road_sec() {
 	}
 window.onload=function() {
 	var date =new Date()
-	tc_data_req(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),"西湖区");
+	
+	rc_data_req(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),0,"西湖区",'zone');
 	get_now();
 	}
 	
@@ -259,12 +260,12 @@ function get_now()
                     选择时间:<input id ="dataslec" type="date"  onchange="chart_data_remove()"/>
               </span>
               <span style="margin:19px 0 0 40px;float:left;">
-              	选择对比区域：<select id="rs_slcer" onchange="rc_data_req($('#dataslec').val(),this.value,this.options[this.selectedIndex].text)">
-                		<option value="1">西湖区</option>
-                        <option value="2">上城区</option>
-                        <option value="3">滨江区</option>
-                        <option value="4">江干区</option>
-                    	<option value="5">萧山区</option>
+              	选择对比区域：<select id="rs_slcer" onchange="rc_data_req($('#dataslec').val(),this.value,this.options[this.selectedIndex].text,'zone')">
+                		<option value="0">西湖区</option>
+                        <option value="1">上城区</option>
+                        <option value="2">滨江区</option>
+                        <option value="3">江干区</option>
+                    	<option value="4">萧山区</option>
                 </select>
               </span>
               

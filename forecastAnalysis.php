@@ -5,6 +5,7 @@
 <title>无标题文档</title>
 <script type='text/javascript' src='js/map.js'></script>
 <script src="js/jquery.js"></script>
+<script src="js/util.js"></script>
 <script src="http://webapi.amap.com/maps?v=1.3&key=a1dbe1455fe51c2c903a6b9cd35af2fc"></script>
 <script type="text/javascript" src="js/Highcharts-4.0.3/js/highcharts.js"></script>
 <script src="DATA_Statistics/Forecast_analysis/js/forecast.js"></script>
@@ -89,18 +90,30 @@ function get_now()
       <div class="time_choose">
         时间选择：
         <span>
-            <input type="date" id="sub_date" onchange="tc_data_req(this.value)"/>
+            <input type="date" id="sub_date" onchange="time_change_fun()"/>
         </span>
       </div> 
-      <div style="float:left;margin-right:50px;margin:7px 0 10px 20px;">拥堵概率：<span>
+      <div style="float:left;margin-right:50px;margin:7px 0 10px 20px;">拥堵概率><span>
       <input type="text" id="p_slider" readonly name="p_slider"  size="2"/>%</span></div>  
       <div style="float:left;margin-right:50px;margin:13px 0 10px 15px;">
         <span>
         <script language="JavaScript">
         p_slider = new slider(PA_INIT, PA_TPL);
 		p_slider.sliderStop=function() {
-			query_conn_road(p_slider.n_value,t_slider.n_value)
+			time_change_fun()
 			}
+			
+		function time_change_fun() {
+			var date = init_date("sub_date");
+			var year = date.year;
+			var month = date.month;
+			var day = date.day;
+			var hour = parseInt(t_slider.n_value/(60*60));
+			var minu = parseInt((t_slider.n_value/60)%60);
+			var sec = 0;
+			prt_cr_data_req(year,month,day,hour,minu,sec,p_slider.n_value/100);
+			}
+			
         </script>
         </span>
       </div>
@@ -111,11 +124,10 @@ function get_now()
       <script language="JavaScript">
         t_slider = new slider(TA_INIT, TA_TPL);
 		t_slider.sliderStop=function() {
-			query_conn_road(p_slider.n_value,t_slider.n_value)
+			time_change_fun();
 			}
       </script>
       </span>
-     
      
       </span>
       <div style="clear:both;"></div>

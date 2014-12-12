@@ -225,7 +225,7 @@ function query_road_sec() {
 
 window.onload=function() {
 	var date =new Date()
-	tc_data_req(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),"文三路-教工路-学院路");
+	rc_data_req(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),8,"文三路-教工路-学院路","road");
 	get_now();
 	}
 
@@ -268,7 +268,7 @@ function get_now()
               </span>
               
               <span style="margin:19px 0 0 40px;float:left;">
-              	选择对比路段：<select id="rs_slcer" onchange="rc_data_req($('#dataslec').val(),this.value,this.options[this.selectedIndex].text)">
+              	选择对比路段：<select id="rs_slcer" onchange="rc_data_req($('#dataslec').val(),this.value,this.options[this.selectedIndex].text,'road')">
                 	<option value=8>文三路-教工路-学院路</option>>
                 </select>
               </span>

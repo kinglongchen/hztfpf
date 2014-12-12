@@ -204,7 +204,7 @@ function query_road_sec() {
 		'type':'GET', //请求类型 
 		'success':function(data){ 
 			if(data.length) {
-				//遍历data，添加到自动完成区 
+				//遍历data，添加到自动完成区
 				$.each(data, function(index,term) {
 					$('<option></option>').text(term[1]).val(term[0]).appendTo($('#rs_slcer'))
 					})
@@ -231,7 +231,7 @@ function road_analysis() {
 		day = parseInt(date[2])
 		}
 		
-	document.getElementById('Ana_iframe').contentWindow.data_req(year,month,day,road_sec_id,road_sec_name)	
+	document.getElementById('Ana_iframe').contentWindow.data_req(year,month+1,day,road_sec_id,road_sec_name)	
 		
 	
 	}

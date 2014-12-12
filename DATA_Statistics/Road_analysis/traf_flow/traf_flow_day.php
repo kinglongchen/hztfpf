@@ -15,7 +15,6 @@
       <div style="float:left;height:100%;width:98%;overflow:hidden;">      
             <div class="tabs" style="background:#f0f8fe;"> 
                     <div id="chart_container" style="width:55%;height:250px;border:1px solid #000;margin:10px 0 0 10px;float:left"></div>
-                    
                     <div class="glfx2" style="float:left; width: 42%;margin:10px 0 0 10px;height: 250px">
                     <div style="margin-right:17px;">
                     <table border="1px" style="width:100%;border-collapse:collapse; background:#3b88e7;color:#fff;">

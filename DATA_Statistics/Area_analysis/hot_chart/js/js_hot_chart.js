@@ -1,11 +1,14 @@
 // JavaScript Document
+
+var qrytype = 'day';
+
 window.onload=function(){
 	var map = new BMap.Map("container");          // 创建地图实例
 	var point = new BMap.Point(120.134414,30.265591);
 	map.centerAndZoom(point, 13);             // 初始化地图，设置中心点坐标和地图级别
 	map.enableScrollWheelZoom(); // 允许滚轮缩放
 	if(!isSupportCanvas()){
-    	alert('热力图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用热力图功能')
+    	alert('热力图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用热力图功能');
     }
 	heatmapOverlay = new BMapLib.HeatmapOverlay({"radius":20});
 	map.addOverlay(heatmapOverlay);
@@ -13,20 +16,19 @@ window.onload=function(){
 	document.getElementById("play").onclick=function() {
 		if(this.value=="播放") {
 			this.value="停止";
-			heatmapplay()
+			heatmapData_req();
 			}
 		else {
 			this.value = "播放";
 			heatmapstop()
 			}
-		
-		
 	}
 	$(".titvcls").change(function() {
 		var play = document.getElementById("play");
+		qrytype = this.value;
 		if(play.value=="停止") {
 			play.value = "播放";
-			heatmapstop()
+			heatmapstop();
 			}
 		})
 	}
@@ -53,8 +55,10 @@ function openHeatmap(){
 function closeHeatmap(){
         heatmapOverlay.hide();
     }
+
+
 function updateHeatmapdata() {
-	var points = generate_heatmap_data();
+	var points = hm_itvator.popdata();
 	heatmapOverlay.setDataSet({data:points,max:100});
 	}	
 //function setGradient(){
@@ -81,8 +85,8 @@ function isSupportCanvas(){
 cent_point = [120.161564,30.260846]
 
 function generate_heatmap_data() {
-	var w = 0.05
-	var h = 0.05
+	var w = 0.05;
+	var h = 0.05;
 	var sx = cent_point[0]-w;
 	var sy = cent_point[1]-h;
 	
@@ -99,12 +103,13 @@ function generate_heatmap_data() {
 
 var hpsto_id = null;
 function heatmapplay() {
-	if (!t_slider.next(2400,function(){
-			updateHeatmapdata()
+	if (!t_slider.next(hm_itv,function(){
+			updateHeatmapdata();
 			})) {
 				hpsto_id = setTimeout("heatmapplay()",1000)
 				}
 	}
+	
 function heatmapstop() {
 	if (hpsto_id) {
 		clearTimeout(hpsto_id)
@@ -112,8 +117,28 @@ function heatmapstop() {
 		t_slider.resetvalue()
 		}
 	}
-
-
+	
+var hm_itv = 2400;
+var hm_itvator = null;
+function heatmapData_req() {
+	url = '../../../php/getheatmapdata.php';
+	req_data = {qrytype:qrytype};
+	var rs = new Array();
+	$.get(url,req_data,function(ret_data) {
+		hm_itv = 60*60*24/ret_data.length;
+		for (var i = 0;i < ret_data.length;i++) {
+				var udata = ret_data[i];
+				var urs = new Array();
+				for (var j = 0;j < udata.length;j++) {
+						urs.push({"lng":udata[j].nodex,"lat":udata[j].nodey,"count":udata[j].value});
+					}	
+				rs.push(urs);		
+			}
+		hm_itvator = new Itervator(rs);
+		heatmapplay();
+		}
+		);
+	}
 
 //##############################################################################################
 // JavaScript Document
@@ -194,7 +219,8 @@ $(document).ready(function(e) {
 	def_month = def_date.getMonth();
 	def_day = def_date.getDay();
 	def_zone = 1;//默认的区域编号
-	data_req(def_year,def_month,def_day,def_zone); 
+	//data_req(def_year,def_month,def_day,def_zone);
+	//heatmapData_req(def_year,def_month,def_day,def_zone);
 });
 
 function data_update(data) {
@@ -206,7 +232,7 @@ function data_update(data) {
 	chart_data = data;
 	pie_data = new Array();
 	for (var i = 0;i<5;i++) {
-		pie_data.push(new Array("第"+i+"级",0));
+			pie_data.push(new Array("第"+i+"级",0));
 		}
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];

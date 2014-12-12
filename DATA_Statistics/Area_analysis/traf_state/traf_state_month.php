@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../../../css/tab3.css">
 <link rel="stylesheet" type="text/css" href="../../../css/scollbar.css">
 <script src="../../../js/jquery.js"></script>
+<script src="../../../js/util.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/heatmap.js"></script>
 <!--<script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>-->
@@ -47,13 +48,13 @@ $(document).ready(function(e) {
       区域选择：
       <span style="height:20px;margin:0 30px 0 -13px;">
           <select id = "zone_slcer" >
-              <option value="1">西湖区</option>
-              <option value="2">拱墅区</option>
-              <option value="3">余杭区</option>
-              <option value="4">上城区</option>
-              <option value="5">下城区</option>
-              <option value="6">萧山区</option>
-              <option value="7">江干区</option>
+              <option value="0">西湖区</option>
+              <option value="1">拱墅区</option>
+              <option value="2">余杭区</option>
+              <option value="3">上城区</option>
+              <option value="4">下城区</option>
+              <option value="5">萧山区</option>
+              <option value="6">江干区</option>
           </select>
       </span>
       时间选择：

@@ -227,7 +227,7 @@ function road_slec_change() {
 	
 window.onload=function() {
 	var date =new Date()
-	tc_data_req("文三路-教工路-学院路",date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate());
+	tc_data_req(8,"文三路-教工路-学院路",date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),'road');
 	get_now();
 	}
 	
@@ -273,7 +273,7 @@ function get_now()
               
         
                 <span style="margin:19px 0 0 40px;float:left;">
-                    选择对比时间:<input type="date" id="sub_date"  onchange="tc_data_req($('#sroadid').val(),this.value)"/>
+                    选择对比时间:<input type="date" id="sub_date"  onchange="tc_data_req($('#rs_slcer').val(),$('#sroadid').val(),this.value,'road')"/>
                 </span>
                 <span style="margin:19px 0 0 40px;float:left;">
                     <input type="button"  onclick="chart_data_remove()" value="清空"/>

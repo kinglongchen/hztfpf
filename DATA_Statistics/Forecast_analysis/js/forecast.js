@@ -57,17 +57,22 @@ $(function () {
     });
 });
 
-var map1
+var map1;
 
 $(document).ready(function(e) {
 	var def_date = new Date();
-	def_year = def_date.getYear();
-	def_month = def_date.getMonth();
+	def_year = def_date.getFullYear();
+	def_month = def_date.getMonth()+1;
 	def_day = def_date.getDay();
+	def_hour = def_date.getHours();
+	def_minu = def_date.getMinutes();
+	def_sec = def_date.getSeconds();
 	def_zone = 1;//默认的区域编号
 	//data_req(def_year,def_month,def_day,def_zone);
+	prt_cr_data_req(def_year,def_month,def_day,def_hour,def_minu,def_sec,p_slider.n_value/100);
+	
 	map1 =new Map("map_container",1);
-	map1.request_rid(generate_roadids(),"../../../HZ/netQRY_rnet.php");	
+	
 	map1.set_pl_clk_fun(f_r_diff_data_req);
 	chart_data_req(300);
 	//chart_crowd_sort();
@@ -78,8 +83,6 @@ function query_conn_road(p,t) {
 	//alert(rnum)
 	map1.request_rid(generate_roadids(rnum),"../../../HZ/netQRY_rnet.php");
 	}
-
-
 
 function chart_data_remove() {
 	series_remove($('#chart_container'))
@@ -138,18 +141,51 @@ function chart_data_update(datas) {
 	}
 	
 function chart_data_req(roadid) {
-	$.get("../../../HZ/query_rname.php",{roadid:roadid},function(roadname,status) {
+	var date = init_date("sub_date");
+	var year = date.year;
+	var month = date.month;
+	var day = date.day;
+	$.get("../../../HZ/php/roadFCDataReq.php",{roadid:roadid,year:year,month:month,day:day},function(ret_data,status) {
+		roadname = ret_data.name;
 		if(roadname=="") return;
 		var datas = new Array();
 		datas.push(roadname);
-		var data = generate_data();
+		var rfcdata = new Array();
+		var f_data = new Array();
+		var r_data = new Array();
+		for (var i = 0;i<ret_data.data.length;i++) {
+				/*ret_data.data[i][0] = parseInt(ret_data.data[i][0]);
+				ret_data.data[i][1] = ;*/
+				f_data.push(parseFloat(ret_data.data[i][1])*100);
+				r_data.push(parseInt(ret_data.data[i][0]));
+				/*alert(ret_data.data[i][1]);*/
+			}
+			
+		rfcdata.push(f_data);
+		rfcdata.push(r_data);
+		
+		var data = rfcdata;
 		datas.push(new Array("预测线",data[0]));
 		datas.push(new Array("实际值",data[1]));
 		chart_data_update(datas);
-		})
+		});
 	}
 
 var f_r_diff_data_req=chart_data_req;
+
+function prt_cr_data_req(year,month,day,hour,minu,sec,prt) {
+	//day = 3;
+	url = '../../../HZ/php/getCRreq.php';
+	req_data = {year:year,month:month,day:day,hour:hour,minu:minu,sec:sec,prt:prt};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+		for (var i = 0;i<ret_data.length;i++) {
+				data_array.push(parseInt(ret_data[i]));
+			}
+		map1.request_rid(data_array,"../../../HZ/netQRY_rnet.php");	
+		}
+	);
+	}
 
 function generate_data() {
 	var datas = new Array()

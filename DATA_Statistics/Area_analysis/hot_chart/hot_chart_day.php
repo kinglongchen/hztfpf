@@ -5,6 +5,7 @@
 <title>无标题文档</title>
 <link rel="stylesheet" type="text/css" href="../../../css/scollbar.css">
 <script src="../../../js/jquery.js"></script>
+<script src="../../../js/util.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/highcharts.js"></script>
 <script type="text/javascript" src="../../../js/Highcharts-4.0.3/js/modules/exporting.js"></script>
 
@@ -66,10 +67,9 @@
          <input type="button"   id="play" value="播放"/>
          <span id = 't_itvsetter' ><!--style="margin:19px 0 0 40px;float:left;"-->
             时间范围：
-            <input class='titvcls' checked="checked" type="radio" name="t_itv" value=5 /> 近一天
-            <input class='titvcls' type="radio" name="t_itv" value=10 /> 近一个月
-            <input class='titvcls' type="radio" name="t_itv" value=30 /> 近一周
-            <input class='titvcls' type="radio" name="t_itv" value=60 /> 近一年
+            <input class='titvcls' checked="checked" type="radio" name="t_itv" value='day' /> 近一天
+            <input class='titvcls' type="radio" name="t_itv" value='month' /> 近一个月
+            <input class='titvcls' type="radio" name="t_itv" value='year' /> 近一年
           </span>
           </div>
    	</div>

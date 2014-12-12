@@ -73,7 +73,7 @@ function initialize(){
 function mapInit(){
 	induce_map = new Map("iCenter",0);
 	induce_map.open_display();
-  mapObj = induce_map.get_MapObj();/*new AMap.Map("iCenter",{
+  	mapObj = induce_map.get_MapObj();/*new AMap.Map("iCenter",{
   center:new AMap.LngLat(120.150023,30.270743), //地图中心点
   level:13  //地图显示的比例尺级别
   }); */

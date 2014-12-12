@@ -102,9 +102,9 @@ function hot_data_req(year,month,day,zone) {
 	}
 
 function data_req(year,month,day,zone) {
-	data = generate_data()
-	data_update(data)
-	table_get_data('day',1,data2)
+		data = generate_data()
+		data_update(data)
+		table_get_data('day',1,data2)
 	}
 //test funciton
 function generate_data() {

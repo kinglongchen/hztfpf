@@ -233,9 +233,24 @@ function rte_road_data_req(year,month,day,zone) {
 	rte_road_data_update(data)
 	}
 
-function data_req(year,month,day,zone,road_name) {
-	data = generate_data()
-	data_update(data,road_name)
+function data_req(year,month,day,road_id,road_name) {
+	/*data = generate_data()
+	data_update(data,road_name)*/
+	
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,month:month,day:day,id:road_id,din:'ci',qrytype:'road',timetype:'day',t_itv:t_itv};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = SpanTimeToFloat(ret_data[i].from_time,ret_data[i].to_time)
+				var v = ret_data[i].value;
+				data_array.push([t,v]);
+				}
+				data_update(data_array,road_name);
+		}
+	);
+	
+	
 	}
 
 

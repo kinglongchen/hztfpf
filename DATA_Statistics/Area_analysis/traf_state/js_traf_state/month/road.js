@@ -44,8 +44,8 @@ $(function () {
                 [0.5, '#F7F707'],
                 [1, '#FF1900']
             ],
-            min: 0,
-            max: 2,
+            min: 1,
+            max: 3,
             startOnTick: false,
             endOnTick: false,
             labels: {
@@ -245,7 +245,7 @@ $(document).ready(function(e) {
 	def_year = def_date.getYear();
 	def_month = def_date.getMonth();
 	def_day = def_date.getDay();
-	def_zone = 1;//默认的区域编号
+	def_zone = 0;//默认的区域编号
 	data_req(def_year,def_month,def_day,def_zone,'西湖区');
 //	history_req(def_year,def_month,def_day,def_zone)
 //	hot_data_req(def_year,def_month,def_day,def_zone)
@@ -354,7 +354,7 @@ function speed_data_update(data,zone_name) {
 	var max_val_time=0;
 	var total_val = 0;
 	var max_val_index=0;
-	remove_cspeed_ctb_data(i,t,v)
+	remove_cspeed_ctb_data()
 	chart_data = data;
 	for (var i=0;i < data.length;i++) {
 		tv=data[i];
@@ -420,23 +420,80 @@ function remove_cspeed_ctb_data() {
 
 
 
-function state_data_req(year,month,day,zoneid,zone_name) {
-	var data = generate_state_data({year:year,month:month,day:day})
-	state_data_update(data,zone_name)
+function state_data_req(year,month,day,zone_id,zone_name) {
+	/*var data = generate_state_data({year:year,month:month,day:day})
+	state_data_update(data,zone_name)*/
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,month:month,day:day,id:zone_id,din:'ts',qrytype:'zone',timetype:'month'};
+	$.get(url,req_data,function(ret_data) {
+			var month_data = ret_data;
+			var data = new Array()
+			for (var i = 0;i<month_data.length;i++) {
+					var hour = GetHourInfo(month_data[i].hour);
+					var day = GetDayInfo(month_data[i].day);
+					var v = month_data[i].value;
+					data.push(new Array(hour+1,day,Math.round(v*100)/100))
+				}
+			state_data_update(data,zone_name);
+		}
+	);
+	
+	
 	}
 
-function ct_data_req(year,month,day,zoneid,zone_name) {
-	var data = generate_ct_data({year:year,month:month,day:day})
-	ct_data_update(data,zone_name);
+function ct_data_req(year,month,day,zone_id,zone_name) {
+	/*var data = generate_ct_data({year:year,month:month,day:day})
+	ct_data_update(data,zone_name);*/
+	
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,month:month,id:zone_id,din:'ct',qrytype:'zone',timetype:'month'};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = DayToInt(ret_data[i].create_time);
+				var v = ret_data[i].value;
+				data_array.push([t,Math.round(v*100)/100]);
+				}
+				ct_data_update(data_array,zone_name);
+		}
+	);
+	
 	}
 
-function ci_data_req(year,month,day,zoneid,zone_name) {
-	var data = generate_ci_data({year:year,month:month,day:day})
-	ci_data_update(data,zone_name);
+function ci_data_req(year,month,day,zone_id,zone_name) {
+	/*var data = generate_ci_data({year:year,month:month,day:day})
+	ci_data_update(data,zone_name);*/
+	
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,month:month,id:zone_id,din:'ci',qrytype:'zone',timetype:'month'};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = DayToInt(ret_data[i].create_time);
+				var v = ret_data[i].value;
+				data_array.push([t,Math.round(v*100)/100]);
+				}
+				ci_data_update(data_array,zone_name);
+		}
+	);
 	}
-function speed_data_req(year,month,day,zoneid,zone_name) {
-	var data = generate_speed_data({year:year,month:month,day:day})
-	speed_data_update(data,zone_name);
+function speed_data_req(year,month,day,zone_id,zone_name) {
+	/*var data = generate_speed_data({year:year,month:month,day:day})
+	speed_data_update(data,zone_name);*/
+	
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,month:month,id:zone_id,din:'cs',qrytype:'zone',timetype:'month'};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = DayToInt(ret_data[i].create_time);
+				var v = ret_data[i].value;
+				data_array.push([t,Math.round(v*100)/100]);
+				}
+				speed_data_update(data_array,zone_name);
+		}
+	);
+	
 	}
 
 function data_req(year,month,day,zoneid,zone_name) {

@@ -44,8 +44,8 @@ $(function () {
                 [0.5, '#F7F707'],
                 [1, '#FF1900']
             ],
-            min: 0,
-            max: 2,
+            min: 1,
+            max: 3,
             startOnTick: false,
             endOnTick: false,
             labels: {
@@ -425,22 +425,87 @@ function remove_cspeed_ctb_data() {
 
 
 function state_data_req(year,month,day,zoneid,zone_name) {
-	var data = generate_state_data({year:year,month:month,day:day})
-	state_data_update(data,zone_name)
+	/*var data = generate_state_data({year:year,month:month,day:day})
+	state_data_update(data,zone_name)*/
+	
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,month:month,day:day,id:zoneid,din:'ts',qrytype:'zone',timetype:'year'};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			
+			
+			
+			var year_data = ret_data;
+			
+			var data = new Array()
+			
+			for (var i = 0;i<year_data.length;i++) {
+					var hour = parseInt(year_data[i].hour);
+					var month = GetMonthInfo(year_data[i].month);
+					var v = year_data[i].value;
+					data.push(new Array(hour+1,month,Math.round(v*100)/100))
+				}
+			state_data_update(data,zone_name);
+		}
+	);
+	
+	
 	}
 
 function ct_data_req(year,month,day,zoneid,zone_name) {
-	var data = generate_ct_data({year:year,month:month,day:day})
-	ct_data_update(data,zone_name);
+	/*var data = generate_ct_data({year:year,month:month,day:day})
+	ct_data_update(data,zone_name);*/
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,id:zoneid,din:'ct',qrytype:'zone',timetype:'year'};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = MonthToInt(ret_data[i].create_time);
+				var v = ret_data[i].value;
+				data_array.push([t,Math.round(v*100)/100]);
+				}
+				ct_data_update(data_array,zone_name);
+		}
+	);
+	
 	}
 
 function ci_data_req(year,month,day,zoneid,zone_name) {
-	var data = generate_ci_data({year:year,month:month,day:day})
-	ci_data_update(data,zone_name);
+	/*var data = generate_ci_data({year:year,month:month,day:day})
+	ci_data_update(data,zone_name);*/
+	
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,id:zoneid,din:'ci',qrytype:'zone',timetype:'year'};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = MonthToInt(ret_data[i].create_time);
+				var v = ret_data[i].value;
+				data_array.push([t,Math.round(v*100)/100]);
+				}
+				ci_data_update(data_array,zone_name);
+		}
+	);
+	
 	}
 function speed_data_req(year,month,day,zoneid,zone_name) {
-	var data = generate_speed_data({year:year,month:month,day:day})
-	speed_data_update(data,zone_name);
+	/*var data = generate_speed_data({year:year,month:month,day:day})
+	speed_data_update(data,zone_name);*/
+	
+	url = '../../../php/dataQuery.php';
+	req_data = {year:year,id:zoneid,din:'cs',qrytype:'zone',timetype:'year'};
+	$.get(url,req_data,function(ret_data) {
+		var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var t = MonthToInt(ret_data[i].create_time);
+				var v = ret_data[i].value;
+				data_array.push([t,Math.round(v*100)/100]);
+				}
+				speed_data_update(data_array,zone_name);
+		}
+	);
+	
+	
 	}
 
 function data_req(year,month,day,zoneid,zone_name) {

@@ -1,5 +1,5 @@
 // JavaScript Document
-document.write("<script type='text/javascript' src='../../../HZ/js/jquery.js'></script>")
+document.write("<script type='text/javascript' src='../../../js/jquery.js'></script>")
 document.write("<script src='http://webapi.amap.com/maps?v=1.2&key=8d88ae03aa109003c5a3ca3dcac6e2fc' type='text/javascript'></script>")
 function Map(map_container,m) {
 		var mode = m;
@@ -133,15 +133,23 @@ function Map(map_container,m) {
 			//var url="netQRY_STA.php";
 			$.get(url,{botlat:botlat,rlng:rlng,uplat:uplat,llng:llng},drawroadinfo_via_rnxml);
 		}
+	
+	var request_rs_id = function(rids,url) {
 		
+			//var url = "netQRY_rnet.php"
+			//var req_arges
+			$.get(url,{roadids:rids},drawroadinfo_via_rnxml)
+		}
+	//不重新请求数据绘制	
 	this.request_span = function(url) {
 			request_rs_span(url);
+			if (map_move_redraw_listener) remove_rsinfo();
 			map_move_redraw_listener =  AMap.event.addListener(mapobj,"moveend",function(e) {
 																addRoadInfo();
 																}
 															);
 			}
-	
+	//重新请求数据绘制
 	this.add_tfinfo_fun = function() {
 		request_rs_span();
 		tfinfo_redraw_listener = AMap.event.addListener(mapobj,"moveend",function(e) {
@@ -149,8 +157,6 @@ function Map(map_container,m) {
 																}
 															);
 		}
-	
-	
 	
 	this.remove_tfinfo_fun = function() {
 			deleteRoadInfo();
@@ -165,7 +171,12 @@ function Map(map_container,m) {
 	this.request_rid = function(rids,url) {
 			//var url = "netQRY_rnet.php"
 			//var req_arges
-			$.get(url,{roadids:rids},drawroadinfo_via_rnxml)
+			request_rs_id(rids,url);
+			if (map_move_redraw_listener) this.remove_rsinfo();
+			map_move_redraw_listener =  AMap.event.addListener(mapobj,"moveend",function(e) {
+																addRoadInfo();
+																}
+															);
 		}
 		
 	
@@ -251,4 +262,19 @@ function generate_roadids(rnum) {
 		data.push(temrid);
 		}
 	return data;
+	}
+
+function conRoad_req(zone_id,year,month,day,map_obj) {
+		url = '../../../HZ/php/cr_query.php';
+		req_data = {year:year,month:month,day:day,id:zone_id,timetype:'day'};
+		$.get(url,req_data,function(ret_data) {
+			
+			var data_array = Array();
+			for (var i = 0;i<ret_data.length;i++) {
+				var road_id = ret_data[i];
+				data_array.push(road_id);
+				}
+			map_obj.request_rid(data_array,"../../../HZ/netQRY_rnet.php");
+			}
+		);
 	}

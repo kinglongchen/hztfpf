@@ -226,7 +226,7 @@ function road_slec_change() {
 	}
 window.onload = function() {
 	var date =new Date()
-	tc_data_req('西湖区',date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate());
+	tc_data_req(0,'西湖区',date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),'zone');
 	get_now();
 	}
 	
@@ -249,17 +249,17 @@ function get_now()
               <form>
               <span style="margin:19px 0 0 40px;float:left;">
               	选择区域：<select id="rs_slcer" onchange = "chart_data_remove()">
-                		<option value="1">西湖区</option>
-                        <option value="2">上城区</option>
-                        <option value="3">滨江区</option>
-                        <option value="4">江干区</option>
-                    	<option value="5">萧山区</option>
+                		<option value="0">西湖区</option>
+                        <option value="1">上城区</option>
+                        <option value="2">滨江区</option>
+                        <option value="3">江干区</option>
+                    	<option value="4">萧山区</option>
                 </select>
               </span>
               
         
                 <span style="margin:19px 0 0 40px;float:left;">
-                    选择对比时间:<input type="date" id="sub_date" onchange="tc_data_req($('#sroadid').val(),this.value)"/>
+                    选择对比时间:<input type="date" id="sub_date" onchange="tc_data_req($('#rs_slcer').val(),$('#sroadid').val(),this.value,'zone')"/>
                 </span>
               <span style="margin:19px 0 0 40px;float:left;">
                     <input type="button"  onclick="chart_data_remove()" value="清空"/>
